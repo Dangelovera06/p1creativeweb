@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import PlaybookHero from "../components/landing/playbook/PlaybookHero";
 import Hero from "../components/landing/offer/Hero";
@@ -101,7 +102,7 @@ export default function Playbook() {
             Turning businesses into lead-generating machines
           </p>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-6 sm:mb-8">
-            <a href="#" className="text-xs sm:text-sm text-white/60 transition-colors hover:text-white">Privacy Policy</a>
+            <Link to="/privacy-policy" className="text-xs sm:text-sm text-white/60 transition-colors hover:text-white">Privacy Policy</Link>
             <a href="#" className="text-xs sm:text-sm text-white/60 transition-colors hover:text-white">Terms of Service</a>
             <a href="#" className="text-xs sm:text-sm text-white/60 transition-colors hover:text-white">Contact</a>
           </div>

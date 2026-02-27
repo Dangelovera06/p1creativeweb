@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BeamsBackground } from "@/components/ui/beams-background";
 import { RainbowButton } from "@/components/ui/rainbow-button";
@@ -228,7 +229,7 @@ export default function System() {
             Turning businesses into lead-generating machines
           </p>
           <div className="flex flex-wrap justify-center gap-4 sm:gap-8 mb-6 sm:mb-8">
-            <a href="#" className="text-xs sm:text-sm text-white/60 transition-colors hover:text-white">Privacy Policy</a>
+            <Link to="/privacy-policy" className="text-xs sm:text-sm text-white/60 transition-colors hover:text-white">Privacy Policy</Link>
             <a href="#" className="text-xs sm:text-sm text-white/60 transition-colors hover:text-white">Terms of Service</a>
             <a href="#" className="text-xs sm:text-sm text-white/60 transition-colors hover:text-white">Contact</a>
           </div>

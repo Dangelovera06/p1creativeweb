@@ -10,6 +10,7 @@ import System from "./System";
 import Education from "./Education";
 import Offer2026 from "./Offer2026";
 import PipelineX from "./PipelineX";
+import PrivacyPolicy from "./PrivacyPolicy";
 
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
@@ -25,6 +26,7 @@ const PAGES = {
     Education: Education,
     Offer2026: Offer2026,
     PipelineX: PipelineX,
+    PrivacyPolicy: PrivacyPolicy,
     
 }
 
@@ -72,6 +74,8 @@ function PagesContent() {
                 <Route path="/pipelinex" element={<PipelineX />} />
                 <Route path="/PipelineX" element={<PipelineX />} />
                 <Route path="/pipeline" element={<PipelineX />} />
+                <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+                <Route path="/privacy" element={<PrivacyPolicy />} />
                 
             </Routes>
         </Layout>

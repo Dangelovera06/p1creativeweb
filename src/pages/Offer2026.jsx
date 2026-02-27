@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Phone, Video, BarChart3, Globe, Calendar, CheckCircle, ArrowRight, Star, Zap, Clock, Users, Sparkles } from "lucide-react";
 
@@ -469,7 +470,7 @@ export default function Offer2026() {
             P1 Creative — Turning businesses into lead-generating machines
           </p>
           <div className="flex flex-wrap justify-center gap-6 mb-6">
-            <a href="#" className="text-sm text-white/30 hover:text-white/60 transition-colors">Privacy Policy</a>
+            <Link to="/privacy-policy" className="text-sm text-white/30 hover:text-white/60 transition-colors">Privacy Policy</Link>
             <a href="#" className="text-sm text-white/30 hover:text-white/60 transition-colors">Terms of Service</a>
             <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="text-sm text-white/30 hover:text-white/60 transition-colors">Contact</a>
           </div>

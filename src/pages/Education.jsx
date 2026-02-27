@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, Target, Zap, Calendar, Video, BarChart3, Users, Star, BookOpen, Lightbulb, TrendingUp, Gift, FileText, Play, ArrowRight, Lock } from "lucide-react";
 
@@ -833,7 +834,7 @@ export default function Education() {
                   P1 Creative
                 </p>
                 <div className="flex flex-wrap justify-center gap-6 mb-6">
-                  <a href="#" className="text-sm text-white/30 hover:text-white/60 transition-colors">Privacy Policy</a>
+                  <Link to="/privacy-policy" className="text-sm text-white/30 hover:text-white/60 transition-colors">Privacy Policy</Link>
                   <a href="#" className="text-sm text-white/30 hover:text-white/60 transition-colors">Terms of Service</a>
                   <a href={CALENDLY_LINK} target="_blank" rel="noopener noreferrer" className="text-sm text-white/30 hover:text-white/60 transition-colors">Contact</a>
                 </div>

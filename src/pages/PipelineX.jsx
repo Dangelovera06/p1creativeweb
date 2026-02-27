@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { 
   CheckCircle, 
@@ -835,7 +836,7 @@ export default function PipelineX() {
             className="h-6 w-auto invert"
           />
           <div className="flex gap-6 text-sm text-white/40">
-            <a href="#" className="hover:text-white transition-colors">Privacy</a>
+            <Link to="/privacy-policy" className="hover:text-white transition-colors">Privacy</Link>
             <a href="#" className="hover:text-white transition-colors">Terms</a>
             <a href="#" className="hover:text-white transition-colors">Contact</a>
           </div>
