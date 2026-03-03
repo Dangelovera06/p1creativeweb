@@ -364,8 +364,8 @@ export default function PipelineX() {
               transition={{ duration: 0.6, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
               className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] mb-4 sm:mb-6"
             >
-              <span className="text-white">Stop Paying For</span>{" "}
-              <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">Overpriced Agencies</span>
+              <span className="text-white">The Agency You</span>{" "}
+              <span className="bg-gradient-to-r from-red-500 to-red-600 bg-clip-text text-transparent">Only Pay When We Perform</span>
             </motion.h1>
 
             {/* Description */}
@@ -375,7 +375,7 @@ export default function PipelineX() {
               transition={{ duration: 0.6, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
               className="text-base sm:text-xl text-white/50 max-w-xl mx-auto mb-6 sm:mb-8 px-2"
             >
-              Done-for-you ads, content, and automations that bring you leads on autopilot.
+              No results, no invoice. Done-for-you ads, content, and automations — you pay only when leads come in.
             </motion.p>
 
             {/* Social Proof - Above CTA on mobile */}
