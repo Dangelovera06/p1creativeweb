@@ -375,6 +375,40 @@ function Frameworks() {
   );
 }
 
+/* ─── VIDEO BREAK ──────────────────────────────── */
+function VideoBreak() {
+  return (
+    <section style={{ padding: "0 24px 96px", background: C.dark }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        <div
+          style={{
+            borderRadius: 24,
+            overflow: "hidden",
+            border: `1px solid rgba(167,156,142,0.13)`,
+            position: "relative",
+            background: "#0e0a0a",
+            boxShadow: "0 40px 100px rgba(0,0,0,0.5)",
+          }}
+        >
+          <video
+            src="/vibe-video.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            style={{
+              width: "100%",
+              height: "100%",
+              display: "block",
+              objectFit: "cover",
+            }}
+          />
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── HOW WE WORK ──────────────────────────────── */
 const hwwSteps = [
   {
@@ -606,6 +640,7 @@ export default function Aumana() {
       <Hero />
       <LogoBar />
       <Frameworks />
+      <VideoBreak />
       <HowWeWork />
       <Results />
       <CTA />
