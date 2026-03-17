@@ -495,104 +495,6 @@ function HowWeWork() {
   );
 }
 
-/* ─── PROCESS ───────────────────────────────────── */
-const steps = [
-  { n: "01", title: "Discovery Call", desc: "We audit your operations, identify automation gaps, and map out exactly what AI can handle for you." },
-  { n: "02", title: "Custom Build", desc: "Our team engineers your AI agents — voice, chat, or workflow — trained on your business data and brand voice." },
-  { n: "03", title: "Integration", desc: "We connect everything to your existing tools: CRM, calendar, messaging, and more. Zero disruption." },
-  { n: "04", title: "Launch & Optimize", desc: "Go live with a dedicated dashboard. We monitor performance and iterate weekly until results exceed your targets." },
-];
-
-function Process() {
-  return (
-    <section id="aumana-process" style={{ padding: "96px 24px", borderTop: `1px solid rgba(167,156,142,0.08)`, background: C.dark }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 56 }}>
-          <p style={{ ...inter, fontSize: 11, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 12 }}>Process</p>
-          <h2 style={{ ...playfair, fontSize: "clamp(2rem,4vw,3rem)", color: C.white, fontWeight: 600, margin: 0 }}>
-            From zero to <GradientText>fully automated.</GradientText>
-          </h2>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-          {steps.map((s, i) => (
-            <div
-              key={i}
-              style={{
-                borderRadius: 24,
-                border: `1px solid rgba(167,156,142,0.13)`,
-                background: "#181212",
-                aspectRatio: "1 / 1",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-end",
-                padding: "32px 32px",
-                position: "relative",
-                overflow: "hidden",
-                transition: "transform 0.3s ease, border-color 0.3s ease",
-              }}
-              className="group hover:-translate-y-1 hover:border-[rgba(167,156,142,0.3)]"
-            >
-              {/* ambient glow */}
-              <div style={{
-                position: "absolute", top: 0, right: 0,
-                width: 160, height: 160, borderRadius: "50%",
-                background: "radial-gradient(circle, rgba(167,156,142,0.05) 0%, transparent 70%)",
-                pointerEvents: "none",
-              }} />
-
-              {/* large faded number watermark */}
-              <div style={{
-                position: "absolute", top: 20, left: 28,
-                ...playfair, fontSize: "clamp(5rem,10vw,7rem)",
-                fontWeight: 700,
-                color: "rgba(167,156,142,0.07)",
-                lineHeight: 1,
-                userSelect: "none",
-              }}>{s.n}</div>
-
-              {/* step badge */}
-              <span style={{
-                ...inter, fontSize: 12, fontWeight: 600,
-                background: "rgba(34,197,94,0.15)",
-                border: "1px solid rgba(34,197,94,0.35)",
-                color: "#4ade80",
-                padding: "5px 14px",
-                borderRadius: 8,
-                display: "inline-block",
-                marginBottom: 20,
-                width: "fit-content",
-              }}>
-                Step {String(i + 1).padStart(2, "0")}
-              </span>
-
-              <h3 style={{
-                ...inter,
-                fontSize: "clamp(1.2rem, 2vw, 1.5rem)",
-                fontWeight: 700,
-                color: C.white,
-                lineHeight: 1.15,
-                marginBottom: 14,
-              }}>
-                {s.title}
-              </h3>
-
-              <p style={{
-                ...inter,
-                fontSize: 13,
-                color: "rgba(167,156,142,0.7)",
-                fontWeight: 300,
-                lineHeight: 1.7,
-                margin: 0,
-              }}>
-                {s.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
 
 /* ─── RESULTS ───────────────────────────────────── */
 const stats = [
@@ -705,7 +607,6 @@ export default function Aumana() {
       <LogoBar />
       <Frameworks />
       <HowWeWork />
-      <Process />
       <Results />
       <CTA />
       <Footer />
