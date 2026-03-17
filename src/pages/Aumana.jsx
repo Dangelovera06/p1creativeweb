@@ -76,7 +76,7 @@ function Navbar() {
           {links.map((l) => (
             <li key={l}>
               <a
-                href={`#aumana-${l.toLowerCase()}`}
+                href={l === "Process" ? "#aumana-how" : `#aumana-${l.toLowerCase()}`}
                 style={{ ...inter, color: C.taupe, fontSize: 13, textDecoration: "none" }}
                 className="hover:text-white transition-colors"
               >
@@ -116,7 +116,7 @@ function Navbar() {
           {links.map((l) => (
             <a
               key={l}
-              href={`#aumana-${l.toLowerCase()}`}
+              href={l === "Process" ? "#aumana-how" : `#aumana-${l.toLowerCase()}`}
               style={{ ...inter, color: C.taupe, fontSize: 13, textDecoration: "none" }}
               onClick={() => setOpen(false)}
             >
@@ -548,35 +548,96 @@ function Results() {
   return (
     <section id="aumana-results" style={{ padding: "96px 24px", borderTop: `1px solid rgba(167,156,142,0.08)`, background: C.dark }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 56 }}>
+
+        {/* Header */}
+        <div style={{ textAlign: "center", marginBottom: 72 }}>
           <p style={{ ...inter, fontSize: 11, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 12 }}>Results</p>
-          <h2 style={{ ...playfair, fontSize: "clamp(2rem,4vw,3rem)", color: C.white, fontWeight: 600, margin: 0 }}>
+          <h2 style={{ ...playfair, fontSize: "clamp(2rem,4.5vw,3.5rem)", color: C.white, fontWeight: 600, margin: "0 0 12px" }}>
             Numbers don't lie.<br /><GradientText>Performance does.</GradientText>
           </h2>
+          <p style={{ ...inter, fontSize: 15, color: C.taupe, fontWeight: 300, maxWidth: 460, margin: "0 auto", lineHeight: 1.7 }}>
+            Real outcomes from real clients. Every number below came from a business that trusted the process.
+          </p>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mb-12">
-          {stats.map((s, i) => (
-            <div key={i} style={{ borderRadius: 20, border: `1px solid rgba(167,156,142,0.12)`, background: C.card, padding: "24px 20px", textAlign: "center" }}>
-              <div style={{
-                ...playfair, fontSize: "clamp(2rem,4vw,2.8rem)", fontWeight: 600, marginBottom: 8,
-                background: "linear-gradient(135deg,#d2c6b6 0%,#a79c8e 50%,#fff 100%)",
-                WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-              }}>{s.v}</div>
-              <p style={{ ...inter, fontSize: 12, color: C.taupe, fontWeight: 300, lineHeight: 1.55, margin: 0 }}>{s.l}</p>
-            </div>
-          ))}
+
+        {/* Big stats card — matches Frameworks card style */}
+        <div
+          style={{ borderRadius: 24, border: `1px solid rgba(167,156,142,0.12)`, background: C.card, padding: "48px 52px", marginBottom: 8 }}
+          className="flex flex-col md:flex-row items-center gap-12"
+        >
+          {/* Left: stat grid */}
+          <div className="w-full md:w-1/2 grid grid-cols-2 gap-5">
+            {stats.map((s, i) => (
+              <div
+                key={i}
+                style={{
+                  borderRadius: 20,
+                  border: `1px solid rgba(167,156,142,0.1)`,
+                  background: "#201a1a",
+                  padding: "28px 24px",
+                }}
+              >
+                <div style={{
+                  ...playfair, fontSize: "clamp(2.2rem,4vw,3rem)", fontWeight: 600, marginBottom: 10, lineHeight: 1,
+                  background: "linear-gradient(135deg,#d2c6b6 0%,#a79c8e 50%,#fff 100%)",
+                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+                }}>{s.v}</div>
+                <p style={{ ...inter, fontSize: 12, color: C.taupe, fontWeight: 300, lineHeight: 1.6, margin: 0 }}>{s.l}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Right: copy */}
+          <div className="w-full md:w-1/2">
+            <span style={{
+              ...inter, fontSize: 11, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase",
+              padding: "5px 12px", borderRadius: 99, border: `1px solid rgba(167,156,142,0.2)`,
+              display: "inline-block", marginBottom: 20,
+            }}>Proven Track Record</span>
+            <h3 style={{ ...playfair, fontSize: "clamp(1.5rem,2.8vw,2.2rem)", color: C.white, fontWeight: 600, lineHeight: 1.2, marginBottom: 20 }}>
+              Clients see results within the first 30 days — or we keep working until they do.
+            </h3>
+            <p style={{ ...inter, fontSize: 14, color: C.taupe, fontWeight: 300, lineHeight: 1.75, marginBottom: 28 }}>
+              Every stat above is pulled from active client accounts. We don't pad numbers — we build systems that produce them.
+            </p>
+            <a
+              href="#aumana-contact"
+              style={{
+                ...inter, fontSize: 13, fontWeight: 600,
+                background: C.linen, color: C.dark, textDecoration: "none",
+                padding: "12px 28px", borderRadius: 99,
+                display: "inline-flex", alignItems: "center", gap: 8,
+              }}
+            >
+              Get These Results <span style={{ fontSize: 15 }}>→</span>
+            </a>
+          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+
+        {/* Testimonials — same card style as framework feature cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
           {testimonials.map((t, i) => (
-            <div key={i} style={{ borderRadius: 20, border: `1px solid rgba(167,156,142,0.12)`, background: C.card, padding: 24, display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
-              <p style={{ ...inter, fontSize: 13, color: C.linen, fontWeight: 300, lineHeight: 1.7, marginBottom: 20 }}>"{t.q}"</p>
-              <div>
+            <div
+              key={i}
+              style={{
+                borderRadius: 24, border: `1px solid rgba(167,156,142,0.12)`,
+                background: C.card, padding: "32px 32px",
+                display: "flex", flexDirection: "column", justifyContent: "space-between",
+              }}
+            >
+              {/* large quote mark */}
+              <div style={{ ...playfair, fontSize: 64, color: "rgba(167,156,142,0.12)", lineHeight: 0.8, marginBottom: 20 }}>"</div>
+              <p style={{ ...inter, fontSize: 14, color: C.linen, fontWeight: 300, lineHeight: 1.75, marginBottom: 28, flex: 1 }}>
+                {t.q}
+              </p>
+              <div style={{ borderTop: `1px solid rgba(167,156,142,0.1)`, paddingTop: 16 }}>
                 <div style={{ ...inter, fontSize: 13, fontWeight: 500, color: C.white }}>{t.name}</div>
-                <div style={{ ...inter, fontSize: 12, color: C.taupe }}>{t.role}</div>
+                <div style={{ ...inter, fontSize: 12, color: C.taupe, marginTop: 2 }}>{t.role}</div>
               </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );
