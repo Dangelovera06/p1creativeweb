@@ -12,8 +12,8 @@ const C = {
   border: "rgba(167,156,142,0.15)",
 };
 
-const playfair = { fontFamily: "'Playfair Display', serif" };
-const inter    = { fontFamily: "'Inter', sans-serif" };
+const grotesk  = { fontFamily: "'Space Grotesk', sans-serif" };
+const inter    = { fontFamily: "'Space Grotesk', sans-serif" };
 
 /* ─── Helpers ───────────────────────────────────── */
 function GradientText({ children, className = "" }) {
@@ -67,7 +67,7 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
           <SunLogo size={26} />
-          <span style={{ ...inter, color: C.white, letterSpacing: "0.2em", fontSize: 15, fontWeight: 600 }}>
+          <span style={{ ...inter, color: C.white, letterSpacing: "0.2em", fontSize: 15, fontWeight: 700 }}>
             AUMANA
           </span>
         </div>
@@ -91,7 +91,7 @@ function Navbar() {
           className="hidden md:inline-flex items-center gap-2 transition-all"
           style={{
             ...inter, fontSize: 13, color: C.white,
-            padding: "8px 20px", borderRadius: 99,
+            padding: "11px 24px", borderRadius: 99,
             border: `1px solid rgba(167,156,142,0.3)`,
             textDecoration: "none",
           }}
@@ -127,7 +127,7 @@ function Navbar() {
             href="#aumana-contact"
             style={{
               ...inter, fontSize: 13, color: C.white, textAlign: "center",
-              padding: "8px 20px", borderRadius: 99,
+              padding: "11px 24px", borderRadius: 99,
               border: `1px solid rgba(167,156,142,0.3)`,
               textDecoration: "none",
             }}
@@ -179,7 +179,7 @@ function Hero() {
       </div>
 
       {/* headline */}
-      <h1 style={{ ...playfair, fontSize: "clamp(2.4rem,6vw,4.5rem)", color: C.white, fontWeight: 600, lineHeight: 1.15, maxWidth: 820, margin: "0 0 20px" }}>
+      <h1 style={{ ...grotesk, fontSize: "clamp(2.4rem,6vw,4.5rem)", color: C.white, fontWeight: 700, lineHeight: 1.15, maxWidth: 820, margin: "0 0 20px" }}>
         AI Consulting <GradientText>Designed</GradientText>
         <br />for Performance <GradientText>and Profit</GradientText>
       </h1>
@@ -193,9 +193,9 @@ function Hero() {
         <a
           href="#aumana-contact"
           style={{
-            ...inter, fontSize: 13, fontWeight: 600,
+            ...inter, fontSize: 15, fontWeight: 700,
             background: C.linen, color: C.dark, textDecoration: "none",
-            padding: "12px 32px", borderRadius: 99,
+            padding: "15px 36px", borderRadius: 99,
           }}
         >
           Book a Consultation
@@ -204,7 +204,7 @@ function Hero() {
           href="#aumana-results"
           style={{
             ...inter, fontSize: 13, color: C.white, textDecoration: "none",
-            padding: "12px 32px", borderRadius: 99,
+            padding: "15px 36px", borderRadius: 99,
             border: `1px solid rgba(167,156,142,0.3)`,
             display: "inline-flex", alignItems: "center", gap: 8,
           }}
@@ -328,7 +328,7 @@ function Frameworks() {
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
         <div style={{ textAlign: "center", marginBottom: 72 }}>
           <p style={{ ...inter, fontSize: 11, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 12 }}>Frameworks</p>
-          <h2 style={{ ...playfair, fontSize: "clamp(2rem,4.5vw,3.5rem)", color: C.white, fontWeight: 600, margin: "0 0 12px" }}>
+          <h2 style={{ ...grotesk, fontSize: "clamp(2rem,4.5vw,3.5rem)", color: C.white, fontWeight: 700, margin: "0 0 12px" }}>
             Built to automate.<br /><GradientText>Designed to perform.</GradientText>
           </h2>
           <p style={{ ...inter, fontSize: 15, color: C.taupe, fontWeight: 300, maxWidth: 500, margin: "0 auto", lineHeight: 1.7 }}>
@@ -352,7 +352,7 @@ function Frameworks() {
                   padding: "5px 12px", borderRadius: 99, border: `1px solid rgba(167,156,142,0.2)`,
                   display: "inline-block", marginBottom: 16,
                 }}>{fw.badge}</span>
-                <h3 style={{ ...playfair, fontSize: "clamp(1.3rem,2.5vw,1.9rem)", color: C.white, fontWeight: 600, marginBottom: 28, lineHeight: 1.3 }}>
+                <h3 style={{ ...grotesk, fontSize: "clamp(1.3rem,2.5vw,1.9rem)", color: C.white, fontWeight: 700, marginBottom: 28, lineHeight: 1.3 }}>
                   {fw.title}
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -487,7 +487,7 @@ function HowWeWork() {
 
               <span
                 style={{
-                  ...inter, fontSize: 12, fontWeight: 600,
+                  ...inter, fontSize: 12, fontWeight: 700,
                   background: "rgba(34,197,94,0.15)",
                   border: "1px solid rgba(34,197,94,0.35)",
                   color: "#4ade80",
@@ -557,7 +557,7 @@ function Results() {
         {/* Header */}
         <div style={{ textAlign: "center", marginBottom: 72 }}>
           <p style={{ ...inter, fontSize: 11, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 12 }}>Results</p>
-          <h2 style={{ ...playfair, fontSize: "clamp(2rem,4.5vw,3.5rem)", color: C.white, fontWeight: 600, margin: "0 0 12px" }}>
+          <h2 style={{ ...grotesk, fontSize: "clamp(2rem,4.5vw,3.5rem)", color: C.white, fontWeight: 700, margin: "0 0 12px" }}>
             Numbers don't lie.<br /><GradientText>Performance does.</GradientText>
           </h2>
           <p style={{ ...inter, fontSize: 15, color: C.taupe, fontWeight: 300, maxWidth: 460, margin: "0 auto", lineHeight: 1.7 }}>
@@ -583,7 +583,7 @@ function Results() {
                 }}
               >
                 <div style={{
-                  ...playfair, fontSize: "clamp(2.2rem,4vw,3rem)", fontWeight: 600, marginBottom: 10, lineHeight: 1,
+                  ...grotesk, fontSize: "clamp(2.2rem,4vw,3rem)", fontWeight: 700, marginBottom: 10, lineHeight: 1,
                   background: "linear-gradient(135deg,#d2c6b6 0%,#a79c8e 50%,#fff 100%)",
                   WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
                 }}>{s.v}</div>
@@ -599,7 +599,7 @@ function Results() {
               padding: "5px 12px", borderRadius: 99, border: `1px solid rgba(167,156,142,0.2)`,
               display: "inline-block", marginBottom: 20,
             }}>Proven Track Record</span>
-            <h3 style={{ ...playfair, fontSize: "clamp(1.5rem,2.8vw,2.2rem)", color: C.white, fontWeight: 600, lineHeight: 1.2, marginBottom: 20 }}>
+            <h3 style={{ ...grotesk, fontSize: "clamp(1.5rem,2.8vw,2.2rem)", color: C.white, fontWeight: 700, lineHeight: 1.2, marginBottom: 20 }}>
               Clients see results within the first 30 days — or we keep working until they do.
             </h3>
             <p style={{ ...inter, fontSize: 14, color: C.taupe, fontWeight: 300, lineHeight: 1.75, marginBottom: 28 }}>
@@ -608,9 +608,9 @@ function Results() {
             <a
               href="#aumana-contact"
               style={{
-                ...inter, fontSize: 13, fontWeight: 600,
+                ...inter, fontSize: 15, fontWeight: 700,
                 background: C.linen, color: C.dark, textDecoration: "none",
-                padding: "12px 28px", borderRadius: 99,
+                padding: "15px 32px", borderRadius: 99,
                 display: "inline-flex", alignItems: "center", gap: 8,
               }}
             >
@@ -631,7 +631,7 @@ function Results() {
               }}
             >
               {/* large quote mark */}
-              <div style={{ ...playfair, fontSize: 64, color: "rgba(167,156,142,0.12)", lineHeight: 0.8, marginBottom: 20 }}>"</div>
+              <div style={{ ...grotesk, fontSize: 64, color: "rgba(167,156,142,0.12)", lineHeight: 0.8, marginBottom: 20 }}>"</div>
               <p style={{ ...inter, fontSize: 14, color: C.linen, fontWeight: 300, lineHeight: 1.75, marginBottom: 28, flex: 1 }}>
                 {t.q}
               </p>
@@ -655,7 +655,7 @@ function CTA() {
       <div style={{ maxWidth: 860, margin: "0 auto", borderRadius: 28, border: `1px solid rgba(167,156,142,0.2)`, background: C.card, padding: "80px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "radial-gradient(ellipse at 50% 0%, rgba(167,156,142,0.1) 0%, transparent 60%)" }} />
         <p style={{ ...inter, fontSize: 11, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 12 }}>Get Started</p>
-        <h2 style={{ ...playfair, fontSize: "clamp(2rem,5vw,3.5rem)", color: C.white, fontWeight: 600, lineHeight: 1.15, margin: "0 0 16px" }}>
+        <h2 style={{ ...grotesk, fontSize: "clamp(2rem,5vw,3.5rem)", color: C.white, fontWeight: 700, lineHeight: 1.15, margin: "0 0 16px" }}>
           Ready to automate<br /><GradientText>your growth?</GradientText>
         </h2>
         <p style={{ ...inter, fontSize: 15, color: C.taupe, fontWeight: 300, maxWidth: 440, margin: "0 auto 36px", lineHeight: 1.7 }}>
@@ -664,9 +664,9 @@ function CTA() {
         <a
           href="mailto:hello@aumanaconsulting.com"
           style={{
-            ...inter, fontSize: 13, fontWeight: 600,
+            ...inter, fontSize: 15, fontWeight: 700,
             background: C.linen, color: C.dark, textDecoration: "none",
-            padding: "14px 40px", borderRadius: 99,
+            padding: "17px 44px", borderRadius: 99,
             display: "inline-flex", alignItems: "center", gap: 10,
           }}
         >
