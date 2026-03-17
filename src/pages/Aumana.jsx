@@ -384,10 +384,7 @@ function VideoBreak() {
           style={{
             borderRadius: 24,
             overflow: "hidden",
-            border: `1px solid rgba(167,156,142,0.13)`,
             position: "relative",
-            background: "#0e0a0a",
-            boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
             aspectRatio: "1 / 1",
           }}
         >
@@ -401,7 +398,7 @@ function VideoBreak() {
               position: "absolute",
               top: "50%",
               left: "50%",
-              transform: "translate(-50%, -50%) scale(0.85)",
+              transform: "translate(-50%, -50%) scale(1.15)",
               width: "100%",
               height: "100%",
               objectFit: "cover",
