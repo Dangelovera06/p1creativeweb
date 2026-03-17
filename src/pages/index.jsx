@@ -1,5 +1,6 @@
 import Layout from "./Layout.jsx";
 
+import Aumana from "./Aumana";
 import Home from "./Home";
 import Quiz from "./Quiz";
 import Offer from "./Offer";
@@ -16,6 +17,7 @@ import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-route
 
 const PAGES = {
     
+    Aumana: Aumana,
     Home: Home,
     Quiz: Quiz,
     Offer: Offer,
@@ -53,6 +55,10 @@ function PagesContent() {
             <Routes>            
                 
                     <Route path="/" element={<Home />} />
+                
+                
+                <Route path="/aumana" element={<Aumana />} />
+                <Route path="/flozy" element={<Aumana />} />
                 
                 
                 <Route path="/Home" element={<Home />} />
