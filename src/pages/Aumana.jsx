@@ -379,13 +379,17 @@ function Frameworks() {
 function VideoBreak() {
   return (
     <section style={{ padding: "0 24px 96px", background: C.dark }}>
-      <div style={{ maxWidth: 340, width: "85%", margin: "0 auto" }}>
+      {/* outer clamp: never taller than 75vh */}
+      <div style={{ maxWidth: 340, width: "80%", margin: "0 auto", maxHeight: "75vh" }}>
         <div
           style={{
             borderRadius: 40,
             overflow: "hidden",
             position: "relative",
+            width: "100%",
+            /* fill the capped height, let aspect-ratio drive on desktop */
             aspectRatio: "9 / 16",
+            maxHeight: "75vh",
           }}
         >
           <video
