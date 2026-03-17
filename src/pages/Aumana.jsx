@@ -375,6 +375,155 @@ function Frameworks() {
   );
 }
 
+/* ─── HOW WE WORK ──────────────────────────────── */
+const hwwSteps = [
+  {
+    num: "Step 1",
+    title: "Discovery & Strategy",
+    desc: "We deep-dive into your business, competitors, and workflows to identify exactly where AI creates the most leverage.",
+    img: "/step-1.png",
+  },
+  {
+    num: "Step 2",
+    title: "Build Your AI Stack",
+    desc: "We engineer your full AI infrastructure — voice agents, chat assistants, CRM automation, and custom workflows — all connected.",
+    img: "/step-2.png",
+  },
+  {
+    num: "Step 3",
+    title: "Launch in 72 Hours",
+    desc: "We go live fast. Your AI agents start handling calls, messages, and bookings while you watch results flow in real time.",
+    img: "/step-3.png",
+  },
+];
+
+function HowWeWork() {
+  return (
+    <section
+      id="aumana-how"
+      style={{
+        padding: "0 24px 96px",
+        background: C.dark,
+      }}
+    >
+      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+        {/* Label */}
+        <p
+          style={{
+            ...inter, fontSize: 11, color: C.taupe,
+            letterSpacing: "0.15em", textTransform: "uppercase",
+            textAlign: "center", marginBottom: 56,
+          }}
+        >
+          How It Works
+        </p>
+
+        {/* Cards */}
+        <div
+          className="grid grid-cols-1 md:grid-cols-3 gap-5"
+        >
+          {hwwSteps.map((step, i) => (
+            <div
+              key={i}
+              style={{
+                borderRadius: 24,
+                border: `1px solid rgba(167,156,142,0.13)`,
+                background: "#181212",
+                overflow: "hidden",
+                display: "flex",
+                flexDirection: "column",
+                position: "relative",
+                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+              }}
+              className="group hover:-translate-y-1"
+            >
+              {/* Top content */}
+              <div style={{ padding: "28px 28px 0" }}>
+                <span
+                  style={{
+                    ...inter, fontSize: 12, fontWeight: 600,
+                    color: "#fff",
+                    background: "rgba(34,197,94,0.18)",
+                    border: "1px solid rgba(34,197,94,0.35)",
+                    color: "#4ade80",
+                    padding: "5px 14px",
+                    borderRadius: 8,
+                    display: "inline-block",
+                    marginBottom: 22,
+                  }}
+                >
+                  {step.num}
+                </span>
+
+                <h3
+                  style={{
+                    ...inter,
+                    fontSize: "clamp(1.35rem, 2.5vw, 1.7rem)",
+                    fontWeight: 700,
+                    color: C.white,
+                    lineHeight: 1.2,
+                    marginBottom: 14,
+                  }}
+                >
+                  {step.title}
+                </h3>
+
+                <p
+                  style={{
+                    ...inter,
+                    fontSize: 14,
+                    color: "rgba(167,156,142,0.75)",
+                    fontWeight: 300,
+                    lineHeight: 1.65,
+                    marginBottom: 28,
+                  }}
+                >
+                  {step.desc}
+                </p>
+              </div>
+
+              {/* Image — flush to bottom, slightly cropped like the mockup */}
+              <div
+                style={{
+                  flex: 1,
+                  minHeight: 240,
+                  position: "relative",
+                  overflow: "hidden",
+                }}
+              >
+                <img
+                  src={step.img}
+                  alt={step.title}
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    objectFit: "cover",
+                    objectPosition: "top center",
+                    display: "block",
+                    transition: "transform 0.4s ease",
+                  }}
+                  className="group-hover:scale-105"
+                />
+                {/* subtle bottom fade so card feels contained */}
+                <div
+                  style={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    height: 60,
+                    background: "linear-gradient(to top, #181212 0%, transparent 100%)",
+                  }}
+                />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 /* ─── PROCESS ───────────────────────────────────── */
 const steps = [
   { n: "01", title: "Discovery Call", desc: "We audit your operations, identify automation gaps, and map out exactly what AI can handle for you." },
@@ -517,6 +666,7 @@ export default function Aumana() {
       <Hero />
       <LogoBar />
       <Frameworks />
+      <HowWeWork />
       <Process />
       <Results />
       <CTA />
