@@ -419,9 +419,7 @@ function HowWeWork() {
         </p>
 
         {/* Cards */}
-        <div
-          className="grid grid-cols-1 md:grid-cols-3 gap-5"
-        >
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {hwwSteps.map((step, i) => (
             <div
               key={i}
@@ -429,93 +427,66 @@ function HowWeWork() {
                 borderRadius: 24,
                 border: `1px solid rgba(167,156,142,0.13)`,
                 background: "#181212",
-                overflow: "hidden",
+                aspectRatio: "1 / 1",
                 display: "flex",
                 flexDirection: "column",
+                justifyContent: "flex-end",
+                padding: "36px 36px",
                 position: "relative",
-                transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                overflow: "hidden",
+                transition: "transform 0.3s ease, border-color 0.3s ease",
               }}
-              className="group hover:-translate-y-1"
+              className="group hover:-translate-y-1 hover:border-[rgba(167,156,142,0.3)]"
             >
-              {/* Top content */}
-              <div style={{ padding: "28px 28px 0" }}>
-                <span
-                  style={{
-                    ...inter, fontSize: 12, fontWeight: 600,
-                    color: "#fff",
-                    background: "rgba(34,197,94,0.18)",
-                    border: "1px solid rgba(34,197,94,0.35)",
-                    color: "#4ade80",
-                    padding: "5px 14px",
-                    borderRadius: 8,
-                    display: "inline-block",
-                    marginBottom: 22,
-                  }}
-                >
-                  {step.num}
-                </span>
+              {/* ambient glow top-right */}
+              <div style={{
+                position: "absolute", top: 0, right: 0,
+                width: 180, height: 180, borderRadius: "50%",
+                background: "radial-gradient(circle, rgba(167,156,142,0.06) 0%, transparent 70%)",
+                pointerEvents: "none",
+              }} />
 
-                <h3
-                  style={{
-                    ...inter,
-                    fontSize: "clamp(1.35rem, 2.5vw, 1.7rem)",
-                    fontWeight: 700,
-                    color: C.white,
-                    lineHeight: 1.2,
-                    marginBottom: 14,
-                  }}
-                >
-                  {step.title}
-                </h3>
-
-                <p
-                  style={{
-                    ...inter,
-                    fontSize: 14,
-                    color: "rgba(167,156,142,0.75)",
-                    fontWeight: 300,
-                    lineHeight: 1.65,
-                    marginBottom: 28,
-                  }}
-                >
-                  {step.desc}
-                </p>
-              </div>
-
-              {/* Image — flush to bottom, slightly cropped like the mockup */}
-              <div
+              <span
                 style={{
-                  flex: 1,
-                  minHeight: 240,
-                  position: "relative",
-                  overflow: "hidden",
+                  ...inter, fontSize: 12, fontWeight: 600,
+                  background: "rgba(34,197,94,0.15)",
+                  border: "1px solid rgba(34,197,94,0.35)",
+                  color: "#4ade80",
+                  padding: "5px 14px",
+                  borderRadius: 8,
+                  display: "inline-block",
+                  marginBottom: 24,
+                  width: "fit-content",
                 }}
               >
-                <img
-                  src={step.img}
-                  alt={step.title}
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    objectFit: "cover",
-                    objectPosition: "top center",
-                    display: "block",
-                    transition: "transform 0.4s ease",
-                  }}
-                  className="group-hover:scale-105"
-                />
-                {/* subtle bottom fade so card feels contained */}
-                <div
-                  style={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    height: 60,
-                    background: "linear-gradient(to top, #181212 0%, transparent 100%)",
-                  }}
-                />
-              </div>
+                {step.num}
+              </span>
+
+              <h3
+                style={{
+                  ...inter,
+                  fontSize: "clamp(1.5rem, 2.8vw, 2rem)",
+                  fontWeight: 700,
+                  color: C.white,
+                  lineHeight: 1.15,
+                  marginBottom: 16,
+                }}
+              >
+                {step.title}
+              </h3>
+
+              <p
+                style={{
+                  ...inter,
+                  fontSize: 14,
+                  color: "rgba(167,156,142,0.7)",
+                  fontWeight: 300,
+                  lineHeight: 1.7,
+                  margin: 0,
+                }}
+              >
+                {step.desc}
+              </p>
             </div>
           ))}
         </div>
