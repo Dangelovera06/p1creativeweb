@@ -515,10 +515,77 @@ function Process() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {steps.map((s, i) => (
-            <div key={i} style={{ borderRadius: 20, border: `1px solid rgba(167,156,142,0.12)`, background: C.card, padding: 24 }}>
-              <div style={{ ...playfair, fontSize: 48, fontWeight: 700, color: "rgba(167,156,142,0.12)", lineHeight: 1, marginBottom: 16 }}>{s.n}</div>
-              <div style={{ ...inter, fontSize: 14, fontWeight: 500, color: C.white, marginBottom: 8 }}>{s.title}</div>
-              <p style={{ ...inter, fontSize: 12, color: C.taupe, fontWeight: 300, lineHeight: 1.65, margin: 0 }}>{s.desc}</p>
+            <div
+              key={i}
+              style={{
+                borderRadius: 24,
+                border: `1px solid rgba(167,156,142,0.13)`,
+                background: "#181212",
+                aspectRatio: "1 / 1",
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "flex-end",
+                padding: "32px 32px",
+                position: "relative",
+                overflow: "hidden",
+                transition: "transform 0.3s ease, border-color 0.3s ease",
+              }}
+              className="group hover:-translate-y-1 hover:border-[rgba(167,156,142,0.3)]"
+            >
+              {/* ambient glow */}
+              <div style={{
+                position: "absolute", top: 0, right: 0,
+                width: 160, height: 160, borderRadius: "50%",
+                background: "radial-gradient(circle, rgba(167,156,142,0.05) 0%, transparent 70%)",
+                pointerEvents: "none",
+              }} />
+
+              {/* large faded number watermark */}
+              <div style={{
+                position: "absolute", top: 20, left: 28,
+                ...playfair, fontSize: "clamp(5rem,10vw,7rem)",
+                fontWeight: 700,
+                color: "rgba(167,156,142,0.07)",
+                lineHeight: 1,
+                userSelect: "none",
+              }}>{s.n}</div>
+
+              {/* step badge */}
+              <span style={{
+                ...inter, fontSize: 12, fontWeight: 600,
+                background: "rgba(34,197,94,0.15)",
+                border: "1px solid rgba(34,197,94,0.35)",
+                color: "#4ade80",
+                padding: "5px 14px",
+                borderRadius: 8,
+                display: "inline-block",
+                marginBottom: 20,
+                width: "fit-content",
+              }}>
+                Step {String(i + 1).padStart(2, "0")}
+              </span>
+
+              <h3 style={{
+                ...inter,
+                fontSize: "clamp(1.2rem, 2vw, 1.5rem)",
+                fontWeight: 700,
+                color: C.white,
+                lineHeight: 1.15,
+                marginBottom: 14,
+              }}>
+                {s.title}
+              </h3>
+
+              <p style={{
+                ...inter,
+                fontSize: 13,
+                color: "rgba(167,156,142,0.7)",
+                fontWeight: 300,
+                lineHeight: 1.7,
+                margin: 0,
+              }}>
+                {s.desc}
+              </p>
             </div>
           ))}
         </div>
