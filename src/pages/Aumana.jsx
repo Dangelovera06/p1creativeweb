@@ -379,7 +379,7 @@ function Frameworks() {
 function VideoBreak() {
   return (
     <section style={{ padding: "0 24px 96px", background: C.dark }}>
-      <div style={{ maxWidth: 360, margin: "0 auto" }}>
+      <div style={{ maxWidth: 560, width: "90%", margin: "0 auto" }}>
         <div
           style={{
             borderRadius: 24,
