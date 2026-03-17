@@ -379,15 +379,16 @@ function Frameworks() {
 function VideoBreak() {
   return (
     <section style={{ padding: "0 24px 96px", background: C.dark }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+      <div style={{ maxWidth: 480, margin: "0 auto" }}>
         <div
           style={{
-            borderRadius: 24,
+            borderRadius: 20,
             overflow: "hidden",
             border: `1px solid rgba(167,156,142,0.13)`,
             position: "relative",
             background: "#0e0a0a",
-            boxShadow: "0 40px 100px rgba(0,0,0,0.5)",
+            boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
+            height: 220,
           }}
         >
           <video
@@ -398,9 +399,11 @@ function VideoBreak() {
             playsInline
             style={{
               width: "100%",
-              height: "100%",
+              height: "160%",
               display: "block",
               objectFit: "cover",
+              objectPosition: "center 20%",
+              marginTop: "-20%",
             }}
           />
         </div>
