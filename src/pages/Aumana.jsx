@@ -455,7 +455,7 @@ function HowWeWork() {
         </p>
 
         {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
           {hwwSteps.map((step, i) => (
             <div
               key={i}
@@ -463,16 +463,12 @@ function HowWeWork() {
                 borderRadius: 24,
                 border: `1px solid rgba(167,156,142,0.13)`,
                 background: "#181212",
-                aspectRatio: "1 / 1",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "flex-end",
                 padding: "36px 36px",
                 position: "relative",
                 overflow: "hidden",
                 transition: "transform 0.3s ease, border-color 0.3s ease",
               }}
-              className="group hover:-translate-y-1 hover:border-[rgba(167,156,142,0.3)]"
+              className="group flex flex-col justify-start md:justify-end md:[aspect-ratio:1/1] hover:-translate-y-1 hover:border-[rgba(167,156,142,0.3)]"
             >
               {/* ambient glow top-right */}
               <div style={{
