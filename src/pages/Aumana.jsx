@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, Phone, MessageSquare, Bot, BarChart3 } from "lucide-react";
 
 /* ─── Brand tokens ─────────────────────────────── */
@@ -265,20 +265,169 @@ function LogoBar() {
   );
 }
 
+/* ─── SHARED CHAT STYLES ────────────────────────── */
+const chatStyle = {
+  wrap: {
+    width: 260, margin: "0 auto", borderRadius: 22,
+    border: "1px solid rgba(255,255,255,0.07)",
+    background: "#18181b", overflow: "hidden",
+    boxShadow: "0 8px 40px rgba(0,0,0,0.45)",
+  },
+  header: {
+    padding: "10px 14px", background: "#222226",
+    borderBottom: "1px solid rgba(255,255,255,0.06)",
+    display: "flex", alignItems: "center", gap: 8,
+  },
+  avatar: {
+    width: 30, height: 30, borderRadius: "50%",
+    background: "rgba(167,156,142,0.15)",
+    display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0,
+  },
+  body: {
+    padding: "12px 10px 10px",
+    display: "flex", flexDirection: "column", gap: 8,
+    minHeight: 160,
+  },
+  input: {
+    padding: "8px 10px 10px", background: "#18181b",
+    borderTop: "1px solid rgba(255,255,255,0.05)",
+    display: "flex", alignItems: "center", gap: 6,
+  },
+};
+
+function Bubble({ from, text, visible }) {
+  return (
+    <div style={{
+      display: "flex", justifyContent: from === "u" ? "flex-end" : "flex-start",
+      opacity: visible ? 1 : 0,
+      transform: visible ? "translateY(0)" : "translateY(6px)",
+      transition: "opacity 0.35s ease, transform 0.35s ease",
+    }}>
+      <div style={{
+        fontFamily: "Inter, sans-serif", fontSize: 11, lineHeight: 1.6,
+        maxWidth: "78%", padding: "8px 12px",
+        borderRadius: from === "u" ? "14px 14px 4px 14px" : "14px 14px 14px 4px",
+        background: from === "u" ? "#2563eb" : "#2d2d31",
+        color: from === "u" ? "#fff" : "#d4d4d8",
+      }}>{text}</div>
+    </div>
+  );
+}
+
+function TypingDots({ visible }) {
+  return (
+    <div style={{
+      display: "flex", justifyContent: "flex-start",
+      opacity: visible ? 1 : 0, transition: "opacity 0.25s ease",
+    }}>
+      <div style={{
+        padding: "9px 13px", borderRadius: "14px 14px 14px 4px",
+        background: "#2d2d31", display: "flex", gap: 4, alignItems: "center",
+      }}>
+        {[0, 1, 2].map((i) => (
+          <span key={i} style={{
+            width: 5, height: 5, borderRadius: "50%", background: "#71717a",
+            display: "inline-block",
+            animation: visible ? `typingDot 1.2s ease-in-out ${i * 0.2}s infinite` : "none",
+          }} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+/* inject typing animation keyframes once */
+if (typeof document !== "undefined" && !document.getElementById("chat-anim-style")) {
+  const s = document.createElement("style");
+  s.id = "chat-anim-style";
+  s.textContent = `@keyframes typingDot{0%,80%,100%{transform:translateY(0);opacity:.4}40%{transform:translateY(-4px);opacity:1}}`;
+  document.head.appendChild(s);
+}
+
+function useLiveChat(msgs, loopDelay = 2500) {
+  const [shown, setShown] = useState(0);
+  const [typing, setTyping] = useState(false);
+  const tRef = useRef(null);
+
+  useEffect(() => {
+    function next(idx) {
+      if (idx >= msgs.length) {
+        tRef.current = setTimeout(() => {
+          setShown(0);
+          setTyping(false);
+          tRef.current = setTimeout(() => next(0), 400);
+        }, loopDelay);
+        return;
+      }
+      const isAI = msgs[idx].from === "a";
+      if (isAI) {
+        setTyping(true);
+        tRef.current = setTimeout(() => {
+          setTyping(false);
+          setShown(idx + 1);
+          tRef.current = setTimeout(() => next(idx + 1), 900);
+        }, 1200);
+      } else {
+        tRef.current = setTimeout(() => {
+          setShown(idx + 1);
+          tRef.current = setTimeout(() => next(idx + 1), 800);
+        }, 600);
+      }
+    }
+    tRef.current = setTimeout(() => next(0), 500);
+    return () => clearTimeout(tRef.current);
+  }, []);
+
+  return { shown, typing };
+}
+
 /* ─── FRAMEWORKS ────────────────────────────────── */
 function PhoneMock() {
+  const msgs = [
+    { from: "a", text: "Hi! This is Aria from Aumana. How can I help you today?" },
+    { from: "u", text: "Hey — I need to reschedule my appointment." },
+    { from: "a", text: "Of course! I have Thursday at 2 PM or Friday at 10 AM. Which works?" },
+    { from: "u", text: "Friday at 10 works perfectly." },
+    { from: "a", text: "Done! I've updated your booking and sent a confirmation. See you Friday! 🎉" },
+  ];
+  const { shown, typing } = useLiveChat(msgs, 2500);
+
   return (
-    <div style={{ width: 210, margin: "0 auto", borderRadius: 24, border: `1px solid rgba(167,156,142,0.2)`, background: "#2a2222", padding: 16 }}>
-      <div style={{ width: 60, height: 4, background: "rgba(167,156,142,0.25)", borderRadius: 4, margin: "0 auto 16px" }} />
-      <div style={{ background: "#332a2a", borderRadius: "16px 16px 16px 4px", padding: "10px 12px", marginBottom: 12 }}>
-        <p style={{ ...inter, fontSize: 12, color: C.linen, margin: 0, lineHeight: 1.5 }}>
-          Hi! You're confirmed for tomorrow at 10 AM. We've sent you a quick reminder before then.
-        </p>
+    <div style={chatStyle.wrap}>
+      {/* Header */}
+      <div style={chatStyle.header}>
+        <div style={{ ...chatStyle.avatar, background: "rgba(239,68,68,0.15)" }}>
+          <Phone size={13} color="#f87171" />
+        </div>
+        <div>
+          <p style={{ fontFamily: "Inter,sans-serif", fontSize: 11, fontWeight: 600, color: "#fff", margin: 0 }}>Aria · AI Voice Agent</p>
+          <p style={{ fontFamily: "Inter,sans-serif", fontSize: 9, color: "#4ade80", margin: 0, display: "flex", alignItems: "center", gap: 3 }}>
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#4ade80", display: "inline-block" }} />
+            Live call active
+          </p>
+        </div>
+        <div style={{ marginLeft: "auto", display: "flex", gap: 5 }}>
+          <div style={{ width: 22, height: 22, borderRadius: "50%", background: "rgba(239,68,68,0.2)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+            <Phone size={10} color="#f87171" />
+          </div>
+        </div>
       </div>
-      <div className="flex items-center gap-2 mt-3">
-        <div style={{ flex: 1, height: 32, background: "#332a2a", borderRadius: 99 }} />
-        <div style={{ width: 38, height: 38, borderRadius: "50%", background: "rgba(239,68,68,0.75)", display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <Phone size={15} color="#fff" />
+
+      {/* Messages */}
+      <div style={chatStyle.body}>
+        {msgs.map((m, i) => (
+          <Bubble key={i} from={m.from} text={m.text} visible={shown > i} />
+        ))}
+        <TypingDots visible={typing} />
+      </div>
+
+      {/* Input */}
+      <div style={chatStyle.input}>
+        <div style={{ flex: 1, height: 30, background: "#2d2d31", borderRadius: 99, padding: "0 10px", display: "flex", alignItems: "center" }}>
+          <span style={{ fontFamily: "Inter,sans-serif", fontSize: 10, color: "#52525b" }}>Speak or type…</span>
+        </div>
+        <div style={{ width: 26, height: 26, borderRadius: "50%", background: "#f87171", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+          <Phone size={11} color="#fff" />
         </div>
       </div>
     </div>
@@ -288,30 +437,23 @@ function PhoneMock() {
 function ChatMock() {
   const msgs = [
     { from: "a", text: "Hey! I'm Aria from Aumana. How can I help you today?" },
-    { from: "u", text: "Hi, can you help me with an AI report?" },
-    { from: "a", text: "Of course! I have an opening at 12 noon tomorrow. Can I get your address?" },
-    { from: "u", text: "Sure — 145 Oak Street, Suite 3." },
+    { from: "u", text: "Hi — can you book me a consultation?" },
+    { from: "a", text: "Absolutely! I have tomorrow at 12 PM or Wednesday at 3 PM. Which works?" },
+    { from: "u", text: "Tomorrow at noon is perfect." },
+    { from: "a", text: "Booked! You'll get a confirmation shortly. Looking forward to it 🙌" },
   ];
+  const { shown, typing } = useLiveChat(msgs, 2500);
+
   return (
-    <div style={{
-      width: 260, margin: "0 auto", borderRadius: 22,
-      border: `1px solid rgba(167,156,142,0.15)`,
-      background: "#1a1a1c",
-      overflow: "hidden",
-    }}>
-      {/* Header bar */}
-      <div style={{
-        padding: "10px 14px",
-        background: "#222224",
-        borderBottom: "1px solid rgba(255,255,255,0.06)",
-        display: "flex", alignItems: "center", gap: 8,
-      }}>
-        <div style={{ width: 28, height: 28, borderRadius: "50%", background: "rgba(167,156,142,0.2)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+    <div style={chatStyle.wrap}>
+      {/* Header */}
+      <div style={chatStyle.header}>
+        <div style={chatStyle.avatar}>
           <Bot size={13} color={C.taupe} />
         </div>
         <div>
-          <p style={{ ...inter, fontSize: 11, fontWeight: 600, color: C.white, margin: 0 }}>Aria · AI Receptionist</p>
-          <p style={{ ...inter, fontSize: 9, color: "#4ade80", margin: 0, display: "flex", alignItems: "center", gap: 3 }}>
+          <p style={{ fontFamily: "Inter,sans-serif", fontSize: 11, fontWeight: 600, color: "#fff", margin: 0 }}>Aria · AI Chat Assistant</p>
+          <p style={{ fontFamily: "Inter,sans-serif", fontSize: 9, color: "#4ade80", margin: 0, display: "flex", alignItems: "center", gap: 3 }}>
             <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#4ade80", display: "inline-block" }} />
             Online now
           </p>
@@ -319,32 +461,17 @@ function ChatMock() {
       </div>
 
       {/* Messages */}
-      <div style={{ padding: "12px 10px", display: "flex", flexDirection: "column", gap: 7, background: "#1a1a1c" }}>
+      <div style={chatStyle.body}>
         {msgs.map((m, i) => (
-          <div key={i} style={{ display: "flex", justifyContent: m.from === "u" ? "flex-end" : "flex-start" }}>
-            <div style={{
-              fontFamily: "Inter, sans-serif", fontSize: 11, lineHeight: 1.55,
-              maxWidth: "78%", padding: "8px 11px",
-              borderRadius: m.from === "u" ? "14px 14px 4px 14px" : "14px 14px 14px 4px",
-              background: m.from === "u" ? "#2563eb" : "#2d2d30",
-              color: m.from === "u" ? "#ffffff" : "#d4d4d8",
-            }}>{m.text}</div>
-          </div>
+          <Bubble key={i} from={m.from} text={m.text} visible={shown > i} />
         ))}
+        <TypingDots visible={typing} />
       </div>
 
       {/* Input */}
-      <div style={{
-        padding: "8px 10px 10px",
-        background: "#1a1a1c",
-        borderTop: "1px solid rgba(255,255,255,0.05)",
-        display: "flex", alignItems: "center", gap: 6,
-      }}>
-        <div style={{
-          flex: 1, height: 30, background: "#2d2d30", borderRadius: 99,
-          padding: "0 10px", display: "flex", alignItems: "center",
-        }}>
-          <span style={{ fontFamily: "Inter, sans-serif", fontSize: 10, color: "#71717a" }}>Type a message…</span>
+      <div style={chatStyle.input}>
+        <div style={{ flex: 1, height: 30, background: "#2d2d31", borderRadius: 99, padding: "0 10px", display: "flex", alignItems: "center" }}>
+          <span style={{ fontFamily: "Inter,sans-serif", fontSize: 10, color: "#52525b" }}>Type a message…</span>
         </div>
         <div style={{ width: 26, height: 26, borderRadius: "50%", background: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
           <span style={{ color: "#fff", fontSize: 11, lineHeight: 1 }}>↑</span>
