@@ -347,18 +347,34 @@
     var tb = document.querySelector('[data-framer-name="Trusted Brands"]');
     if (!tb || tb._aumanaSet) return;
     tb._aumanaSet = true;
+
+    var BASE = './assets/';
+    // img: use real asset file; txt: styled wordmark fallback
+    var logos = [
+      { img: BASE + '0ca6d656_0gWvNBC942Bz1L9jtjcti8P2dc.png',  alt: 'Zapier',    h: 28 },
+      { img: BASE + '0ae003f5_MpPV0hHrnQpooUfNtAQQrX4TaM.png',  alt: 'VAPI',      h: 28 },
+      { img: BASE + '15d66a5d_J7r2wMLMyNR5qwbjHtz25FNb2Dc.png', alt: 'Airtable',  h: 30 },
+      { img: BASE + '50160c3c_AOY50cCj1eZYjnU4hr3Q32Pwv5g.png', alt: 'HubSpot',   h: 28 },
+      { txt: 'Make',     letter: 'M' },
+      { txt: 'OpenAI',   letter: 'O' },
+      { txt: 'Calendly', letter: 'C' },
+      { txt: 'GHL',      letter: 'G' }
+    ];
+
     var div = document.createElement('div');
     div.id = 'aumana-brands';
-    [
-      {name:'Zapier',icon:'⚡'}, {name:'VAPI',icon:'◎'}, {name:'Airtable',icon:'⊞'},
-      {name:'HubSpot',icon:'⬡'}, {name:'Make',icon:'◈'}, {name:'OpenAI',icon:'○'},
-      {name:'Calendly',icon:'▣'}, {name:'GHL',icon:'△'}
-    ].forEach(function(b) {
+
+    logos.forEach(function(b) {
       var d = document.createElement('div');
       d.className = 'ab-logo';
-      d.innerHTML = '<span style="font-size:16px;">' + b.icon + '</span><span>' + b.name + '</span>';
+      if (b.img) {
+        d.innerHTML = '<img src="' + b.img + '" alt="' + b.alt + '" style="height:' + b.h + 'px;width:auto;object-fit:contain;filter:brightness(0) invert(1);display:block;">';
+      } else {
+        d.innerHTML = '<span style="font-family:' + FONT + ';font-weight:700;font-size:15px;color:rgba(255,255,255,0.55);letter-spacing:0.06em;">' + b.txt + '</span>';
+      }
       div.appendChild(d);
     });
+
     tb.parentNode.insertBefore(div, tb);
     tb.style.display = 'none';
   }
