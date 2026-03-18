@@ -241,18 +241,44 @@
 
   /* ════════════════════════════════════════
      2.  AUMANA SUN LOGO SVG
+     Tapered rays: pointed near center, rounded outer tip
+     Matches the official Aumana starburst logo
   ═════════════════════════════════════════ */
   function makeSunSVG(size) {
     size = size || 26;
-    var lines = '';
-    for (var i = 0; i < 24; i++) {
-      var a = (i * 360 / 24) * Math.PI / 180;
-      var inner = size * 0.4, outer = size * 0.85;
-      lines += '<line x1="' + (size/2 + inner*Math.cos(a)).toFixed(1) + '" y1="' + (size/2 + inner*Math.sin(a)).toFixed(1) +
-               '" x2="' + (size/2 + outer*Math.cos(a)).toFixed(1) + '" y2="' + (size/2 + outer*Math.sin(a)).toFixed(1) +
-               '" stroke="' + L + '" stroke-width="0.9" stroke-linecap="round" opacity="' + (i%3===0?'0.9':'0.6') + '"/>';
+    var n = 34;
+    var cx = size / 2, cy = size / 2;
+    var paths = '';
+    for (var i = 0; i < n; i++) {
+      var a = (i * 2 * Math.PI / n) - Math.PI / 2;
+      var pa = a + Math.PI / 2; // perpendicular
+      // Alternate: 2 long rays then 1 short
+      var isLong = (i % 3 !== 2);
+      var rIn   = size * 0.09;
+      var rOut  = size * (isLong ? 0.83 : 0.60);
+      var maxW  = size * (isLong ? 0.030 : 0.022);
+      // Inner tip (pointed)
+      var tx = cx + rIn * Math.cos(a), ty = cy + rIn * Math.sin(a);
+      // Max-width midpoint (60% out)
+      var rMid = rIn + (rOut - rIn) * 0.60;
+      var mx = cx + rMid * Math.cos(a), my = cy + rMid * Math.sin(a);
+      var mlx = mx + maxW * Math.cos(pa), mly = my + maxW * Math.sin(pa);
+      var mrx = mx - maxW * Math.cos(pa), mry = my - maxW * Math.sin(pa);
+      // Outer cap
+      var capHW = maxW * 0.72;
+      var ox = cx + rOut * Math.cos(a), oy = cy + rOut * Math.sin(a);
+      var clx = ox + capHW * Math.cos(pa), cly = oy + capHW * Math.sin(pa);
+      var crx = ox - capHW * Math.cos(pa), cry = oy - capHW * Math.sin(pa);
+      var op = isLong ? '0.82' : '0.48';
+      var col = (i % 9 === 0) ? W : L;
+      paths += '<path d="' +
+        'M ' + tx.toFixed(2) + ',' + ty.toFixed(2) +
+        ' Q ' + mlx.toFixed(2) + ',' + mly.toFixed(2) + ' ' + clx.toFixed(2) + ',' + cly.toFixed(2) +
+        ' A ' + capHW.toFixed(2) + ',' + capHW.toFixed(2) + ' 0 0 0 ' + crx.toFixed(2) + ',' + cry.toFixed(2) +
+        ' Q ' + mrx.toFixed(2) + ',' + mry.toFixed(2) + ' ' + tx.toFixed(2) + ',' + ty.toFixed(2) +
+        ' Z" fill="' + col + '" opacity="' + op + '"/>';
     }
-    return '<svg width="' + size + '" height="' + size + '" viewBox="0 0 ' + size + ' ' + size + '" fill="none" xmlns="http://www.w3.org/2000/svg">' + lines + '</svg>';
+    return '<svg width="' + size + '" height="' + size + '" viewBox="0 0 ' + size + ' ' + size + '" fill="none" xmlns="http://www.w3.org/2000/svg">' + paths + '</svg>';
   }
 
   /* ════════════════════════════════════════
