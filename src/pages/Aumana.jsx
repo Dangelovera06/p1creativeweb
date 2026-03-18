@@ -12,8 +12,8 @@ const C = {
   border: "rgba(167,156,142,0.15)",
 };
 
-const grotesk  = { fontFamily: "'Space Grotesk', sans-serif" };
-const inter    = { fontFamily: "'Space Grotesk', sans-serif" };
+const grotesk  = { fontFamily: "'Inter', sans-serif" };
+const inter    = { fontFamily: "'Inter', sans-serif" };
 
 /* ─── Helpers ───────────────────────────────────── */
 function GradientText({ children, className = "" }) {
