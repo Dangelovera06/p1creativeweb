@@ -15,7 +15,7 @@
       @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
       /* ── Page background ── */
-      html, body { background-color: ${D} !important; }
+      html, body { background-color: ${D} !important; border-top: none !important; }
 
       /* ── Framer page/section backgrounds ── */
       .framer-page-container,
@@ -28,106 +28,139 @@
       [data-framer-name="Footer"],
       [data-framer-name="Trusted Brands"],
       [data-framer-name="Background"],
-      [data-framer-name="Scroll"]
+      [data-framer-name="Scroll"],
+      [data-framer-name="container"]
         { background-color: ${D} !important; }
 
-      /* ── Cards / boxes ── */
+      /* ── NAV FIX (actual name is "Mobile Top") ── */
+      /* Hide the 10px decorative top bar with blue gradient image */
+      .framer-n3ctgz { display: none !important; }
+
+      /* Fixed nav container - transparent wrapper */
+      .framer-2x5gj1-container { background: transparent !important; }
+
+      /* The actual nav component */
+      [data-framer-name="Mobile Top"],
+      .framer-xkNf7 {
+        background-color: rgba(32,26,26,0.92) !important;
+        backdrop-filter: blur(20px) !important;
+        -webkit-backdrop-filter: blur(20px) !important;
+        border-top: none !important;
+        border-bottom: 1px solid ${BORDER} !important;
+        box-shadow: none !important;
+      }
+      /* Make all nav children backgrounds transparent */
+      [data-framer-name="Mobile Top"] *,
+      .framer-xkNf7 * {
+        background-color: transparent !important;
+        border-top: none !important;
+      }
+      /* Restore button background in nav */
+      [data-framer-name="Mobile Top"] [data-framer-name="Primary"],
+      [data-framer-name="Mobile Top"] [data-framer-name="Button"],
+      .framer-xkNf7 [data-framer-name="Primary"] {
+        background-color: ${L} !important;
+        color: ${D} !important;
+        border-radius: 99px !important;
+      }
+
+      /* ── Framework Row cards — rounded, dark, bordered ── */
       [data-framer-name="Framework Row"],
-      [data-framer-name="Results Box"],
-      [data-framer-name="Dashboard"],
-      [data-framer-name="M1"],
+      .framer-1g690uk {
+        background-color: ${CARD} !important;
+        border-radius: 28px !important;
+        border: 1px solid ${BORDER} !important;
+        overflow: hidden !important;
+        padding: 0 !important;
+      }
+
+      /* ── Framework graphic panel (phone/chat side) ── */
+      [data-framer-name="graphic"],
+      .framer-1v4uzgz {
+        background: radial-gradient(circle at 30% 25%, #2e2828 0%, ${D} 65%) !important;
+        border-color: ${BORDER} !important;
+        overflow: hidden !important;
+      }
+      [data-framer-name="graphic"] [data-framer-background-image-wrapper],
+      [data-framer-name="M1"] [data-framer-background-image-wrapper],
+      [data-framer-name="AI"] [data-framer-background-image-wrapper],
+      [data-framer-name="Booked"] [data-framer-background-image-wrapper] {
+        display: none !important;
+      }
+      [data-framer-name="M1"] {
+        background: radial-gradient(circle at 30% 25%, #2e2828 0%, ${D} 65%) !important;
+        border-color: ${BORDER} !important;
+      }
+
+      /* ── Benefits / Process / Variant cards — rounded ── */
       [data-framer-name="Benefits"],
       [data-framer-name="Variant 1"],
       [data-framer-name="Variant 2"],
       [data-framer-name="Variant 3"],
       [data-framer-name="Variant 4"],
       [data-framer-name="Variant 5"],
-      [data-framer-name="Variant 6"]
-        { background-color: ${CARD} !important; border-color: ${BORDER} !important; }
+      [data-framer-name="Variant 6"] {
+        background-color: ${CARD} !important;
+        border-radius: 20px !important;
+        border: 1px solid ${BORDER} !important;
+      }
+
+      /* ── Dashboard card ── */
+      [data-framer-name="Dashboard"] {
+        background-color: ${CARD} !important;
+        border-radius: 24px !important;
+        border: 1px solid ${BORDER} !important;
+        overflow: hidden !important;
+      }
+
+      /* ── Results / testimonial cards ── */
+      [data-framer-name="Results Box"] {
+        background-color: transparent !important;
+      }
+      [data-framer-name="testimonial"] {
+        background-color: ${CARD} !important;
+        border-radius: 20px !important;
+        border: 1px solid ${BORDER} !important;
+      }
+
+      /* ── FAQ accordion ── */
+      [data-framer-name="Accordion Button"],
+      [data-framer-name="FAQs"] > * > * {
+        border-radius: 14px !important;
+        border: 1px solid ${BORDER} !important;
+        overflow: hidden !important;
+      }
 
       /* ── Catch all remaining black/near-black elements ── */
       [style*="background-color: rgb(0, 0, 0)"],
-      [style*="background-color: rgb(32, 26, 26)"],
-      [style*="background-color: rgb(15, 15, 15)"],
-      [style*="background: rgb(0, 0, 0)"],
-      [style*="background: rgb(32, 26, 26)"]
-        { background-color: ${D} !important; }
-
-      /* ── Blue → Taupe everywhere ── */
-      [style*="color: rgb(167, 156, 142)"],
-      [style*="color: rgb(0, 153, 255)"]
-        { color: ${T} !important; }
-      [style*="background-color: rgb(167, 156, 142)"],
-      [style*="background-color: rgb(0, 153, 255)"]
-        { background-color: ${T} !important; }
-      [style*="border-color: rgb(0, 153, 255)"],
-      [style*="border-color: rgb(167, 156, 142)"]
-        { border-color: ${BORDER} !important; }
-
-      /* ── Buttons ── */
-      [data-framer-name="Primary"],
-      [data-framer-name="Button"],
-      a[class*="framer"][style*="rgb(167, 156, 142)"],
-      a[class*="framer"][style*="rgb(0, 153, 255)"]
-        { background-color: ${L} !important; color: ${D} !important; border-radius: 99px !important; }
-
-      /* ── Nav fix ── */
-      [data-framer-name="Navigation"] {
-        background-color: rgba(32,26,26,0.92) !important;
-        backdrop-filter: blur(16px) !important;
-        border-top: none !important;
-        border-bottom: 1px solid ${BORDER} !important;
-        box-shadow: none !important;
-      }
-      [data-framer-name="Navigation"] * { background-color: transparent !important; }
-
-      /* Kill any teal/blue top border or progress bar */
-      html, body { border-top: none !important; }
-      [class*="framer"]:not([data-framer-name]) { border-top: none !important; }
-      /* Top-level fixed/sticky nav wrapper - remove any colored top accents */
-      [data-framer-name="Navigation"] > *,
-      [data-framer-name="Navigation"] > * > * {
-        border-top: none !important;
-        background-color: transparent !important;
-      }
-
-      /* ── Framework card graphic panels: hide blue/teal bg images ── */
-      [data-framer-name="graphic"] > [data-framer-background-image-wrapper],
-      [data-framer-name="graphic"] [data-framer-background-image-wrapper],
-      [data-framer-name="M1"] > [data-framer-background-image-wrapper],
-      [data-framer-name="M1"] [data-framer-background-image-wrapper],
-      [data-framer-name="AI"] [data-framer-background-image-wrapper],
-      [data-framer-name="Booked"] [data-framer-background-image-wrapper] {
-        display: none !important;
-      }
-      [data-framer-name="graphic"],
-      [data-framer-name="M1"] {
-        background: radial-gradient(circle at 30% 25%, #2e2828 0%, #201a1a 65%) !important;
-        border-color: ${BORDER} !important;
-      }
-
-      /* ── Hero background image → hide, replace with solid Aumana dark ── */
-      .framer-WxcRn { background-color: ${D} !important; }
-      .framer-WxcRn .framer-15asv5r { display: none !important; }
-      .framer-WxcRn .framer-fcbkq9 { background: ${D} !important; opacity: 1 !important; }
-
-      /* ── Catch-all: any remaining image background wrappers in hero/main ── */
-      [data-framer-name="Hero"] [data-framer-background-image-wrapper],
-      [data-framer-name="Main"] [data-framer-background-image-wrapper] {
-        display: none !important;
-      }
-
-      /* ── Link colors: replace #09f blue with Aumana taupe ── */
-      * { --framer-link-text-color: ${T} !important; }
-
-      /* ── Fix remaining dark non-Aumana backgrounds ── */
       [style*="background-color: rgb(15, 15, 15)"],
       [style*="background-color: rgb(17, 17, 17)"],
       [style*="background-color: rgb(33, 33, 33)"],
       [style*="background: rgb(0, 0, 0)"]
         { background-color: ${D} !important; }
 
-      /* ── Footer fix ── */
+      /* ── Blue → Taupe everywhere ── */
+      [style*="color: rgb(0, 153, 255)"] { color: ${T} !important; }
+      [style*="background-color: rgb(0, 153, 255)"] { background-color: ${T} !important; }
+      [style*="border-color: rgb(0, 153, 255)"] { border-color: ${BORDER} !important; }
+      * { --framer-link-text-color: ${T} !important; }
+
+      /* ── Buttons ── */
+      [data-framer-name="Primary"],
+      [data-framer-name="Button"],
+      a[class*="framer"][style*="rgb(0, 153, 255)"]
+        { background-color: ${L} !important; color: ${D} !important; border-radius: 99px !important; }
+
+      /* ── Hero background image → hide, replace with Aumana dark ── */
+      .framer-WxcRn { background-color: ${D} !important; }
+      .framer-WxcRn .framer-15asv5r { display: none !important; }
+      .framer-WxcRn .framer-fcbkq9 { background: ${D} !important; opacity: 1 !important; }
+      [data-framer-name="Hero"] [data-framer-background-image-wrapper],
+      [data-framer-name="Main"] [data-framer-background-image-wrapper] {
+        display: none !important;
+      }
+
+      /* ── Footer ── */
       [data-framer-name="Footer"] {
         background-color: ${D} !important;
         border-top: 1px solid ${BORDER} !important;
