@@ -255,6 +255,10 @@
       }
       .as-label { font-size: 12px; color: ${T}; font-weight: 300; line-height: 1.55; }
 
+      /* ════ HIDE ORIGINAL FRAMER LOGO ════ */
+      [data-framer-name="logo"],
+      a[data-framer-name="logo"] { display: none !important; }
+
       /* ════ AUMANA LOGO (injected via JS) ════ */
       #aumana-logo-link {
         display: flex !important; align-items: center !important;
@@ -421,7 +425,43 @@
   }
 
   /* ════════════════════════════════════════
-     7.  TEXT REPLACEMENTS
+     7.  WORKFLOW STEP ICONS
+         Replace Voice Agent circle with Aumana sun logo
+  ═════════════════════════════════════════ */
+  function replaceWorkflowIcons() {
+    // Find every bubble component rendered on page
+    document.querySelectorAll('[data-framer-name="Variant 1"]').forEach(function(bubble) {
+      if (bubble._aumanaIconSet) return;
+
+      // Find the sender name text inside this bubble
+      var nameEl = bubble.querySelector('.framer-1ynvukd');
+      if (!nameEl) return;
+      var label = nameEl.textContent.trim();
+
+      // Only target Voice Agent bubble
+      if (label !== 'Voice Agent') return;
+      bubble._aumanaIconSet = true;
+
+      // Find the icon circle element
+      var iconEl = bubble.querySelector('.framer-exm5is, .framer-IUAWB');
+      if (!iconEl) return;
+
+      // Hide the background image
+      var imgWrapper = iconEl.querySelector('[data-framer-background-image-wrapper]');
+      if (imgWrapper) imgWrapper.style.display = 'none';
+
+      // Inject Aumana sun SVG into the circle
+      iconEl.style.overflow = 'visible';
+      iconEl.style.background = 'transparent';
+      var svgWrap = document.createElement('div');
+      svgWrap.style.cssText = 'width:100%;height:100%;display:flex;align-items:center;justify-content:center;position:absolute;top:0;left:0;';
+      svgWrap.innerHTML = makeSunSVG(17);
+      iconEl.appendChild(svgWrap);
+    });
+  }
+
+  /* ════════════════════════════════════════
+     9.  TEXT REPLACEMENTS
   ═════════════════════════════════════════ */
   function replaceText(root) {
     var walker = document.createTreeWalker(root || document.body, NodeFilter.SHOW_TEXT, null, false);
@@ -487,6 +527,7 @@
         replaceBrands();
         injectStats();
         injectReviews();
+        replaceWorkflowIcons();
         replaceText();
       }, delay);
     });
