@@ -2,11 +2,11 @@
   /* ── Brand Tokens ── */
   var D = '#201a1a', CARD = '#2a2222', CARD2 = '#252020',
       T = '#a79c8e', L = '#d2c6b6', W = '#ffffff',
-      B = 'rgba(167,156,142,0.14)', BORDER = 'rgba(167,156,142,0.18)';
+      BORDER = 'rgba(167,156,142,0.18)', BORDERL = 'rgba(167,156,142,0.10)';
   var FONT = "'Space Grotesk', sans-serif";
 
   /* ════════════════════════════════════════
-     1.  INJECT COMPREHENSIVE CSS
+     1.  INJECT CSS
   ═════════════════════════════════════════ */
   function injectCSS() {
     var s = document.createElement('style');
@@ -14,10 +14,31 @@
     s.textContent = `
       @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
-      /* ── Page background ── */
-      html, body { background-color: ${D} !important; border-top: none !important; }
+      /* ════ OVERRIDE ALL FRAMER CSS TOKENS ════
+         This is the root fix — replaces all black/grey tokens with Aumana palette.
+         Every Framer component that uses these tokens will automatically update. */
+      body {
+        background-color: ${D};
+        /* Background tokens */
+        --token-f0d82284-1bdb-4217-8712-49f49232c61e: ${D};
+        --token-f3162355-178b-4392-8762-e9117bec3c11: ${CARD};
+        --token-8631c71a-9144-461a-9f81-e70aca350629: ${D}f2;
+        /* Border tokens */
+        --token-eb886c4a-da1e-4c4a-a43f-6e3075c86cbc: ${BORDER};
+        --token-33b10254-3b91-4509-a4f2-d7f991d7e507: ${BORDER};
+        --token-dba99623-581f-4bfc-9e8a-9ad9917909ae: ${BORDERL};
+        --token-b9d4b451-944c-48a7-8ae7-e419f413cc6a: ${BORDERL};
+        /* Text / accent tokens */
+        --token-685f5e1b-3d2a-4c61-8c5e-1e4438849d78: ${L};
+        --token-37395742-0754-4478-b2fd-b2f291033e9e: ${T};
+        --token-38458496-5ae2-4b42-8bcc-1c95cd689547: ${T};
+        --token-431c75b2-ce4c-4ba5-b96e-65c36e23d32a: ${T};
+        /* Link color */
+        --framer-link-text-color: ${T};
+      }
 
-      /* ── Framer page/section backgrounds ── */
+      /* ════ PAGE & SECTION BACKGROUNDS ════ */
+      html, body,
       .framer-page-container,
       [data-framer-name="Main"],
       [data-framer-name="Hero"],
@@ -29,33 +50,31 @@
       [data-framer-name="Trusted Brands"],
       [data-framer-name="Background"],
       [data-framer-name="Scroll"],
-      [data-framer-name="container"]
-        { background-color: ${D} !important; }
+      [data-framer-name="container"],
+      [data-framer-name="Dashboard"],
+      [data-framer-name="Content"]
+        { background-color: ${D} !important; border-top: none !important; }
 
-      /* ── NAV FIX (actual name is "Mobile Top") ── */
-      /* Hide the 10px decorative top bar with blue gradient image */
+      /* ════ NAV — actual name is "Mobile Top" ════ */
+      /* Kill the 10px decorative bar with the original blue image */
       .framer-n3ctgz { display: none !important; }
-
-      /* Fixed nav container - transparent wrapper */
       .framer-2x5gj1-container { background: transparent !important; }
 
-      /* The actual nav component */
       [data-framer-name="Mobile Top"],
       .framer-xkNf7 {
-        background-color: rgba(32,26,26,0.92) !important;
+        background-color: rgba(32,26,26,0.93) !important;
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
         border-top: none !important;
         border-bottom: 1px solid ${BORDER} !important;
         box-shadow: none !important;
       }
-      /* Make all nav children backgrounds transparent */
       [data-framer-name="Mobile Top"] *,
       .framer-xkNf7 * {
         background-color: transparent !important;
         border-top: none !important;
       }
-      /* Restore button background in nav */
+      /* Restore nav button */
       [data-framer-name="Mobile Top"] [data-framer-name="Primary"],
       [data-framer-name="Mobile Top"] [data-framer-name="Button"],
       .framer-xkNf7 [data-framer-name="Primary"] {
@@ -64,26 +83,7 @@
         border-radius: 99px !important;
       }
 
-      /* ── Logo container: remove fixed 40×24px box constraint ── */
-      .framer-15x9g5k,
-      [data-framer-name="Logo"] {
-        width: auto !important;
-        height: auto !important;
-        aspect-ratio: unset !important;
-        min-width: unset !important;
-        overflow: visible !important;
-        position: relative !important;
-      }
-      /* Logo anchor — allow it to grow */
-      .framer-u9kvgf,
-      [data-framer-name="logo"] {
-        width: auto !important;
-        height: auto !important;
-        overflow: visible !important;
-        flex-shrink: 0 !important;
-      }
-
-      /* ── Framework Row cards — rounded, dark, bordered ── */
+      /* ════ FRAMEWORK ROW CARDS ════ */
       [data-framer-name="Framework Row"],
       .framer-1g690uk {
         background-color: ${CARD} !important;
@@ -93,7 +93,7 @@
         padding: 0 !important;
       }
 
-      /* ── Framework graphic panel: dark bg + grey/black gradient border ── */
+      /* Graphic panel — gradient bg + metallic gradient border */
       [data-framer-name="graphic"],
       .framer-1v4uzgz {
         background:
@@ -102,12 +102,14 @@
         border: 1.5px solid transparent !important;
         overflow: hidden !important;
       }
+      [data-framer-name="graphic"] [data-framer-background-image-wrapper],
+      [data-framer-name="M1"] [data-framer-background-image-wrapper],
+      [data-framer-name="AI"] [data-framer-background-image-wrapper],
+      [data-framer-name="Booked"] [data-framer-background-image-wrapper]
+        { display: none !important; }
 
-      /* ── Chat bubble text — bigger size, wider container ── */
+      /* ════ CHAT BUBBLES ════ */
       .framer-lW3xC { width: 270px !important; }
-      .framer-lW3xC .framer-1xgtqzl {
-        --framer-font-size: 13px !important;
-      }
       .framer-lW3xC .framer-1xgtqzl p,
       .framer-lW3xC .framer-1xgtqzl .framer-text {
         font-size: 13px !important;
@@ -117,18 +119,26 @@
       .framer-lW3xC .framer-lunykw .framer-text {
         font-size: 11px !important;
       }
-      [data-framer-name="graphic"] [data-framer-background-image-wrapper],
-      [data-framer-name="M1"] [data-framer-background-image-wrapper],
-      [data-framer-name="AI"] [data-framer-background-image-wrapper],
-      [data-framer-name="Booked"] [data-framer-background-image-wrapper] {
-        display: none !important;
-      }
-      [data-framer-name="M1"] {
-        background: radial-gradient(circle at 30% 25%, #2e2828 0%, ${D} 65%) !important;
-        border-color: ${BORDER} !important;
+
+      /* ════ DASHBOARD M1 MOCKUP ════ */
+      [data-framer-name="M1"],
+      .framer-KPdzG {
+        background: radial-gradient(circle at 30% 20%, #2e2828 0%, ${D} 70%) !important;
+        border-radius: 24px !important;
+        border: 1px solid ${BORDER} !important;
+        overflow: hidden !important;
       }
 
-      /* ── Benefits / Process / Variant cards — rounded ── */
+      /* ════ RESULTS / STATS CARDS ════ */
+      /* framer-w9mk5u = the stat/logo cards inside Results Box */
+      .framer-w9mk5u {
+        background-color: ${CARD} !important;
+        border-radius: 20px !important;
+        border: 1px solid ${BORDER} !important;
+        overflow: hidden !important;
+      }
+
+      /* ════ BENEFITS / VARIANT / PROCESS CARDS ════ */
       [data-framer-name="Benefits"],
       [data-framer-name="Variant 1"],
       [data-framer-name="Variant 2"],
@@ -141,75 +151,54 @@
         border: 1px solid ${BORDER} !important;
       }
 
-      /* ── Dashboard card ── */
-      [data-framer-name="Dashboard"] {
-        background-color: ${CARD} !important;
-        border-radius: 24px !important;
-        border: 1px solid ${BORDER} !important;
-        overflow: hidden !important;
-      }
-
-      /* ── Results / testimonial cards ── */
-      [data-framer-name="Results Box"] {
-        background-color: transparent !important;
-      }
+      /* ════ TESTIMONIALS ════ */
       [data-framer-name="testimonial"] {
         background-color: ${CARD} !important;
         border-radius: 20px !important;
         border: 1px solid ${BORDER} !important;
       }
 
-      /* ── FAQ accordion ── */
-      [data-framer-name="Accordion Button"],
-      [data-framer-name="FAQs"] > * > * {
+      /* ════ FAQ ════ */
+      [data-framer-name="Accordion Button"] {
         border-radius: 14px !important;
         border: 1px solid ${BORDER} !important;
-        overflow: hidden !important;
+        background-color: ${CARD} !important;
       }
 
-      /* ── Catch all remaining black/near-black elements ── */
-      [style*="background-color: rgb(0, 0, 0)"],
-      [style*="background-color: rgb(15, 15, 15)"],
-      [style*="background-color: rgb(17, 17, 17)"],
-      [style*="background-color: rgb(33, 33, 33)"],
-      [style*="background: rgb(0, 0, 0)"]
-        { background-color: ${D} !important; }
-
-      /* ── Blue → Taupe everywhere ── */
-      [style*="color: rgb(0, 153, 255)"] { color: ${T} !important; }
-      [style*="background-color: rgb(0, 153, 255)"] { background-color: ${T} !important; }
-      [style*="border-color: rgb(0, 153, 255)"] { border-color: ${BORDER} !important; }
-      * { --framer-link-text-color: ${T} !important; }
-
-      /* ── Buttons ── */
-      [data-framer-name="Primary"],
-      [data-framer-name="Button"],
-      a[class*="framer"][style*="rgb(0, 153, 255)"]
-        { background-color: ${L} !important; color: ${D} !important; border-radius: 99px !important; }
-
-      /* ── Hero background image → hide, replace with Aumana dark ── */
-      .framer-WxcRn { background-color: ${D} !important; }
-      .framer-WxcRn .framer-15asv5r { display: none !important; }
-      .framer-WxcRn .framer-fcbkq9 { background: ${D} !important; opacity: 1 !important; }
-      [data-framer-name="Hero"] [data-framer-background-image-wrapper],
-      [data-framer-name="Main"] [data-framer-background-image-wrapper] {
-        display: none !important;
-      }
-
-      /* ── Footer ── */
+      /* ════ FOOTER ════ */
       [data-framer-name="Footer"] {
         background-color: ${D} !important;
         border-top: 1px solid ${BORDER} !important;
       }
 
-      /* ── Trusted Brands section ── */
+      /* ════ HERO BACKGROUND ════ */
+      .framer-WxcRn { background-color: ${D} !important; }
+      .framer-WxcRn .framer-15asv5r { display: none !important; }
+      .framer-WxcRn .framer-fcbkq9 { background: ${D} !important; opacity: 1 !important; }
+      [data-framer-name="Hero"] [data-framer-background-image-wrapper],
+      [data-framer-name="Main"] [data-framer-background-image-wrapper]
+        { display: none !important; }
+
+      /* ════ CATCH-ALL remaining blacks ════ */
+      [style*="background-color: rgb(0, 0, 0)"],
+      [style*="background-color: rgb(15, 15, 15)"],
+      [style*="background-color: rgb(17, 17, 17)"],
+      [style*="background-color: rgb(33, 33, 33)"]
+        { background-color: ${D} !important; }
+      [style*="color: rgb(0, 153, 255)"] { color: ${T} !important; }
+      [style*="background-color: rgb(0, 153, 255)"] { background-color: ${T} !important; }
+      [style*="border-color: rgb(0, 153, 255)"] { border-color: ${BORDER} !important; }
+
+      /* ════ BUTTONS ════ */
+      [data-framer-name="Primary"],
+      [data-framer-name="Button"]
+        { background-color: ${L} !important; color: ${D} !important; border-radius: 99px !important; }
+
+      /* ════ INJECTED BRANDS ════ */
       #aumana-brands {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 32px 48px !important;
-        padding: 40px 24px !important;
+        display: flex !important; flex-wrap: wrap !important;
+        justify-content: center !important; align-items: center !important;
+        gap: 32px 48px !important; padding: 40px 24px !important;
         background: ${D} !important;
         border-top: 1px solid ${BORDER} !important;
         border-bottom: 1px solid ${BORDER} !important;
@@ -217,23 +206,19 @@
       #aumana-brands .ab-logo {
         display: flex; align-items: center; gap: 7px;
         font-family: ${FONT}; font-size: 13px; font-weight: 600;
-        color: ${T}; opacity: 0.65; letter-spacing: 0.04em;
-        transition: opacity 0.2s;
+        color: ${T}; opacity: 0.65; letter-spacing: 0.04em; transition: opacity 0.2s;
       }
       #aumana-brands .ab-logo:hover { opacity: 1; }
 
-      /* ── Reviews ── */
+      /* ════ INJECTED REVIEWS ════ */
       #aumana-reviews {
         display: grid !important;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
-        gap: 20px !important;
-        margin-top: 24px !important;
+        gap: 20px !important; margin-top: 24px !important;
       }
       .ar-card {
-        background: ${CARD} !important;
-        border: 1px solid ${BORDER} !important;
-        border-radius: 20px !important;
-        padding: 28px !important;
+        background: ${CARD} !important; border: 1px solid ${BORDER} !important;
+        border-radius: 20px !important; padding: 28px !important;
         font-family: ${FONT} !important;
         display: flex; flex-direction: column; justify-content: space-between;
       }
@@ -246,145 +231,132 @@
       .ar-role { font-size: 12px; color: ${T}; margin-top: 2px; }
       .ar-company { display: flex; align-items: center; gap: 5px; margin-top: 6px; font-size: 11px; color: ${T}; opacity: 0.6; font-weight: 500; letter-spacing: 0.05em; }
 
-      /* ── Stats injection ── */
+      /* ════ INJECTED STATS ════ */
       #aumana-stats {
         display: grid !important;
         grid-template-columns: repeat(2, 1fr) !important;
-        gap: 16px !important;
-        margin-top: 20px !important;
+        gap: 16px !important; margin: 24px auto 0 !important;
+        max-width: 1100px !important; padding: 0 20px !important;
+        box-sizing: border-box !important;
       }
       @media (min-width: 640px) {
         #aumana-stats { grid-template-columns: repeat(4, 1fr) !important; }
       }
       .as-card {
-        background: ${CARD2} !important;
-        border: 1px solid ${BORDER} !important;
-        border-radius: 16px !important;
-        padding: 22px 18px !important;
+        background: ${CARD2} !important; border: 1px solid ${BORDER} !important;
+        border-radius: 20px !important; padding: 26px 22px !important;
         font-family: ${FONT} !important;
       }
       .as-num {
-        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
-        font-weight: 700;
+        font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 700;
         background: linear-gradient(135deg, ${L} 0%, ${T} 55%, ${W} 100%);
         -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-        background-clip: text; line-height: 1; margin-bottom: 8px;
+        background-clip: text; line-height: 1; margin-bottom: 10px;
       }
       .as-label { font-size: 12px; color: ${T}; font-weight: 300; line-height: 1.55; }
+
+      /* ════ AUMANA LOGO (injected via JS) ════ */
+      #aumana-logo-link {
+        display: flex !important; align-items: center !important;
+        gap: 10px !important; text-decoration: none !important;
+        cursor: pointer !important; flex-shrink: 0 !important;
+        padding: 0 !important; margin: 0 !important;
+      }
+      #aumana-logo-link span {
+        font-family: ${FONT} !important; font-weight: 700 !important;
+        font-size: 16px !important; color: ${W} !important;
+        letter-spacing: 0.18em !important; text-transform: uppercase !important;
+        white-space: nowrap !important;
+      }
     `;
     document.head.appendChild(s);
   }
 
   /* ════════════════════════════════════════
-     2.  AUMANA SUN LOGO SVG
-     Tapered rays: pointed near center, rounded outer tip
-     Matches the official Aumana starburst logo
+     2.  AUMANA SUN LOGO SVG — tapered rays
   ═════════════════════════════════════════ */
   function makeSunSVG(size) {
-    size = size || 26;
-    var n = 34;
-    var cx = size / 2, cy = size / 2;
-    var paths = '';
+    size = size || 30;
+    var n = 34, cx = size / 2, cy = size / 2, paths = '';
     for (var i = 0; i < n; i++) {
       var a = (i * 2 * Math.PI / n) - Math.PI / 2;
-      var pa = a + Math.PI / 2; // perpendicular
-      // Alternate: 2 long rays then 1 short
+      var pa = a + Math.PI / 2;
       var isLong = (i % 3 !== 2);
-      var rIn   = size * 0.09;
-      var rOut  = size * (isLong ? 0.83 : 0.60);
-      var maxW  = size * (isLong ? 0.030 : 0.022);
-      // Inner tip (pointed)
+      var rIn = size * 0.09, rOut = size * (isLong ? 0.83 : 0.60);
+      var maxW = size * (isLong ? 0.030 : 0.022);
       var tx = cx + rIn * Math.cos(a), ty = cy + rIn * Math.sin(a);
-      // Max-width midpoint (60% out)
       var rMid = rIn + (rOut - rIn) * 0.60;
       var mx = cx + rMid * Math.cos(a), my = cy + rMid * Math.sin(a);
       var mlx = mx + maxW * Math.cos(pa), mly = my + maxW * Math.sin(pa);
       var mrx = mx - maxW * Math.cos(pa), mry = my - maxW * Math.sin(pa);
-      // Outer cap
       var capHW = maxW * 0.72;
       var ox = cx + rOut * Math.cos(a), oy = cy + rOut * Math.sin(a);
       var clx = ox + capHW * Math.cos(pa), cly = oy + capHW * Math.sin(pa);
       var crx = ox - capHW * Math.cos(pa), cry = oy - capHW * Math.sin(pa);
-      var op = isLong ? '0.82' : '0.48';
       var col = (i % 9 === 0) ? W : L;
-      paths += '<path d="' +
-        'M ' + tx.toFixed(2) + ',' + ty.toFixed(2) +
+      var op = isLong ? '0.85' : '0.50';
+      paths += '<path d="M ' + tx.toFixed(2) + ',' + ty.toFixed(2) +
         ' Q ' + mlx.toFixed(2) + ',' + mly.toFixed(2) + ' ' + clx.toFixed(2) + ',' + cly.toFixed(2) +
         ' A ' + capHW.toFixed(2) + ',' + capHW.toFixed(2) + ' 0 0 0 ' + crx.toFixed(2) + ',' + cry.toFixed(2) +
         ' Q ' + mrx.toFixed(2) + ',' + mry.toFixed(2) + ' ' + tx.toFixed(2) + ',' + ty.toFixed(2) +
         ' Z" fill="' + col + '" opacity="' + op + '"/>';
     }
-    return '<svg width="' + size + '" height="' + size + '" viewBox="0 0 ' + size + ' ' + size + '" fill="none" xmlns="http://www.w3.org/2000/svg">' + paths + '</svg>';
+    return '<svg width="' + size + '" height="' + size + '" viewBox="0 0 ' + size + ' ' + size +
+      '" fill="none" xmlns="http://www.w3.org/2000/svg">' + paths + '</svg>';
   }
 
   /* ════════════════════════════════════════
-     3.  REPLACE LOGO
+     3.  INJECT LOGO — create fresh element, hide original
+         Avoids ALL Framer CSS class constraints
   ═════════════════════════════════════════ */
   function replaceLogo() {
-    var logoEls = document.querySelectorAll('[data-framer-name="Logo"], [data-framer-name="logo"]');
-    logoEls.forEach(function(el) {
-      var anchor = el.tagName === 'A' ? el : el.closest('a');
-      if (!anchor) anchor = el.parentElement;
-      if (!anchor || anchor._aumanaLogoSet) return;
-      anchor._aumanaLogoSet = true;
+    // Target the nav "left" group which contains the original logo link
+    var navLeft = document.querySelector('[data-framer-name="left"]');
+    if (!navLeft || navLeft._aumanaLogoSet) return;
+    navLeft._aumanaLogoSet = true;
 
-      // Reset the anchor's own size constraints
-      anchor.style.cssText += ';width:auto!important;height:auto!important;overflow:visible!important;flex-shrink:0!important;';
+    // Hide the original Framer logo link entirely
+    var origLogoLink = navLeft.querySelector('[data-framer-name="logo"]') ||
+                       navLeft.querySelector('a');
+    if (origLogoLink) origLogoLink.style.display = 'none';
 
-      // Reset the Logo inner box constraints too
-      var logoBox = anchor.querySelector('[data-framer-name="Logo"]') || (el.getAttribute('data-framer-name') === 'Logo' ? el : null);
-      if (logoBox) {
-        logoBox.style.cssText += ';width:auto!important;height:auto!important;aspect-ratio:unset!important;overflow:visible!important;position:static!important;';
-      }
+    // Create a fresh <a> element with no Framer class constraints
+    var link = document.createElement('a');
+    link.id = 'aumana-logo-link';
+    link.href = './';
+    link.innerHTML = makeSunSVG(30) +
+      '<span>AUMANA</span>';
 
-      anchor.innerHTML =
-        '<div style="display:flex;align-items:center;gap:10px;cursor:pointer;text-decoration:none;">' +
-          makeSunSVG(30) +
-          '<span style="font-family:' + FONT + ';font-weight:700;font-size:16px;color:' + W + ';letter-spacing:0.18em;text-transform:uppercase;white-space:nowrap;">AUMANA</span>' +
-        '</div>';
-    });
+    // Insert as the first child so it appears first
+    navLeft.insertBefore(link, navLeft.firstChild);
   }
 
   /* ════════════════════════════════════════
-     4.  REPLACE TRUSTED BRANDS LOGOS
+     4.  REPLACE TRUSTED BRANDS
   ═════════════════════════════════════════ */
-  var BRAND_LOGOS = [
-    { name: 'Zapier', icon: '⚡' },
-    { name: 'VAPI', icon: '◎' },
-    { name: 'Airtable', icon: '⊞' },
-    { name: 'HubSpot', icon: '⬡' },
-    { name: 'Make', icon: '◈' },
-    { name: 'OpenAI', icon: '○' },
-    { name: 'Calendly', icon: '▣' },
-    { name: 'GHL', icon: '△' },
-  ];
-
   function replaceBrands() {
     var tb = document.querySelector('[data-framer-name="Trusted Brands"]');
     if (!tb || tb._aumanaSet) return;
     tb._aumanaSet = true;
     var div = document.createElement('div');
     div.id = 'aumana-brands';
-    BRAND_LOGOS.forEach(function(b) {
-      var span = document.createElement('div');
-      span.className = 'ab-logo';
-      span.innerHTML = '<span style="font-size:16px;">' + b.icon + '</span><span>' + b.name + '</span>';
-      div.appendChild(span);
+    [
+      {name:'Zapier',icon:'⚡'}, {name:'VAPI',icon:'◎'}, {name:'Airtable',icon:'⊞'},
+      {name:'HubSpot',icon:'⬡'}, {name:'Make',icon:'◈'}, {name:'OpenAI',icon:'○'},
+      {name:'Calendly',icon:'▣'}, {name:'GHL',icon:'△'}
+    ].forEach(function(b) {
+      var d = document.createElement('div');
+      d.className = 'ab-logo';
+      d.innerHTML = '<span style="font-size:16px;">' + b.icon + '</span><span>' + b.name + '</span>';
+      div.appendChild(d);
     });
     tb.parentNode.insertBefore(div, tb);
     tb.style.display = 'none';
   }
 
   /* ════════════════════════════════════════
-     5.  INJECT STATS UNDER "Clarity in numbers"
+     5.  INJECT STATS
   ═════════════════════════════════════════ */
-  var STATS = [
-    { v: '3x', l: 'Average lead conversion lift within 60 days' },
-    { v: '80%', l: 'Reduction in manual follow-up time' },
-    { v: '24/7', l: 'AI coverage with zero added headcount' },
-    { v: '14 days', l: 'Avg. time from kickoff to live deployment' },
-  ];
-
   function injectStats() {
     var done = false;
     document.querySelectorAll('[data-framer-name="Results Box"], [data-framer-name="Results"]').forEach(function(el) {
@@ -392,7 +364,11 @@
       done = true; el._aumanaStats = true;
       var grid = document.createElement('div');
       grid.id = 'aumana-stats';
-      STATS.forEach(function(s) {
+      [{v:'3x',l:'Average lead conversion lift within 60 days'},
+       {v:'80%',l:'Reduction in manual follow-up time'},
+       {v:'24/7',l:'AI coverage with zero added headcount'},
+       {v:'14 days',l:'Avg. time from kickoff to live deployment'}
+      ].forEach(function(s) {
         var c = document.createElement('div');
         c.className = 'as-card';
         c.innerHTML = '<div class="as-num">' + s.v + '</div><div class="as-label">' + s.l + '</div>';
@@ -403,66 +379,44 @@
   }
 
   /* ════════════════════════════════════════
-     6.  INJECT REVIEWS under "Proof in motion"
+     6.  INJECT REVIEWS
   ═════════════════════════════════════════ */
-  var REVIEWS = [
-    {
-      stars: 5,
-      quote: 'The AI receptionist handles 90% of our inbound calls. Our team spends zero time on scheduling — it just happens automatically. No-show rate dropped 40% in the first month.',
-      name: 'Marcus Reynolds', role: 'Founder', company: 'Revive MedSpa',
-      avatar: 'https://randomuser.me/api/portraits/men/32.jpg',
-      logo: '◎ MedSpa'
-    },
-    {
-      stars: 5,
-      quote: 'Three months in, we doubled booked consultations without adding a single team member. The system qualifies, books, and reminds clients automatically.',
-      name: 'Priya Sharma', role: 'CEO', company: 'LuxDerm Clinics',
-      avatar: 'https://randomuser.me/api/portraits/women/44.jpg',
-      logo: '⬡ LuxDerm'
-    },
-    {
-      stars: 5,
-      quote: 'Two weeks from kickoff to live. Full visibility into every call and message. ROI was clear within 30 days — I can\'t imagine running the agency without it.',
-      name: 'Jordan Kellerman', role: 'Operations Director', company: 'Scale Agency',
-      avatar: 'https://randomuser.me/api/portraits/men/75.jpg',
-      logo: '△ Scale'
-    },
-  ];
-
   function injectReviews() {
-    // Find "Proof in motion" heading then inject after its parent section
-    var allText = document.querySelectorAll('h1, h2, h3, p, span');
+    var allText = document.querySelectorAll('h1,h2,h3,p,span');
     var proofEl = null;
     allText.forEach(function(el) {
       if (!proofEl && el.textContent.trim() === 'Proof in motion.') proofEl = el;
     });
     if (!proofEl || proofEl._aumanaReviews) return;
     proofEl._aumanaReviews = true;
-
     var section = proofEl.closest('[data-framer-name]') || proofEl.parentElement;
     var grid = document.createElement('div');
     grid.id = 'aumana-reviews';
     grid.style.cssText = 'padding:0 24px 64px;max-width:1100px;margin:0 auto;';
-
-    REVIEWS.forEach(function(r) {
+    [
+      {stars:5, quote:'The AI receptionist handles 90% of our inbound calls. Our team spends zero time on scheduling — it just happens automatically. No-show rate dropped 40% in the first month.',
+       name:'Marcus Reynolds', role:'Founder', company:'Revive MedSpa',
+       avatar:'https://randomuser.me/api/portraits/men/32.jpg', logo:'◎ MedSpa'},
+      {stars:5, quote:'Three months in, we doubled booked consultations without adding a single team member. The system qualifies, books, and reminds clients automatically.',
+       name:'Priya Sharma', role:'CEO', company:'LuxDerm Clinics',
+       avatar:'https://randomuser.me/api/portraits/women/44.jpg', logo:'⬡ LuxDerm'},
+      {stars:5, quote:"Two weeks from kickoff to live. Full visibility into every call and message. ROI was clear within 30 days — I can't imagine running the agency without it.",
+       name:'Jordan Kellerman', role:'Operations Director', company:'Scale Agency',
+       avatar:'https://randomuser.me/api/portraits/men/75.jpg', logo:'△ Scale'}
+    ].forEach(function(r) {
       var card = document.createElement('div');
       card.className = 'ar-card';
-      card.innerHTML =
-        '<div class="ar-stars">' + '★'.repeat(r.stars) + '</div>' +
+      card.innerHTML = '<div class="ar-stars">' + '★'.repeat(r.stars) + '</div>' +
         '<p class="ar-quote">"' + r.quote + '"</p>' +
         '<hr class="ar-divider">' +
         '<div class="ar-profile">' +
           '<img class="ar-avatar" src="' + r.avatar + '" alt="' + r.name + '">' +
-          '<div>' +
-            '<div class="ar-name">' + r.name + '</div>' +
-            '<div class="ar-role">' + r.role + ' · ' + r.company + '</div>' +
-            '<div class="ar-company">' + r.logo + '</div>' +
-          '</div>' +
+          '<div><div class="ar-name">' + r.name + '</div>' +
+          '<div class="ar-role">' + r.role + ' · ' + r.company + '</div>' +
+          '<div class="ar-company">' + r.logo + '</div></div>' +
         '</div>';
       grid.appendChild(card);
     });
-
-    // Insert after the section that contains "Proof in motion"
     section.after(grid);
   }
 
@@ -483,7 +437,7 @@
         .replace(/AgencyFlux/g, 'Aumana')
         .replace(/WEB DESIGN BY/g, '')
         .replace(/MADE BY/g, '');
-      if (nv !== v) changes.push({ node: node, val: nv });
+      if (nv !== v) changes.push({node: node, val: nv});
     }
     changes.forEach(function(c) { c.node.nodeValue = c.val; });
   }
@@ -493,13 +447,15 @@
   ═════════════════════════════════════════ */
   function setFavicon() {
     document.querySelectorAll('link[rel*="icon"]').forEach(function(e) { e.remove(); });
+    var svg = makeSunSVG(32);
+    var encoded = 'data:image/svg+xml;base64,' + btoa(svg);
     var l = document.createElement('link');
-    l.rel = 'icon'; l.type = 'image/svg+xml'; l.href = './aumana-favicon.svg';
+    l.rel = 'icon'; l.type = 'image/svg+xml'; l.href = encoded;
     document.head.appendChild(l);
   }
 
   /* ════════════════════════════════════════
-     9.  MUTATION OBSERVER (Framer hydrates async)
+     9.  MUTATION OBSERVER
   ═════════════════════════════════════════ */
   function watch() {
     var obs = new MutationObserver(function(mutations) {
@@ -508,14 +464,14 @@
         m.addedNodes.forEach(function(n) {
           if (n.nodeType !== 1) return;
           replaceText(n);
-          if (n.querySelector && n.querySelector('[data-framer-name="Logo"]')) needsLogo = true;
+          if (n.querySelector && n.querySelector('[data-framer-name="left"]')) needsLogo = true;
           if (n.querySelector && n.querySelector('[data-framer-name="Trusted Brands"]')) needsBrands = true;
         });
       });
-      if (needsLogo) setTimeout(replaceLogo, 50);
-      if (needsBrands) setTimeout(replaceBrands, 50);
+      if (needsLogo) setTimeout(replaceLogo, 60);
+      if (needsBrands) setTimeout(replaceBrands, 60);
     });
-    obs.observe(document.body, { childList: true, subtree: true });
+    obs.observe(document.body, {childList: true, subtree: true});
   }
 
   /* ════════════════════════════════════════
@@ -525,8 +481,6 @@
     injectCSS();
     setFavicon();
     replaceText();
-
-    // Retry multiple times since Framer hydrates in stages
     [100, 400, 900, 1800, 3500].forEach(function(delay) {
       setTimeout(function() {
         replaceLogo();
@@ -536,7 +490,6 @@
         replaceText();
       }, delay);
     });
-
     watch();
   }
 
