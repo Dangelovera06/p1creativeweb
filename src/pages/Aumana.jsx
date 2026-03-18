@@ -749,11 +749,11 @@ function Results() {
       </div>
 
       {/* Stats grid */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16" style={{ marginBottom: 96 }}>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4" style={{ marginBottom: 96 }}>
         {stats.map((s, i) => (
-          <div key={i} style={{ textAlign: "center" }}>
+          <div key={i} style={{ textAlign: "center", background: C.card, borderRadius: 20, padding: "32px 24px" }}>
             <div style={{
-              ...grotesk, fontSize: "clamp(2.8rem,6vw,5rem)", fontWeight: 700, marginBottom: 12, lineHeight: 1,
+              ...grotesk, fontSize: "clamp(2.4rem,5vw,4rem)", fontWeight: 700, marginBottom: 12, lineHeight: 1,
               background: "linear-gradient(135deg,#d2c6b6 0%,#a79c8e 50%,#fff 100%)",
               WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
             }}>{s.v}</div>
@@ -784,9 +784,9 @@ function Results() {
       </div>
 
       {/* Testimonials */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {testimonials.map((t, i) => (
-          <div key={i} style={{ display: "flex", flexDirection: "column" }}>
+          <div key={i} style={{ display: "flex", flexDirection: "column", background: C.card, borderRadius: 24, padding: "36px 32px" }}>
             <div style={{ display: "flex", gap: 3, marginBottom: 20 }}>
               {Array.from({ length: t.stars }).map((_, si) => (
                 <span key={si} style={{ color: "#a79c8e", fontSize: 16 }}>★</span>
