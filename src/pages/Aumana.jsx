@@ -548,7 +548,7 @@ const testimonials = [
 
 function Results() {
   return (
-    <section id="aumana-results" style={{ padding: "96px 24px", borderTop: `1px solid rgba(167,156,142,0.08)`, background: C.dark }}>
+    <section id="aumana-results" style={{ borderTop: `1px solid rgba(167,156,142,0.08)`, background: C.dark }} className="px-5 py-16 md:py-24 md:px-6">
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
 
         {/* Header */}
@@ -562,29 +562,29 @@ function Results() {
           </p>
         </div>
 
-        {/* Big stats card — matches Frameworks card style */}
+        {/* Big stats card */}
         <div
-          style={{ borderRadius: 24, border: `1px solid rgba(167,156,142,0.12)`, background: C.card, padding: "48px 52px", marginBottom: 8 }}
-          className="flex flex-col md:flex-row items-center gap-12"
+          style={{ borderRadius: 24, border: `1px solid rgba(167,156,142,0.12)`, background: C.card, marginBottom: 8 }}
+          className="flex flex-col md:flex-row items-start gap-8 p-6 md:p-12"
         >
           {/* Left: stat grid */}
-          <div className="w-full md:w-1/2 grid grid-cols-2 gap-5">
+          <div className="w-full md:w-1/2 grid grid-cols-2 gap-3">
             {stats.map((s, i) => (
               <div
                 key={i}
                 style={{
-                  borderRadius: 20,
+                  borderRadius: 16,
                   border: `1px solid rgba(167,156,142,0.1)`,
                   background: "#201a1a",
-                  padding: "28px 24px",
                 }}
+                className="p-4 md:p-6"
               >
                 <div style={{
-                  ...grotesk, fontSize: "clamp(2.2rem,4vw,3rem)", fontWeight: 700, marginBottom: 10, lineHeight: 1,
+                  ...grotesk, fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 700, marginBottom: 8, lineHeight: 1,
                   background: "linear-gradient(135deg,#d2c6b6 0%,#a79c8e 50%,#fff 100%)",
                   WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
                 }}>{s.v}</div>
-                <p style={{ ...inter, fontSize: 12, color: C.taupe, fontWeight: 300, lineHeight: 1.6, margin: 0 }}>{s.l}</p>
+                <p style={{ ...inter, fontSize: 11, color: C.taupe, fontWeight: 300, lineHeight: 1.6, margin: 0 }}>{s.l}</p>
               </div>
             ))}
           </div>
@@ -594,12 +594,12 @@ function Results() {
             <span style={{
               ...inter, fontSize: 11, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase",
               padding: "5px 12px", borderRadius: 99, border: `1px solid rgba(167,156,142,0.2)`,
-              display: "inline-block", marginBottom: 20,
+              display: "inline-block", marginBottom: 16,
             }}>Proven Track Record</span>
-            <h3 style={{ ...grotesk, fontSize: "clamp(1.5rem,2.8vw,2.2rem)", color: C.white, fontWeight: 700, lineHeight: 1.2, marginBottom: 20 }}>
+            <h3 style={{ ...grotesk, fontSize: "clamp(1.3rem,2.5vw,2rem)", color: C.white, fontWeight: 700, lineHeight: 1.2, marginBottom: 16 }}>
               Clients see results within the first 30 days — or we keep working until they do.
             </h3>
-            <p style={{ ...inter, fontSize: 14, color: C.taupe, fontWeight: 300, lineHeight: 1.75, marginBottom: 28 }}>
+            <p style={{ ...inter, fontSize: 14, color: C.taupe, fontWeight: 300, lineHeight: 1.75, marginBottom: 24 }}>
               Every stat above is pulled from active client accounts. We don't pad numbers — we build systems that produce them.
             </p>
             <a
@@ -616,23 +616,23 @@ function Results() {
           </div>
         </div>
 
-        {/* Testimonials — same card style as framework feature cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mt-5">
+        {/* Testimonials */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
           {testimonials.map((t, i) => (
             <div
               key={i}
               style={{
                 borderRadius: 24, border: `1px solid rgba(167,156,142,0.12)`,
-                background: C.card, padding: "32px 32px",
+                background: C.card,
                 display: "flex", flexDirection: "column", justifyContent: "space-between",
               }}
+              className="p-6 md:p-8"
             >
-              {/* large quote mark */}
-              <div style={{ ...grotesk, fontSize: 64, color: "rgba(167,156,142,0.12)", lineHeight: 0.8, marginBottom: 20 }}>"</div>
-              <p style={{ ...inter, fontSize: 14, color: C.linen, fontWeight: 300, lineHeight: 1.75, marginBottom: 28, flex: 1 }}>
+              <div style={{ ...grotesk, fontSize: 52, color: "rgba(167,156,142,0.12)", lineHeight: 0.8, marginBottom: 16 }}>"</div>
+              <p style={{ ...inter, fontSize: 14, color: C.linen, fontWeight: 300, lineHeight: 1.75, marginBottom: 24, flex: 1 }}>
                 {t.q}
               </p>
-              <div style={{ borderTop: `1px solid rgba(167,156,142,0.1)`, paddingTop: 16 }}>
+              <div style={{ borderTop: `1px solid rgba(167,156,142,0.1)`, paddingTop: 14 }}>
                 <div style={{ ...inter, fontSize: 13, fontWeight: 500, color: C.white }}>{t.name}</div>
                 <div style={{ ...inter, fontSize: 12, color: C.taupe, marginTop: 2 }}>{t.role}</div>
               </div>
