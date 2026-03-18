@@ -231,12 +231,11 @@ function Hero() {
 
 /* ─── LOGO BAR ──────────────────────────────────── */
 const logoItems = [
-  { src: "/aumanaai/assets/0ca6d656_0gWvNBC942Bz1L9jtjcti8P2dc.png", alt: "Zapier",   h: 22 },
-  { src: "/aumanaai/assets/0ae003f5_MpPV0hHrnQpooUfNtAQQrX4TaM.png", alt: "VAPI",    h: 22 },
-  { src: "/aumanaai/assets/15d66a5d_J7r2wMLMyNR5qwbjHtz25FNb2Dc.png", alt: "Airtable", h: 24 },
-  { src: "/aumanaai/assets/50160c3c_AOY50cCj1eZYjnU4hr3Q32Pwv5g.png", alt: "HubSpot", h: 22 },
-  { txt: "Make" },
-  { txt: "OpenAI" },
+  { src: "/aumanaai/assets/0ca6d656_0gWvNBC942Bz1L9jtjcti8P2dc.png", alt: "Zapier",      h: 22 },
+  { src: "/aumanaai/assets/0ae003f5_MpPV0hHrnQpooUfNtAQQrX4TaM.png", alt: "VAPI",       h: 22 },
+  { src: "/aumanaai/assets/15d66a5d_J7r2wMLMyNR5qwbjHtz25FNb2Dc.png", alt: "Airtable",  h: 24 },
+  { src: "/aumanaai/assets/50160c3c_AOY50cCj1eZYjnU4hr3Q32Pwv5g.png", alt: "HubSpot",   h: 22 },
+  { src: "/claude-code.png",                                           alt: "Claude Code", h: 28 },
 ];
 
 function LogoBar() {
