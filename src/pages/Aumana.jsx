@@ -949,7 +949,6 @@ export default function Aumana() {
       <Hero />
       <LogoBar />
       <Frameworks />
-      <VideoBreak />
       <HowWeWork />
       <Results />
       <CTA />
