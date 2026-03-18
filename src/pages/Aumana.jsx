@@ -87,7 +87,9 @@ function Navbar() {
         </ul>
 
         <a
-          href="#aumana-contact"
+          href="https://calendly.com/dangelovera2024/30min"
+          target="_blank"
+          rel="noopener noreferrer"
           className="hidden md:inline-flex items-center gap-2 transition-all"
           style={{
             ...inter, fontSize: 13, color: C.white,
@@ -124,7 +126,9 @@ function Navbar() {
             </a>
           ))}
           <a
-            href="#aumana-contact"
+            href="https://calendly.com/dangelovera2024/30min"
+            target="_blank"
+            rel="noopener noreferrer"
             style={{
               ...inter, fontSize: 13, color: C.white, textAlign: "center",
               padding: "11px 24px", borderRadius: 99,
@@ -191,7 +195,9 @@ function Hero() {
 
       <div className="flex flex-col sm:flex-row items-center gap-4">
         <a
-          href="#aumana-contact"
+          href="https://calendly.com/dangelovera2024/30min"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
             ...inter, fontSize: 15, fontWeight: 700,
             background: C.linen, color: C.dark, textDecoration: "none",
@@ -771,7 +777,9 @@ function Results() {
           Every stat above is pulled from active client accounts. We don't pad numbers — we build systems that produce them.
         </p>
         <a
-          href="#aumana-contact"
+          href="https://calendly.com/dangelovera2024/30min"
+          target="_blank"
+          rel="noopener noreferrer"
           style={{
             ...inter, fontSize: 16, fontWeight: 700,
             background: C.linen, color: C.dark, textDecoration: "none",
