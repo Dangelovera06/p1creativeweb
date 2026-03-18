@@ -66,7 +66,7 @@
         backdrop-filter: blur(20px) !important;
         -webkit-backdrop-filter: blur(20px) !important;
         border-top: none !important;
-        border-bottom: 1px solid ${BORDER} !important;
+        border-bottom: none !important;
         box-shadow: none !important;
       }
       [data-framer-name="Mobile Top"] *,
@@ -168,7 +168,6 @@
       /* ════ FOOTER ════ */
       [data-framer-name="Footer"] {
         background-color: ${D} !important;
-        border-top: 1px solid ${BORDER} !important;
       }
 
       /* ════ HERO BACKGROUND ════ */
@@ -200,8 +199,6 @@
         justify-content: center !important; align-items: center !important;
         gap: 32px 48px !important; padding: 40px 24px !important;
         background: ${D} !important;
-        border-top: 1px solid ${BORDER} !important;
-        border-bottom: 1px solid ${BORDER} !important;
       }
       #aumana-brands .ab-logo {
         display: flex; align-items: center; gap: 7px;
