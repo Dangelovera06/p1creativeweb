@@ -74,12 +74,29 @@
         padding: 0 !important;
       }
 
-      /* ── Framework graphic panel (phone/chat side) ── */
+      /* ── Framework graphic panel: dark bg + grey/black gradient border ── */
       [data-framer-name="graphic"],
       .framer-1v4uzgz {
-        background: radial-gradient(circle at 30% 25%, #2e2828 0%, ${D} 65%) !important;
-        border-color: ${BORDER} !important;
+        background:
+          radial-gradient(circle at 30% 25%, #2e2828 0%, ${D} 65%) padding-box,
+          linear-gradient(145deg, #5a5a5a 0%, #1a1818 30%, #4a4a4a 55%, #1c1a1a 80%, #3a3a3a 100%) border-box !important;
+        border: 1.5px solid transparent !important;
         overflow: hidden !important;
+      }
+
+      /* ── Chat bubble text — bigger size, wider container ── */
+      .framer-lW3xC { width: 270px !important; }
+      .framer-lW3xC .framer-1xgtqzl {
+        --framer-font-size: 13px !important;
+      }
+      .framer-lW3xC .framer-1xgtqzl p,
+      .framer-lW3xC .framer-1xgtqzl .framer-text {
+        font-size: 13px !important;
+        line-height: 1.6 !important;
+      }
+      .framer-lW3xC .framer-1ynvukd,
+      .framer-lW3xC .framer-lunykw .framer-text {
+        font-size: 11px !important;
       }
       [data-framer-name="graphic"] [data-framer-background-image-wrapper],
       [data-framer-name="M1"] [data-framer-background-image-wrapper],
