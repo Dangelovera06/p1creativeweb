@@ -64,6 +64,25 @@
         border-radius: 99px !important;
       }
 
+      /* ── Logo container: remove fixed 40×24px box constraint ── */
+      .framer-15x9g5k,
+      [data-framer-name="Logo"] {
+        width: auto !important;
+        height: auto !important;
+        aspect-ratio: unset !important;
+        min-width: unset !important;
+        overflow: visible !important;
+        position: relative !important;
+      }
+      /* Logo anchor — allow it to grow */
+      .framer-u9kvgf,
+      [data-framer-name="logo"] {
+        width: auto !important;
+        height: auto !important;
+        overflow: visible !important;
+        flex-shrink: 0 !important;
+      }
+
       /* ── Framework Row cards — rounded, dark, bordered ── */
       [data-framer-name="Framework Row"],
       .framer-1g690uk {
@@ -304,12 +323,24 @@
   function replaceLogo() {
     var logoEls = document.querySelectorAll('[data-framer-name="Logo"], [data-framer-name="logo"]');
     logoEls.forEach(function(el) {
-      var anchor = el.closest('a') || el.closest('[data-framer-name="Navigation"]')?.querySelector('a') || el.parentElement;
+      var anchor = el.tagName === 'A' ? el : el.closest('a');
+      if (!anchor) anchor = el.parentElement;
       if (!anchor || anchor._aumanaLogoSet) return;
       anchor._aumanaLogoSet = true;
-      anchor.innerHTML = '<div style="display:flex;align-items:center;gap:9px;text-decoration:none;cursor:pointer;">' +
-        makeSunSVG(26) +
-        '<span style="font-family:' + FONT + ';font-weight:700;font-size:15px;color:' + W + ';letter-spacing:0.2em;text-transform:uppercase;">AUMANA</span>' +
+
+      // Reset the anchor's own size constraints
+      anchor.style.cssText += ';width:auto!important;height:auto!important;overflow:visible!important;flex-shrink:0!important;';
+
+      // Reset the Logo inner box constraints too
+      var logoBox = anchor.querySelector('[data-framer-name="Logo"]') || (el.getAttribute('data-framer-name') === 'Logo' ? el : null);
+      if (logoBox) {
+        logoBox.style.cssText += ';width:auto!important;height:auto!important;aspect-ratio:unset!important;overflow:visible!important;position:static!important;';
+      }
+
+      anchor.innerHTML =
+        '<div style="display:flex;align-items:center;gap:10px;cursor:pointer;text-decoration:none;">' +
+          makeSunSVG(30) +
+          '<span style="font-family:' + FONT + ';font-weight:700;font-size:16px;color:' + W + ';letter-spacing:0.18em;text-transform:uppercase;white-space:nowrap;">AUMANA</span>' +
         '</div>';
     });
   }
