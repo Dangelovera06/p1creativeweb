@@ -75,9 +75,57 @@
       [data-framer-name="Navigation"] {
         background-color: rgba(32,26,26,0.92) !important;
         backdrop-filter: blur(16px) !important;
+        border-top: none !important;
         border-bottom: 1px solid ${BORDER} !important;
+        box-shadow: none !important;
       }
       [data-framer-name="Navigation"] * { background-color: transparent !important; }
+
+      /* Kill any teal/blue top border or progress bar */
+      html, body { border-top: none !important; }
+      [class*="framer"]:not([data-framer-name]) { border-top: none !important; }
+      /* Top-level fixed/sticky nav wrapper - remove any colored top accents */
+      [data-framer-name="Navigation"] > *,
+      [data-framer-name="Navigation"] > * > * {
+        border-top: none !important;
+        background-color: transparent !important;
+      }
+
+      /* ── Framework card graphic panels: hide blue/teal bg images ── */
+      [data-framer-name="graphic"] > [data-framer-background-image-wrapper],
+      [data-framer-name="graphic"] [data-framer-background-image-wrapper],
+      [data-framer-name="M1"] > [data-framer-background-image-wrapper],
+      [data-framer-name="M1"] [data-framer-background-image-wrapper],
+      [data-framer-name="AI"] [data-framer-background-image-wrapper],
+      [data-framer-name="Booked"] [data-framer-background-image-wrapper] {
+        display: none !important;
+      }
+      [data-framer-name="graphic"],
+      [data-framer-name="M1"] {
+        background: radial-gradient(circle at 30% 25%, #2e2828 0%, #201a1a 65%) !important;
+        border-color: ${BORDER} !important;
+      }
+
+      /* ── Hero background image → hide, replace with solid Aumana dark ── */
+      .framer-WxcRn { background-color: ${D} !important; }
+      .framer-WxcRn .framer-15asv5r { display: none !important; }
+      .framer-WxcRn .framer-fcbkq9 { background: ${D} !important; opacity: 1 !important; }
+
+      /* ── Catch-all: any remaining image background wrappers in hero/main ── */
+      [data-framer-name="Hero"] [data-framer-background-image-wrapper],
+      [data-framer-name="Main"] [data-framer-background-image-wrapper] {
+        display: none !important;
+      }
+
+      /* ── Link colors: replace #09f blue with Aumana taupe ── */
+      * { --framer-link-text-color: ${T} !important; }
+
+      /* ── Fix remaining dark non-Aumana backgrounds ── */
+      [style*="background-color: rgb(15, 15, 15)"],
+      [style*="background-color: rgb(17, 17, 17)"],
+      [style*="background-color: rgb(33, 33, 33)"],
+      [style*="background: rgb(0, 0, 0)"]
+        { background-color: ${D} !important; }
 
       /* ── Footer fix ── */
       [data-framer-name="Footer"] {
