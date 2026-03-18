@@ -230,17 +230,36 @@ function Hero() {
 }
 
 /* ─── LOGO BAR ──────────────────────────────────── */
+const logoItems = [
+  { src: "/aumanaai/assets/0ca6d656_0gWvNBC942Bz1L9jtjcti8P2dc.png", alt: "Zapier",   h: 22 },
+  { src: "/aumanaai/assets/0ae003f5_MpPV0hHrnQpooUfNtAQQrX4TaM.png", alt: "VAPI",    h: 22 },
+  { src: "/aumanaai/assets/15d66a5d_J7r2wMLMyNR5qwbjHtz25FNb2Dc.png", alt: "Airtable", h: 24 },
+  { src: "/aumanaai/assets/50160c3c_AOY50cCj1eZYjnU4hr3Q32Pwv5g.png", alt: "HubSpot", h: 22 },
+  { txt: "Make" },
+  { txt: "OpenAI" },
+];
+
 function LogoBar() {
-  const logos = ["_Zapier", "VAPI", "⊞ Airtable", "HubSpot", "◎ Make", "○ OpenAI"];
   return (
-    <section style={{ borderTop: `1px solid ${C.border}`, borderBottom: `1px solid ${C.border}`, padding: "40px 24px" }}>
-      <p style={{ ...inter, fontSize: 11, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase", textAlign: "center", marginBottom: 24 }}>
+    <section style={{ padding: "40px 24px", background: C.dark }}>
+      <p style={{ ...inter, fontSize: 11, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase", textAlign: "center", marginBottom: 28 }}>
         Trusted by leading service brands, startups, and automation-driven companies
       </p>
       <div className="flex flex-wrap justify-center items-center gap-8 md:gap-14">
-        {logos.map((l) => (
-          <span key={l} style={{ ...inter, fontSize: 13, fontWeight: 500, color: C.taupe, opacity: 0.55 }}>{l}</span>
-        ))}
+        {logoItems.map((l, i) =>
+          l.src ? (
+            <img
+              key={i}
+              src={l.src}
+              alt={l.alt}
+              style={{ height: l.h, width: "auto", objectFit: "contain", filter: "brightness(0) invert(1)", opacity: 0.55 }}
+            />
+          ) : (
+            <span key={i} style={{ ...inter, fontSize: 13, fontWeight: 600, color: C.taupe, opacity: 0.55, letterSpacing: "0.04em" }}>
+              {l.txt}
+            </span>
+          )
+        )}
       </div>
     </section>
   );
@@ -271,26 +290,64 @@ function ChatMock() {
     { from: "a", text: "Hey! I'm Aria from Aumana. How can I help you today?" },
     { from: "u", text: "Hi, can you help me with an AI report?" },
     { from: "a", text: "Of course! I have an opening at 12 noon tomorrow. Can I get your address?" },
+    { from: "u", text: "Sure — 145 Oak Street, Suite 3." },
   ];
   return (
-    <div style={{ width: 240, margin: "0 auto", borderRadius: 20, border: `1px solid rgba(167,156,142,0.2)`, background: "#2a2222", padding: 14 }}>
-      <p style={{ ...inter, fontSize: 11, color: C.taupe, marginBottom: 12, fontWeight: 500 }}>Chat with Aria ·</p>
-      <div className="flex flex-col gap-2 mb-3">
+    <div style={{
+      width: 260, margin: "0 auto", borderRadius: 22,
+      border: `1px solid rgba(167,156,142,0.15)`,
+      background: "#1a1a1c",
+      overflow: "hidden",
+    }}>
+      {/* Header bar */}
+      <div style={{
+        padding: "10px 14px",
+        background: "#222224",
+        borderBottom: "1px solid rgba(255,255,255,0.06)",
+        display: "flex", alignItems: "center", gap: 8,
+      }}>
+        <div style={{ width: 28, height: 28, borderRadius: "50%", background: "rgba(167,156,142,0.2)", display: "flex", alignItems: "center", justifyContent: "center" }}>
+          <Bot size={13} color={C.taupe} />
+        </div>
+        <div>
+          <p style={{ ...inter, fontSize: 11, fontWeight: 600, color: C.white, margin: 0 }}>Aria · AI Receptionist</p>
+          <p style={{ ...inter, fontSize: 9, color: "#4ade80", margin: 0, display: "flex", alignItems: "center", gap: 3 }}>
+            <span style={{ width: 5, height: 5, borderRadius: "50%", background: "#4ade80", display: "inline-block" }} />
+            Online now
+          </p>
+        </div>
+      </div>
+
+      {/* Messages */}
+      <div style={{ padding: "12px 10px", display: "flex", flexDirection: "column", gap: 7, background: "#1a1a1c" }}>
         {msgs.map((m, i) => (
-          <div key={i} className={`flex ${m.from === "u" ? "justify-end" : "justify-start"}`}>
+          <div key={i} style={{ display: "flex", justifyContent: m.from === "u" ? "flex-end" : "flex-start" }}>
             <div style={{
-              ...inter, fontSize: 11, lineHeight: 1.5,
-              maxWidth: "80%", padding: "7px 10px", borderRadius: 14,
-              background: m.from === "u" ? C.taupe : "#332a2a",
-              color: m.from === "u" ? C.dark : C.linen,
+              fontFamily: "Inter, sans-serif", fontSize: 11, lineHeight: 1.55,
+              maxWidth: "78%", padding: "8px 11px",
+              borderRadius: m.from === "u" ? "14px 14px 4px 14px" : "14px 14px 14px 4px",
+              background: m.from === "u" ? "#2563eb" : "#2d2d30",
+              color: m.from === "u" ? "#ffffff" : "#d4d4d8",
             }}>{m.text}</div>
           </div>
         ))}
       </div>
-      <div style={{ border: `1px solid rgba(167,156,142,0.18)`, borderRadius: 99, padding: "7px 12px", display: "flex", alignItems: "center", gap: 6 }}>
-        <span style={{ ...inter, fontSize: 11, color: C.taupe, flex: 1 }}>Message</span>
-        <div style={{ width: 22, height: 22, borderRadius: "50%", background: C.taupe, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <span style={{ color: C.dark, fontSize: 12, lineHeight: 1 }}>↑</span>
+
+      {/* Input */}
+      <div style={{
+        padding: "8px 10px 10px",
+        background: "#1a1a1c",
+        borderTop: "1px solid rgba(255,255,255,0.05)",
+        display: "flex", alignItems: "center", gap: 6,
+      }}>
+        <div style={{
+          flex: 1, height: 30, background: "#2d2d30", borderRadius: 99,
+          padding: "0 10px", display: "flex", alignItems: "center",
+        }}>
+          <span style={{ fontFamily: "Inter, sans-serif", fontSize: 10, color: "#71717a" }}>Type a message…</span>
+        </div>
+        <div style={{ width: 26, height: 26, borderRadius: "50%", background: "#2563eb", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }}>
+          <span style={{ color: "#fff", fontSize: 11, lineHeight: 1 }}>↑</span>
         </div>
       </div>
     </div>
