@@ -541,9 +541,27 @@ const stats = [
 ];
 
 const testimonials = [
-  { q: "The AI receptionist handles 90% of our inbound calls now. Our team spends zero time on scheduling — it just happens automatically.", name: "Marcus T.", role: "Founder, MedSpa Studio" },
-  { q: "Three months in, we've doubled our booked consultations without adding a single team member.", name: "Priya S.", role: "CEO, LuxDerm Clinics" },
-  { q: "Aumana built everything in two weeks and it worked perfectly from day one. Full visibility into every interaction.", name: "Jordan K.", role: "Operations Lead, Scale Agency" },
+  {
+    q: "I was skeptical AI could actually replace a front desk — it exceeded every expectation. Our no-show rate dropped 40% in the first month alone. The voice agent is indistinguishable from a real person.",
+    name: "Marcus Reynolds",
+    role: "Founder, Revive MedSpa",
+    img: "https://randomuser.me/api/portraits/men/32.jpg",
+    stars: 5,
+  },
+  {
+    q: "We went from manually following up on 200+ leads a week to zero. Aumana built a system that qualifies, books, and reminds clients automatically. I genuinely can't imagine running the practice without it.",
+    name: "Priya Sharma",
+    role: "CEO, LuxDerm Clinics",
+    img: "https://randomuser.me/api/portraits/women/44.jpg",
+    stars: 5,
+  },
+  {
+    q: "Two weeks from kickoff to live. The dashboard gives us real-time visibility on every call and message — our team finally has data we can actually act on. ROI was clear within 30 days.",
+    name: "Jordan Kellerman",
+    role: "Operations Director, Scale Agency",
+    img: "https://randomuser.me/api/portraits/men/75.jpg",
+    stars: 5,
+  },
 ];
 
 function Results() {
@@ -624,17 +642,38 @@ function Results() {
               style={{
                 borderRadius: 24, border: `1px solid rgba(167,156,142,0.12)`,
                 background: C.card,
-                display: "flex", flexDirection: "column", justifyContent: "space-between",
+                display: "flex", flexDirection: "column",
               }}
               className="p-6 md:p-8"
             >
-              <div style={{ ...grotesk, fontSize: 52, color: "rgba(167,156,142,0.12)", lineHeight: 0.8, marginBottom: 16 }}>"</div>
-              <p style={{ ...inter, fontSize: 14, color: C.linen, fontWeight: 300, lineHeight: 1.75, marginBottom: 24, flex: 1 }}>
-                {t.q}
+              {/* Stars */}
+              <div style={{ display: "flex", gap: 3, marginBottom: 18 }}>
+                {Array.from({ length: t.stars }).map((_, si) => (
+                  <span key={si} style={{ color: "#a79c8e", fontSize: 14 }}>★</span>
+                ))}
+              </div>
+
+              {/* Quote */}
+              <p style={{ ...inter, fontSize: 14, color: C.linen, fontWeight: 300, lineHeight: 1.8, marginBottom: 28, flex: 1 }}>
+                "{t.q}"
               </p>
-              <div style={{ borderTop: `1px solid rgba(167,156,142,0.1)`, paddingTop: 14 }}>
-                <div style={{ ...inter, fontSize: 13, fontWeight: 500, color: C.white }}>{t.name}</div>
-                <div style={{ ...inter, fontSize: 12, color: C.taupe, marginTop: 2 }}>{t.role}</div>
+
+              {/* Profile */}
+              <div style={{ borderTop: `1px solid rgba(167,156,142,0.1)`, paddingTop: 16, display: "flex", alignItems: "center", gap: 12 }}>
+                <img
+                  src={t.img}
+                  alt={t.name}
+                  style={{
+                    width: 44, height: 44, borderRadius: "50%",
+                    objectFit: "cover",
+                    border: `2px solid rgba(167,156,142,0.2)`,
+                    flexShrink: 0,
+                  }}
+                />
+                <div>
+                  <div style={{ ...inter, fontSize: 13, fontWeight: 600, color: C.white }}>{t.name}</div>
+                  <div style={{ ...inter, fontSize: 12, color: C.taupe, marginTop: 2 }}>{t.role}</div>
+                </div>
               </div>
             </div>
           ))}
