@@ -255,22 +255,18 @@
       }
       .as-label { font-size: 12px; color: ${T}; font-weight: 300; line-height: 1.55; }
 
-      /* ════ HIDE ORIGINAL FRAMER LOGO ════ */
-      [data-framer-name="logo"],
-      a[data-framer-name="logo"] { display: none !important; }
+      /* ════ HIDE JUST THE LOGO IMAGE BOX (not the anchor itself) ════ */
+      [data-framer-name="Logo"],
+      .framer-15x9g5k { display: none !important; }
 
-      /* ════ AUMANA LOGO (injected via JS) ════ */
-      #aumana-logo-link {
+      /* ════ AUMANA LOGO ANCHOR — strip all Framer sizing constraints ════ */
+      a[data-framer-name="logo"] {
         display: flex !important; align-items: center !important;
         gap: 10px !important; text-decoration: none !important;
-        cursor: pointer !important; flex-shrink: 0 !important;
+        width: auto !important; height: auto !important;
+        overflow: visible !important; flex-shrink: 0 !important;
         padding: 0 !important; margin: 0 !important;
-      }
-      #aumana-logo-link span {
-        font-family: ${FONT} !important; font-weight: 700 !important;
-        font-size: 16px !important; color: ${W} !important;
-        letter-spacing: 0.18em !important; text-transform: uppercase !important;
-        white-space: nowrap !important;
+        background: transparent !important; border: none !important;
       }
     `;
     document.head.appendChild(s);
@@ -314,25 +310,34 @@
          Avoids ALL Framer CSS class constraints
   ═════════════════════════════════════════ */
   function replaceLogo() {
-    // Target the nav "left" group which contains the original logo link
-    var navLeft = document.querySelector('[data-framer-name="left"]');
-    if (!navLeft || navLeft._aumanaLogoSet) return;
-    navLeft._aumanaLogoSet = true;
+    // Work directly on the existing anchor – no sibling injection needed
+    var anchor = document.querySelector('a[data-framer-name="logo"]');
+    if (!anchor || anchor._aumanaLogoSet) return;
+    anchor._aumanaLogoSet = true;
 
-    // Hide the original Framer logo link entirely
-    var origLogoLink = navLeft.querySelector('[data-framer-name="logo"]') ||
-                       navLeft.querySelector('a');
-    if (origLogoLink) origLogoLink.style.display = 'none';
+    // Blow away all Framer inline constraints with our own inline styles
+    anchor.removeAttribute('style');
+    anchor.style.cssText = [
+      'display:flex',
+      'align-items:center',
+      'gap:10px',
+      'text-decoration:none',
+      'cursor:pointer',
+      'width:auto',
+      'height:auto',
+      'overflow:visible',
+      'flex-shrink:0',
+      'background:transparent',
+      'border:none',
+      'padding:0',
+      'position:relative',
+      'z-index:10'
+    ].join(';');
 
-    // Create a fresh <a> element with no Framer class constraints
-    var link = document.createElement('a');
-    link.id = 'aumana-logo-link';
-    link.href = './';
-    link.innerHTML = makeSunSVG(30) +
-      '<span>AUMANA</span>';
-
-    // Insert as the first child so it appears first
-    navLeft.insertBefore(link, navLeft.firstChild);
+    // Replace inner content – removes constrained image div completely
+    anchor.innerHTML =
+      makeSunSVG(30) +
+      '<span style="font-family:' + FONT + ';font-weight:700;font-size:16px;color:#ffffff;letter-spacing:0.18em;text-transform:uppercase;white-space:nowrap;">AUMANA</span>';
   }
 
   /* ════════════════════════════════════════
