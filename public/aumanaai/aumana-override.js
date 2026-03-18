@@ -3,7 +3,7 @@
   var D = '#201a1a', CARD = '#2a2222', CARD2 = '#252020',
       T = '#a79c8e', L = '#d2c6b6', W = '#ffffff',
       BORDER = 'rgba(167,156,142,0.18)', BORDERL = 'rgba(167,156,142,0.10)';
-  var FONT = "'Space Grotesk', sans-serif";
+  var FONT = "Inter, sans-serif";
 
   /* ════════════════════════════════════════
      1.  INJECT CSS
