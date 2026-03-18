@@ -389,13 +389,13 @@ function PhoneMock() {
 
   return (
     <div style={{
-      width: 260, margin: "0 auto", borderRadius: 22,
+      width: "min(360px, 90%)", margin: "0 auto", borderRadius: 28,
       border: "1px solid rgba(255,255,255,0.07)",
       background: "#18181b", overflow: "hidden",
-      boxShadow: "0 8px 40px rgba(0,0,0,0.45)",
+      boxShadow: "0 16px 60px rgba(0,0,0,0.55)",
     }}>
       {/* Call screen */}
-      <div style={{ padding: "20px 16px 16px", display: "flex", flexDirection: "column", gap: 6, minHeight: 260, position: "relative" }}>
+      <div style={{ padding: "28px 20px 20px", display: "flex", flexDirection: "column", gap: 8, minHeight: 320, position: "relative" }}>
 
         {/* Done screen */}
         {done && (
@@ -473,13 +473,13 @@ function ChatMock() {
 
   return (
     <div style={{
-      width: 260, margin: "0 auto", borderRadius: 22,
+      width: "min(360px, 90%)", margin: "0 auto", borderRadius: 28,
       border: "1px solid rgba(255,255,255,0.07)",
       background: "#18181b", overflow: "hidden",
-      boxShadow: "0 8px 40px rgba(0,0,0,0.45)",
+      boxShadow: "0 16px 60px rgba(0,0,0,0.55)",
     }}>
       {/* Messages */}
-      <div style={{ padding: "14px 10px 10px", display: "flex", flexDirection: "column", gap: 8, minHeight: 220 }}>
+      <div style={{ padding: "18px 14px 12px", display: "flex", flexDirection: "column", gap: 10, minHeight: 280 }}>
         {msgs.map((m, i) => (
           <Bubble key={i} from={m.from} text={m.text} visible={shown > i} />
         ))}
@@ -530,52 +530,50 @@ const frameworks = [
 
 function Frameworks() {
   return (
-    <section id="aumana-frameworks" style={{ padding: "96px 24px", background: C.dark }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        <div style={{ textAlign: "center", marginBottom: 72 }}>
-          <p style={{ ...inter, fontSize: 11, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 12 }}>Frameworks</p>
-          <h2 style={{ ...grotesk, fontSize: "clamp(2rem,4.5vw,3.5rem)", color: C.white, fontWeight: 700, margin: "0 0 12px" }}>
-            Built to automate.<br /><GradientText>Designed to perform.</GradientText>
-          </h2>
-          <p style={{ ...inter, fontSize: 15, color: C.taupe, fontWeight: 300, maxWidth: 500, margin: "0 auto", lineHeight: 1.7 }}>
-            Each framework is a building block of your AI infrastructure, designed to automate, connect, and scale your operations with precision.
-          </p>
-        </div>
+    <section id="aumana-frameworks" style={{ padding: "96px 0", background: C.dark }}>
+      <div style={{ textAlign: "center", marginBottom: 72, padding: "0 24px" }}>
+        <p style={{ ...inter, fontSize: 12, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 14 }}>Frameworks</p>
+        <h2 style={{ ...grotesk, fontSize: "clamp(2.4rem,5.5vw,4.2rem)", color: C.white, fontWeight: 700, margin: "0 0 16px" }}>
+          Built to automate.<br /><GradientText>Designed to perform.</GradientText>
+        </h2>
+        <p style={{ ...inter, fontSize: 18, color: C.taupe, fontWeight: 300, maxWidth: 560, margin: "0 auto", lineHeight: 1.7 }}>
+          Each framework is a building block of your AI infrastructure, designed to automate, connect, and scale your operations with precision.
+        </p>
+      </div>
 
-        <div className="flex flex-col gap-6">
-          {frameworks.map((fw, idx) => (
-            <div
-              key={idx}
-              style={{ borderRadius: 24, background: C.card, padding: "40px 48px" }}
-              className={`flex flex-col ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-10`}
-            >
-              <div className="w-full md:w-2/5 flex justify-center">
-                {fw.visual === "phone" ? <PhoneMock /> : <ChatMock />}
-              </div>
-              <div className="w-full md:w-3/5">
-                <span style={{
-                  ...inter, fontSize: 11, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase",
-                  padding: "5px 12px", borderRadius: 99, border: `1px solid rgba(167,156,142,0.2)`,
-                  display: "inline-block", marginBottom: 16,
-                }}>{fw.badge}</span>
-                <h3 style={{ ...grotesk, fontSize: "clamp(1.3rem,2.5vw,1.9rem)", color: C.white, fontWeight: 700, marginBottom: 28, lineHeight: 1.3 }}>
-                  {fw.title}
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                  {fw.features.map((f, fi) => (
-                    <div key={fi}>
-                      <div className="flex items-center gap-2 mb-1">
-                        <span style={{ color: C.taupe }}>{f.icon}</span>
-                        <span style={{ ...inter, fontSize: 13, fontWeight: 500, color: C.white }}>{f.name}</span>
-                      </div>
-                      <p style={{ ...inter, fontSize: 12, color: C.taupe, fontWeight: 300, lineHeight: 1.6, paddingLeft: 20, margin: 0 }}>{f.desc}</p>
+      <div className="flex flex-col" style={{ gap: 80 }}>
+        {frameworks.map((fw, idx) => (
+          <div
+            key={idx}
+            style={{ padding: "0 32px" }}
+            className={`flex flex-col ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-12`}
+          >
+            <div className="w-full md:w-1/2 flex justify-center">
+              {fw.visual === "phone" ? <PhoneMock /> : <ChatMock />}
+            </div>
+            <div className="w-full md:w-1/2">
+              <span style={{
+                ...inter, fontSize: 11, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase",
+                padding: "5px 12px", borderRadius: 99, border: `1px solid rgba(167,156,142,0.2)`,
+                display: "inline-block", marginBottom: 20,
+              }}>{fw.badge}</span>
+              <h3 style={{ ...grotesk, fontSize: "clamp(1.8rem,3.5vw,2.8rem)", color: C.white, fontWeight: 700, marginBottom: 32, lineHeight: 1.2 }}>
+                {fw.title}
+              </h3>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {fw.features.map((f, fi) => (
+                  <div key={fi}>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span style={{ color: C.taupe }}>{f.icon}</span>
+                      <span style={{ ...inter, fontSize: 15, fontWeight: 500, color: C.white }}>{f.name}</span>
                     </div>
-                  ))}
-                </div>
+                    <p style={{ ...inter, fontSize: 14, color: C.taupe, fontWeight: 300, lineHeight: 1.6, paddingLeft: 22, margin: 0 }}>{f.desc}</p>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
     </section>
   );
@@ -647,90 +645,56 @@ function HowWeWork() {
   return (
     <section
       id="aumana-how"
-      style={{
-        padding: "0 24px 96px",
-        background: C.dark,
-      }}
+      style={{ padding: "0 32px 96px", background: C.dark }}
     >
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
-        {/* Label */}
-        <p
-          style={{
-            ...inter, fontSize: 11, color: C.taupe,
-            letterSpacing: "0.15em", textTransform: "uppercase",
-            textAlign: "center", marginBottom: 56,
-          }}
-        >
-          How It Works
-        </p>
+      <p style={{
+        ...inter, fontSize: 12, color: C.taupe,
+        letterSpacing: "0.15em", textTransform: "uppercase",
+        textAlign: "center", marginBottom: 64,
+      }}>
+        How It Works
+      </p>
 
-        {/* Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
-          {hwwSteps.map((step, i) => (
-            <div
-              key={i}
-              style={{
-                borderRadius: 24,
-                background: "#181212",
-                padding: "36px 36px",
-                position: "relative",
-                overflow: "hidden",
-                transition: "transform 0.3s ease",
-              }}
-              className="group flex flex-col justify-start md:justify-end md:[aspect-ratio:1/1] hover:-translate-y-1"
-            >
-              {/* ambient glow top-right */}
-              <div style={{
-                position: "absolute", top: 0, right: 0,
-                width: 180, height: 180, borderRadius: "50%",
-                background: "radial-gradient(circle, rgba(167,156,142,0.06) 0%, transparent 70%)",
-                pointerEvents: "none",
-              }} />
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-start">
+        {hwwSteps.map((step, i) => (
+          <div key={i} className="flex flex-col">
+            <span style={{
+              ...inter, fontSize: 12, fontWeight: 700,
+              background: "rgba(34,197,94,0.15)",
+              border: "1px solid rgba(34,197,94,0.35)",
+              color: "#4ade80",
+              padding: "5px 14px",
+              borderRadius: 8,
+              display: "inline-block",
+              marginBottom: 24,
+              width: "fit-content",
+            }}>
+              {step.num}
+            </span>
 
-              <span
-                style={{
-                  ...inter, fontSize: 12, fontWeight: 700,
-                  background: "rgba(34,197,94,0.15)",
-                  border: "1px solid rgba(34,197,94,0.35)",
-                  color: "#4ade80",
-                  padding: "5px 14px",
-                  borderRadius: 8,
-                  display: "inline-block",
-                  marginBottom: 24,
-                  width: "fit-content",
-                }}
-              >
-                {step.num}
-              </span>
+            <h3 style={{
+              ...inter,
+              fontSize: "clamp(1.6rem, 3vw, 2.4rem)",
+              fontWeight: 700,
+              color: C.white,
+              lineHeight: 1.15,
+              marginBottom: 16,
+            }}>
+              {step.title}
+            </h3>
 
-              <h3
-                style={{
-                  ...inter,
-                  fontSize: "clamp(1.5rem, 2.8vw, 2rem)",
-                  fontWeight: 700,
-                  color: C.white,
-                  lineHeight: 1.15,
-                  marginBottom: 16,
-                }}
-              >
-                {step.title}
-              </h3>
-
-              <p
-                style={{
-                  ...inter,
-                  fontSize: 14,
-                  color: "rgba(167,156,142,0.7)",
-                  fontWeight: 300,
-                  lineHeight: 1.7,
-                  margin: 0,
-                }}
-              >
-                {step.desc}
-              </p>
-            </div>
-          ))}
-        </div>
+            <p style={{
+              ...inter,
+              fontSize: 16,
+              color: "rgba(167,156,142,0.7)",
+              fontWeight: 300,
+              lineHeight: 1.7,
+              margin: 0,
+            }}>
+              {step.desc}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );
@@ -771,119 +735,86 @@ const testimonials = [
 
 function Results() {
   return (
-    <section id="aumana-results" style={{ background: C.dark }} className="px-5 py-16 md:py-24 md:px-6">
-      <div style={{ maxWidth: 1100, margin: "0 auto" }}>
+    <section id="aumana-results" style={{ background: C.dark, padding: "96px 32px" }}>
 
-        {/* Header */}
-        <div style={{ textAlign: "center", marginBottom: 72 }}>
-          <p style={{ ...inter, fontSize: 11, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 12 }}>Results</p>
-          <h2 style={{ ...grotesk, fontSize: "clamp(2rem,4.5vw,3.5rem)", color: C.white, fontWeight: 700, margin: "0 0 12px" }}>
-            Numbers don't lie.<br /><GradientText>Performance does.</GradientText>
-          </h2>
-          <p style={{ ...inter, fontSize: 15, color: C.taupe, fontWeight: 300, maxWidth: 460, margin: "0 auto", lineHeight: 1.7 }}>
-            Real outcomes from real clients. Every number below came from a business that trusted the process.
-          </p>
-        </div>
+      {/* Header */}
+      <div style={{ textAlign: "center", marginBottom: 80 }}>
+        <p style={{ ...inter, fontSize: 12, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 14 }}>Results</p>
+        <h2 style={{ ...grotesk, fontSize: "clamp(2.4rem,5.5vw,4.2rem)", color: C.white, fontWeight: 700, margin: "0 0 16px" }}>
+          Numbers don't lie.<br /><GradientText>Performance does.</GradientText>
+        </h2>
+        <p style={{ ...inter, fontSize: 18, color: C.taupe, fontWeight: 300, maxWidth: 500, margin: "0 auto", lineHeight: 1.7 }}>
+          Real outcomes from real clients. Every number below came from a business that trusted the process.
+        </p>
+      </div>
 
-        {/* Big stats card */}
-        <div
-          style={{ borderRadius: 24, background: C.card, marginBottom: 8 }}
-          className="flex flex-col md:flex-row items-start gap-8 p-6 md:p-12"
+      {/* Stats grid */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-16" style={{ marginBottom: 96 }}>
+        {stats.map((s, i) => (
+          <div key={i} style={{ textAlign: "center" }}>
+            <div style={{
+              ...grotesk, fontSize: "clamp(2.8rem,6vw,5rem)", fontWeight: 700, marginBottom: 12, lineHeight: 1,
+              background: "linear-gradient(135deg,#d2c6b6 0%,#a79c8e 50%,#fff 100%)",
+              WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
+            }}>{s.v}</div>
+            <p style={{ ...inter, fontSize: 14, color: C.taupe, fontWeight: 300, lineHeight: 1.6, margin: 0 }}>{s.l}</p>
+          </div>
+        ))}
+      </div>
+
+      {/* CTA row */}
+      <div style={{ textAlign: "center", marginBottom: 96 }}>
+        <h3 style={{ ...grotesk, fontSize: "clamp(1.6rem,3vw,2.4rem)", color: C.white, fontWeight: 700, lineHeight: 1.2, marginBottom: 20, maxWidth: 700, margin: "0 auto 20px" }}>
+          Clients see results within the first 30 days — or we keep working until they do.
+        </h3>
+        <p style={{ ...inter, fontSize: 16, color: C.taupe, fontWeight: 300, lineHeight: 1.75, marginBottom: 32, maxWidth: 560, margin: "0 auto 32px" }}>
+          Every stat above is pulled from active client accounts. We don't pad numbers — we build systems that produce them.
+        </p>
+        <a
+          href="#aumana-contact"
+          style={{
+            ...inter, fontSize: 16, fontWeight: 700,
+            background: C.linen, color: C.dark, textDecoration: "none",
+            padding: "17px 40px", borderRadius: 99,
+            display: "inline-flex", alignItems: "center", gap: 8,
+          }}
         >
-          {/* Left: stat grid */}
-          <div className="w-full md:w-1/2 grid grid-cols-2 gap-3">
-            {stats.map((s, i) => (
-              <div
-                key={i}
-                style={{
-                  borderRadius: 16,
-                  background: "#201a1a",
-                }}
-                className="p-4 md:p-6"
-              >
-                <div style={{
-                  ...grotesk, fontSize: "clamp(1.8rem,4vw,2.8rem)", fontWeight: 700, marginBottom: 8, lineHeight: 1,
-                  background: "linear-gradient(135deg,#d2c6b6 0%,#a79c8e 50%,#fff 100%)",
-                  WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text",
-                }}>{s.v}</div>
-                <p style={{ ...inter, fontSize: 11, color: C.taupe, fontWeight: 300, lineHeight: 1.6, margin: 0 }}>{s.l}</p>
-              </div>
-            ))}
-          </div>
+          Get These Results <span style={{ fontSize: 16 }}>→</span>
+        </a>
+      </div>
 
-          {/* Right: copy */}
-          <div className="w-full md:w-1/2">
-            <span style={{
-              ...inter, fontSize: 11, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase",
-              padding: "5px 12px", borderRadius: 99, border: `1px solid rgba(167,156,142,0.2)`,
-              display: "inline-block", marginBottom: 16,
-            }}>Proven Track Record</span>
-            <h3 style={{ ...grotesk, fontSize: "clamp(1.3rem,2.5vw,2rem)", color: C.white, fontWeight: 700, lineHeight: 1.2, marginBottom: 16 }}>
-              Clients see results within the first 30 days — or we keep working until they do.
-            </h3>
-            <p style={{ ...inter, fontSize: 14, color: C.taupe, fontWeight: 300, lineHeight: 1.75, marginBottom: 24 }}>
-              Every stat above is pulled from active client accounts. We don't pad numbers — we build systems that produce them.
+      {/* Testimonials */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        {testimonials.map((t, i) => (
+          <div key={i} style={{ display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", gap: 3, marginBottom: 20 }}>
+              {Array.from({ length: t.stars }).map((_, si) => (
+                <span key={si} style={{ color: "#a79c8e", fontSize: 16 }}>★</span>
+              ))}
+            </div>
+            <p style={{ ...inter, fontSize: 16, color: C.linen, fontWeight: 300, lineHeight: 1.8, marginBottom: 28, flex: 1 }}>
+              "{t.q}"
             </p>
-            <a
-              href="#aumana-contact"
-              style={{
-                ...inter, fontSize: 15, fontWeight: 700,
-                background: C.linen, color: C.dark, textDecoration: "none",
-                padding: "15px 32px", borderRadius: 99,
-                display: "inline-flex", alignItems: "center", gap: 8,
-              }}
-            >
-              Get These Results <span style={{ fontSize: 15 }}>→</span>
-            </a>
-          </div>
-        </div>
-
-        {/* Testimonials */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-          {testimonials.map((t, i) => (
-            <div
-              key={i}
-              style={{
-                borderRadius: 24,
-                background: C.card,
-                display: "flex", flexDirection: "column",
-              }}
-              className="p-6 md:p-8"
-            >
-              {/* Stars */}
-              <div style={{ display: "flex", gap: 3, marginBottom: 18 }}>
-                {Array.from({ length: t.stars }).map((_, si) => (
-                  <span key={si} style={{ color: "#a79c8e", fontSize: 14 }}>★</span>
-                ))}
-              </div>
-
-              {/* Quote */}
-              <p style={{ ...inter, fontSize: 14, color: C.linen, fontWeight: 300, lineHeight: 1.8, marginBottom: 28, flex: 1 }}>
-                "{t.q}"
-              </p>
-
-              {/* Profile */}
-              <div style={{ paddingTop: 16, display: "flex", alignItems: "center", gap: 12 }}>
-                <img
-                  src={t.img}
-                  alt={t.name}
-                  style={{
-                    width: 44, height: 44, borderRadius: "50%",
-                    objectFit: "cover",
-                    border: `2px solid rgba(167,156,142,0.2)`,
-                    flexShrink: 0,
-                  }}
-                />
-                <div>
-                  <div style={{ ...inter, fontSize: 13, fontWeight: 600, color: C.white }}>{t.name}</div>
-                  <div style={{ ...inter, fontSize: 12, color: C.taupe, marginTop: 2 }}>{t.role}</div>
-                </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <img
+                src={t.img}
+                alt={t.name}
+                style={{
+                  width: 48, height: 48, borderRadius: "50%",
+                  objectFit: "cover",
+                  border: `2px solid rgba(167,156,142,0.2)`,
+                  flexShrink: 0,
+                }}
+              />
+              <div>
+                <div style={{ ...inter, fontSize: 15, fontWeight: 600, color: C.white }}>{t.name}</div>
+                <div style={{ ...inter, fontSize: 13, color: C.taupe, marginTop: 2 }}>{t.role}</div>
               </div>
             </div>
-          ))}
-        </div>
-
+          </div>
+        ))}
       </div>
+
     </section>
   );
 }
@@ -891,29 +822,27 @@ function Results() {
 /* ─── CTA ───────────────────────────────────────── */
 function CTA() {
   return (
-    <section id="aumana-contact" style={{ padding: "96px 24px", background: C.dark }}>
-      <div style={{ maxWidth: 860, margin: "0 auto", borderRadius: 28, background: C.card, padding: "80px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
-        <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "radial-gradient(ellipse at 50% 0%, rgba(167,156,142,0.1) 0%, transparent 60%)" }} />
-        <p style={{ ...inter, fontSize: 11, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 12 }}>Get Started</p>
-        <h2 style={{ ...grotesk, fontSize: "clamp(2rem,5vw,3.5rem)", color: C.white, fontWeight: 700, lineHeight: 1.15, margin: "0 0 16px" }}>
-          Ready to automate<br /><GradientText>your growth?</GradientText>
-        </h2>
-        <p style={{ ...inter, fontSize: 15, color: C.taupe, fontWeight: 300, maxWidth: 440, margin: "0 auto 36px", lineHeight: 1.7 }}>
-          Book a free strategy call. We'll show you exactly where AI can save your team time and grow your revenue — no fluff, just results.
-        </p>
-        <a
-          href="mailto:hello@aumanaconsulting.com"
-          style={{
-            ...inter, fontSize: 15, fontWeight: 700,
-            background: C.linen, color: C.dark, textDecoration: "none",
-            padding: "17px 44px", borderRadius: 99,
-            display: "inline-flex", alignItems: "center", gap: 10,
-          }}
-        >
-          Book a Free Consultation <span style={{ fontSize: 16 }}>→</span>
-        </a>
-        <p style={{ ...inter, fontSize: 12, color: "rgba(167,156,142,0.45)", marginTop: 20 }}>No commitment. No contracts until you're ready.</p>
-      </div>
+    <section id="aumana-contact" style={{ padding: "96px 32px", background: C.dark, textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "radial-gradient(ellipse at 50% 0%, rgba(167,156,142,0.08) 0%, transparent 60%)" }} />
+      <p style={{ ...inter, fontSize: 12, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 16 }}>Get Started</p>
+      <h2 style={{ ...grotesk, fontSize: "clamp(2.4rem,6vw,5rem)", color: C.white, fontWeight: 700, lineHeight: 1.1, margin: "0 0 20px" }}>
+        Ready to automate<br /><GradientText>your growth?</GradientText>
+      </h2>
+      <p style={{ ...inter, fontSize: 18, color: C.taupe, fontWeight: 300, maxWidth: 500, margin: "0 auto 40px", lineHeight: 1.7 }}>
+        Book a free strategy call. We'll show you exactly where AI can save your team time and grow your revenue — no fluff, just results.
+      </p>
+      <a
+        href="mailto:hello@aumanaconsulting.com"
+        style={{
+          ...inter, fontSize: 17, fontWeight: 700,
+          background: C.linen, color: C.dark, textDecoration: "none",
+          padding: "18px 52px", borderRadius: 99,
+          display: "inline-flex", alignItems: "center", gap: 10,
+        }}
+      >
+        Book a Free Consultation <span style={{ fontSize: 17 }}>→</span>
+      </a>
+      <p style={{ ...inter, fontSize: 13, color: "rgba(167,156,142,0.45)", marginTop: 24 }}>No commitment. No contracts until you're ready.</p>
     </section>
   );
 }
