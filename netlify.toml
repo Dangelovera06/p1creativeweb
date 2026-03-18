@@ -1,8 +1,22 @@
+[build]
+  publish = "dist"
+  command = "npm run build"
+
+# Static subdirectory — serve as-is, don't rewrite to React index.html
+[[redirects]]
+  from = "/aumanaai"
+  to = "/aumanaai/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/aumanaai/*"
+  to = "/aumanaai/:splat"
+  status = 200
+  force = true
+
+# React SPA fallback — must come last
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-
-[build]
-  publish = "dist"
-  command = "npm run build"
