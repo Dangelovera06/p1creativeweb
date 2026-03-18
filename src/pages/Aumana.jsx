@@ -61,7 +61,7 @@ function Navbar() {
 
   return (
     <nav
-      style={{ background: "rgba(32,26,26,0.92)", backdropFilter: "blur(16px)", borderBottom: `1px solid ${C.border}` }}
+      style={{ background: "rgba(32,26,26,0.92)", backdropFilter: "blur(16px)" }}
       className="fixed top-0 left-0 right-0 z-50"
     >
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -110,7 +110,7 @@ function Navbar() {
 
       {open && (
         <div
-          style={{ borderTop: `1px solid ${C.border}`, background: C.dark }}
+          style={{ background: C.dark }}
           className="md:hidden px-6 py-4 flex flex-col gap-4"
         >
           {links.map((l) => (
@@ -546,7 +546,7 @@ function Frameworks() {
           {frameworks.map((fw, idx) => (
             <div
               key={idx}
-              style={{ borderRadius: 24, border: `1px solid rgba(167,156,142,0.12)`, background: C.card, padding: "40px 48px" }}
+              style={{ borderRadius: 24, background: C.card, padding: "40px 48px" }}
               className={`flex flex-col ${idx % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-10`}
             >
               <div className="w-full md:w-2/5 flex justify-center">
@@ -671,14 +671,13 @@ function HowWeWork() {
               key={i}
               style={{
                 borderRadius: 24,
-                border: `1px solid rgba(167,156,142,0.13)`,
                 background: "#181212",
                 padding: "36px 36px",
                 position: "relative",
                 overflow: "hidden",
-                transition: "transform 0.3s ease, border-color 0.3s ease",
+                transition: "transform 0.3s ease",
               }}
-              className="group flex flex-col justify-start md:justify-end md:[aspect-ratio:1/1] hover:-translate-y-1 hover:border-[rgba(167,156,142,0.3)]"
+              className="group flex flex-col justify-start md:justify-end md:[aspect-ratio:1/1] hover:-translate-y-1"
             >
               {/* ambient glow top-right */}
               <div style={{
@@ -772,7 +771,7 @@ const testimonials = [
 
 function Results() {
   return (
-    <section id="aumana-results" style={{ borderTop: `1px solid rgba(167,156,142,0.08)`, background: C.dark }} className="px-5 py-16 md:py-24 md:px-6">
+    <section id="aumana-results" style={{ background: C.dark }} className="px-5 py-16 md:py-24 md:px-6">
       <div style={{ maxWidth: 1100, margin: "0 auto" }}>
 
         {/* Header */}
@@ -788,7 +787,7 @@ function Results() {
 
         {/* Big stats card */}
         <div
-          style={{ borderRadius: 24, border: `1px solid rgba(167,156,142,0.12)`, background: C.card, marginBottom: 8 }}
+          style={{ borderRadius: 24, background: C.card, marginBottom: 8 }}
           className="flex flex-col md:flex-row items-start gap-8 p-6 md:p-12"
         >
           {/* Left: stat grid */}
@@ -798,7 +797,6 @@ function Results() {
                 key={i}
                 style={{
                   borderRadius: 16,
-                  border: `1px solid rgba(167,156,142,0.1)`,
                   background: "#201a1a",
                 }}
                 className="p-4 md:p-6"
@@ -846,7 +844,7 @@ function Results() {
             <div
               key={i}
               style={{
-                borderRadius: 24, border: `1px solid rgba(167,156,142,0.12)`,
+                borderRadius: 24,
                 background: C.card,
                 display: "flex", flexDirection: "column",
               }}
@@ -865,7 +863,7 @@ function Results() {
               </p>
 
               {/* Profile */}
-              <div style={{ borderTop: `1px solid rgba(167,156,142,0.1)`, paddingTop: 16, display: "flex", alignItems: "center", gap: 12 }}>
+              <div style={{ paddingTop: 16, display: "flex", alignItems: "center", gap: 12 }}>
                 <img
                   src={t.img}
                   alt={t.name}
@@ -894,7 +892,7 @@ function Results() {
 function CTA() {
   return (
     <section id="aumana-contact" style={{ padding: "96px 24px", background: C.dark }}>
-      <div style={{ maxWidth: 860, margin: "0 auto", borderRadius: 28, border: `1px solid rgba(167,156,142,0.2)`, background: C.card, padding: "80px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
+      <div style={{ maxWidth: 860, margin: "0 auto", borderRadius: 28, background: C.card, padding: "80px 48px", textAlign: "center", position: "relative", overflow: "hidden" }}>
         <div style={{ position: "absolute", inset: 0, pointerEvents: "none", background: "radial-gradient(ellipse at 50% 0%, rgba(167,156,142,0.1) 0%, transparent 60%)" }} />
         <p style={{ ...inter, fontSize: 11, color: C.taupe, letterSpacing: "0.15em", textTransform: "uppercase", marginBottom: 12 }}>Get Started</p>
         <h2 style={{ ...grotesk, fontSize: "clamp(2rem,5vw,3.5rem)", color: C.white, fontWeight: 700, lineHeight: 1.15, margin: "0 0 16px" }}>
@@ -923,7 +921,7 @@ function CTA() {
 /* ─── FOOTER ────────────────────────────────────── */
 function Footer() {
   return (
-    <footer style={{ borderTop: `1px solid rgba(167,156,142,0.1)`, padding: "40px 24px", background: C.dark }}>
+    <footer style={{ padding: "40px 24px", background: C.dark }}>
       <div style={{ maxWidth: 1100, margin: "0 auto" }} className="flex flex-col md:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-2">
           <SunLogo size={18} color={C.taupe} opacity={0.5} />
