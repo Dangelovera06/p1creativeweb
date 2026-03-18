@@ -832,7 +832,9 @@ function CTA() {
         Book a free strategy call. We'll show you exactly where AI can save your team time and grow your revenue — no fluff, just results.
       </p>
       <a
-        href="mailto:hello@aumanaconsulting.com"
+        href="https://calendly.com/dangelovera2024/30min"
+        target="_blank"
+        rel="noopener noreferrer"
         style={{
           ...inter, fontSize: 17, fontWeight: 700,
           background: C.linen, color: C.dark, textDecoration: "none",
