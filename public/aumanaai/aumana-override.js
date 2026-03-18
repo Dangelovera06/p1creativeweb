@@ -355,10 +355,6 @@
       { img: BASE + '0ae003f5_MpPV0hHrnQpooUfNtAQQrX4TaM.png',  alt: 'VAPI',      h: 28 },
       { img: BASE + '15d66a5d_J7r2wMLMyNR5qwbjHtz25FNb2Dc.png', alt: 'Airtable',  h: 30 },
       { img: BASE + '50160c3c_AOY50cCj1eZYjnU4hr3Q32Pwv5g.png', alt: 'HubSpot',   h: 28 },
-      { txt: 'Make',     letter: 'M' },
-      { txt: 'OpenAI',   letter: 'O' },
-      { txt: 'Calendly', letter: 'C' },
-      { txt: 'GHL',      letter: 'G' }
     ];
 
     var div = document.createElement('div');
