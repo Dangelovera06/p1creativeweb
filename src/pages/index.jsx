@@ -12,6 +12,7 @@ import Education from "./Education";
 import Offer2026 from "./Offer2026";
 import PipelineX from "./PipelineX";
 import PrivacyPolicy from "./PrivacyPolicy";
+import P1Creative from "./P1Creative";
 
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
@@ -29,7 +30,8 @@ const PAGES = {
     Offer2026: Offer2026,
     PipelineX: PipelineX,
     PrivacyPolicy: PrivacyPolicy,
-    
+    P1Creative: P1Creative,
+
 }
 
 function _getCurrentPage(url) {
@@ -82,6 +84,11 @@ function PagesContent() {
                 <Route path="/pipeline" element={<PipelineX />} />
                 <Route path="/privacy-policy" element={<PrivacyPolicy />} />
                 <Route path="/privacy" element={<PrivacyPolicy />} />
+                <Route path="/p1.creative" element={<P1Creative />} />
+                <Route path="/p1-creative" element={<P1Creative />} />
+                <Route path="/p1creative" element={<P1Creative />} />
+                <Route path="/newwave" element={<P1Creative />} />
+                <Route path="/training" element={<P1Creative />} />
                 
             </Routes>
         </Layout>
