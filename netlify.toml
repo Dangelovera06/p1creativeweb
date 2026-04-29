@@ -15,6 +15,19 @@
   status = 200
   force = true
 
+# p1.creative static subdirectory
+[[redirects]]
+  from = "/p1.creative"
+  to = "/p1.creative/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/p1.creative/*"
+  to = "/p1.creative/:splat"
+  status = 200
+  force = true
+
 # React SPA fallback — must come last
 [[redirects]]
   from = "/*"
