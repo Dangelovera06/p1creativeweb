@@ -1,10 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { CheckCircle, X, ArrowRight, Lock } from "lucide-react";
+import { CheckCircle, X, ArrowRight } from "lucide-react";
 
 const CALENDLY_LINK = "https://calendly.com/p1creative/30min";
-const TRAINING_DATE = "May 5th, 2026 · 7:00 PM EST";
 
 export default function P1Creative() {
   return (
@@ -18,7 +17,7 @@ export default function P1Creative() {
             className="h-8 sm:h-10 md:h-12 w-auto"
           />
           <div className="hidden md:block text-xs font-medium tracking-wider text-white/30 uppercase">
-            Free Live Training
+            Creative · Content · Conversion
           </div>
           <a
             href={CALENDLY_LINK}
@@ -26,12 +25,12 @@ export default function P1Creative() {
             rel="noopener noreferrer"
             className="text-sm text-white/40 hover:text-white/70 transition-colors"
           >
-            Questions?
+            Book a Call
           </a>
         </div>
       </header>
 
-      {/* HERO — Brez-style: portrait → live pill → headline → CTA → avatar stack */}
+      {/* HERO */}
       <section className="relative pt-24 sm:pt-28 pb-20 sm:pb-28 overflow-hidden">
         {/* Background video */}
         <video
@@ -61,20 +60,17 @@ export default function P1Creative() {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-1 -right-1 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#006eff] border-4 border-black flex items-center justify-center">
-              <span className="w-2 h-2 bg-white rounded-full animate-pulse" />
-            </div>
           </motion.div>
 
-          {/* Live Pill */}
+          {/* Pill */}
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#006eff]/15 border border-[#006eff]/40 rounded-full text-xs font-bold tracking-widest text-[#006eff] uppercase mb-6"
           >
-            <span className="w-2 h-2 bg-[#006eff] rounded-full animate-pulse" />
-            Live · May 5
+            <span className="w-2 h-2 bg-[#006eff] rounded-full" />
+            P1 Creative
           </motion.div>
 
           {/* Headline */}
@@ -84,20 +80,20 @@ export default function P1Creative() {
             transition={{ duration: 0.6, delay: 0.15 }}
             className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tight leading-[0.92] mb-5"
           >
-            THE NEW{" "}
+            BOOKED OUT.{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#006eff] to-[#0099ff]">
-              WAVE
+              ON REPEAT.
             </span>
           </motion.h1>
 
-          {/* Subheading — date/time */}
+          {/* Subheading */}
           <motion.p
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.25 }}
             className="text-xs sm:text-sm font-bold tracking-[0.25em] text-white/50 uppercase mb-8"
           >
-            Live Training · {TRAINING_DATE}
+            Paid Social · Cinematic Content · Automated Booking
           </motion.p>
 
           {/* Body Copy */}
@@ -107,7 +103,7 @@ export default function P1Creative() {
             transition={{ duration: 0.5, delay: 0.3 }}
             className="text-lg sm:text-xl text-white/75 max-w-2xl mx-auto mb-3 font-medium leading-snug"
           >
-            AI completely changed my brand-scaling business.
+            We build the system that fills your calendar and keeps it full.
           </motion.p>
           <motion.p
             initial={{ opacity: 0, y: 10 }}
@@ -115,8 +111,8 @@ export default function P1Creative() {
             transition={{ duration: 0.5, delay: 0.35 }}
             className="text-base sm:text-lg text-white/55 max-w-2xl mx-auto mb-10"
           >
-            In under 60 minutes, I'll give you the blueprint — how I cut my team from 7 to
-            2, stopped trading time for money, and built a system that compounds.
+            Cinematic content, paid ads that convert, and AI follow-up that books for you —
+            engineered for local service businesses ready to dominate their market.
           </motion.p>
 
           {/* CTA */}
@@ -127,15 +123,10 @@ export default function P1Creative() {
             href={CALENDLY_LINK}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex flex-col items-center gap-1 px-10 py-5 bg-gradient-to-r from-[#006eff] to-[#0080ff] rounded-xl font-black text-base sm:text-lg shadow-xl shadow-[#006eff]/40 hover:shadow-[#006eff]/60 hover:scale-[1.02] transition-all"
+            className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-[#006eff] to-[#0080ff] rounded-xl font-black text-base sm:text-lg shadow-xl shadow-[#006eff]/40 hover:shadow-[#006eff]/60 hover:scale-[1.02] transition-all tracking-wide"
           >
-            <span className="flex items-center gap-3 tracking-wide">
-              SAVE MY FREE SPOT
-              <ArrowRight className="w-5 h-5" />
-            </span>
-            <span className="text-[10px] sm:text-xs font-bold tracking-[0.2em] text-white/80 uppercase">
-              {TRAINING_DATE}
-            </span>
+            BOOK A CALL
+            <ArrowRight className="w-5 h-5" />
           </motion.a>
 
           {/* Social Proof — avatar stack */}
@@ -160,13 +151,13 @@ export default function P1Creative() {
               ))}
             </div>
             <span className="text-sm text-white/60">
-              <span className="font-bold text-white">2,847+</span> already registered
+              Trusted by businesses across the country
             </span>
           </motion.div>
         </div>
       </section>
 
-      {/* What You'll Learn */}
+      {/* What We Do */}
       <section className="py-20 sm:py-28 border-y border-white/5 bg-white/[0.02]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -177,10 +168,10 @@ export default function P1Creative() {
             className="text-center mb-16"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full text-xs text-white/40 uppercase tracking-wider mb-4">
-              The Blueprint
+              The System
             </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight">
-              WHAT YOU'LL <span className="text-[#006eff]">LEARN</span>
+              WHAT WE <span className="text-[#006eff]">DO</span>
             </h2>
           </motion.div>
 
@@ -188,21 +179,21 @@ export default function P1Creative() {
             {[
               {
                 tag: "01",
-                title: "THE OPPORTUNITY",
+                title: "CINEMATIC CONTENT",
                 desc:
-                  "Why the one-person AI business is the biggest market opportunity of the decade — and what early entrants are doing to lock in their seat.",
+                  "Lighting, framing, audio, edit. The kind of content that stops the scroll and makes your business feel like the obvious choice in your market.",
               },
               {
                 tag: "02",
-                title: "THE SYSTEM",
+                title: "PAID ADS THAT CONVERT",
                 desc:
-                  "The exact plug-and-play framework I use to deliver AI-powered marketing services without burning out, hiring, or guessing.",
+                  "Hyper-local targeting, hooks that earn attention, offers that actually move people off the fence — built around the metrics that matter.",
               },
               {
                 tag: "03",
-                title: "THE LOOPHOLE",
+                title: "AI BOOKING ENGINE",
                 desc:
-                  "Every business owner needs marketing. AI now lets one person fulfill what used to take a team. Here's how to position yourself.",
+                  "Instant lead response, smart follow-up sequences, and self-booking calendars. We replace the gaps where leads usually go cold.",
               },
             ].map((item, i) => (
               <motion.div
@@ -224,7 +215,7 @@ export default function P1Creative() {
         </div>
       </section>
 
-      {/* What Happens (process imagery) */}
+      {/* How It Plays Out */}
       <section className="py-20 sm:py-28">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -238,7 +229,7 @@ export default function P1Creative() {
               HOW IT <span className="text-[#006eff]">PLAYS OUT</span>
             </h2>
             <p className="text-lg text-white/50 max-w-2xl mx-auto">
-              The same 3-step flow we run for our own clients — distilled into the training.
+              Three steps. From cold scroll to booked appointment — without you lifting a finger.
             </p>
           </motion.div>
 
@@ -290,10 +281,10 @@ export default function P1Creative() {
               </h3>
               <ul className="space-y-4">
                 {[
-                  "You want to build real, marketable skills — not chase another certificate",
-                  "You're done trading hours for dollars at a job that won't compound",
-                  "You're ready to learn the highest-leverage skill of the next decade",
-                  "You want a business that runs from anywhere with a laptop",
+                  "You run a local service business with real margin and want to scale",
+                  "You're done chasing leads — you want a system that brings them to you",
+                  "You're ready to invest in content that positions you as the obvious choice",
+                  "You want a partner that handles strategy, creative, and execution end-to-end",
                 ].map((t, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-[#006eff] mt-1 flex-shrink-0" />
@@ -315,10 +306,10 @@ export default function P1Creative() {
               </h3>
               <ul className="space-y-4">
                 {[
-                  "You're hunting for a get-rich-quick play",
-                  "You're not willing to put in real reps",
-                  "You're not committed to becoming better at your craft",
-                  "You're not ready to actually build something",
+                  "You're looking for a quick fix or one-off post to go viral",
+                  "You're not willing to show up on camera or back the brand publicly",
+                  "You expect leads without investing in real creative",
+                  "You're not ready for what happens when the calendar fills up",
                 ].map((t, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <X className="w-5 h-5 text-white/30 mt-1 flex-shrink-0" />
@@ -358,27 +349,27 @@ export default function P1Creative() {
               className="md:col-span-3"
             >
               <div className="text-xs uppercase tracking-widest text-[#006eff] mb-3">
-                Your Host
+                Founder
               </div>
               <h3 className="text-4xl sm:text-5xl font-black mb-6 tracking-tight">
                 D'ANGELO VERA
               </h3>
               <p className="text-white/70 leading-relaxed mb-4">
-                Founder of P1 Creative. I've spent the last several years scaling local
-                service businesses — med spas, dental, contractors — through paid social
-                and content systems that actually convert.
+                I built P1 Creative to do one thing: scale local service businesses through
+                content and paid social that actually converts. Med spas, dental,
+                contractors — the operators who care about their craft.
               </p>
               <p className="text-white/70 leading-relaxed">
-                AI rewrote what one operator can do. I'm running leaner, with better
-                margins, and serving more clients than ever. On May 5th, I'm opening up
-                the playbook.
+                We don't run a content mill. We build systems — cinematic creative, paid
+                acquisition, and AI booking — that compound month over month. If that's
+                what you're after, let's talk.
               </p>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Social Proof Gallery */}
+      {/* Real Results Gallery */}
       <section className="py-20 sm:py-28 border-y border-white/5 bg-white/[0.02]">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -432,17 +423,13 @@ export default function P1Creative() {
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
           >
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-[#006eff]/15 border border-[#006eff]/30 rounded-full text-xs font-semibold tracking-wider text-[#006eff] uppercase mb-6">
-              <Lock className="w-3 h-3" />
-              Limited Access — Register Now
-            </div>
             <h2 className="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight mb-6">
-              REGISTER BEFORE <br />
-              <span className="text-[#006eff]">SPOTS FILL UP</span>
+              READY TO BE <br />
+              <span className="text-[#006eff]">BOOKED OUT?</span>
             </h2>
             <p className="text-lg text-white/60 mb-10">
-              Free live training · {TRAINING_DATE} · 60 minutes that change how you think
-              about your business.
+              Quick intro call. We'll map out what's working, what's broken, and whether
+              we're the right fit to fix it.
             </p>
             <a
               href={CALENDLY_LINK}
@@ -450,7 +437,7 @@ export default function P1Creative() {
               rel="noopener noreferrer"
               className="inline-flex items-center gap-3 px-10 py-5 bg-gradient-to-r from-[#006eff] to-[#0080ff] rounded-xl font-bold text-lg shadow-lg shadow-[#006eff]/30 hover:shadow-[#006eff]/50 transition-all"
             >
-              JOIN THE FREE TRAINING
+              BOOK A CALL
               <ArrowRight className="w-5 h-5" />
             </a>
           </motion.div>
@@ -487,10 +474,6 @@ export default function P1Creative() {
               Contact
             </a>
           </div>
-          <p className="text-xs uppercase tracking-widest text-white/20 max-w-2xl mx-auto leading-relaxed mb-3">
-            Results vary depending on individual effort, experience, and market
-            conditions. This training is educational only and is not a guarantee of income.
-          </p>
           <p className="text-xs text-white/20">
             © 2026 P1 Creative. All rights reserved.
           </p>
