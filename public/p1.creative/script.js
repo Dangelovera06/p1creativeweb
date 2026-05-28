@@ -43,4 +43,22 @@
       }
     });
   });
+
+  // Shrink Wistia play buttons to a small, faint circle (lives in shadow DOM)
+  const PLAY_BTN_CSS =
+    ".w-bpb-wrapper{width:54px!important;height:54px!important;border-radius:50%!important;overflow:hidden!important;opacity:0.22!important;}" +
+    ".w-big-play-button{width:100%!important;height:100%!important;}";
+  function stylePlayButton(player) {
+    const sr = player.shadowRoot;
+    if (!sr || sr.getElementById("p1-play-btn")) return;
+    const style = document.createElement("style");
+    style.id = "p1-play-btn";
+    style.textContent = PLAY_BTN_CSS;
+    sr.appendChild(style);
+  }
+  let btnTries = 0;
+  const btnTimer = setInterval(() => {
+    document.querySelectorAll("wistia-player").forEach(stylePlayButton);
+    if (++btnTries > 40) clearInterval(btnTimer);
+  }, 250);
 })();
