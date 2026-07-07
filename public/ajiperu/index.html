@@ -4,563 +4,449 @@
 <meta charset="utf-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <title>Aji Peru — Authentic Peruvian · Port St. Lucie, FL</title>
-<meta name="description" content="Aji Peru — authentic Peruvian cuisine in Port St. Lucie. Fresh ceviche, wok-fired lomo saltado, and slow-braised classics. Open daily."/>
+<meta name="description" content="Aji Peru brings the bold flavors of Lima to Port St. Lucie — fresh ceviche, wok-fired lomo saltado, and slow-braised classics. Open daily, closes 8:30 PM."/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=Jost:wght@200;300;400&family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500;1,9..144,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:'Jost',system-ui,sans-serif;
-  background:#000;color:#fff;
-  -webkit-font-smoothing:antialiased;
-  overflow-x:hidden;
-}
-a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --serif:'Cormorant Garamond',Georgia,serif;
-  --sans:'Jost',system-ui,sans-serif;
-  --num:'Bebas Neue',sans-serif;
-  --orange:#C84A00;
-  --w100:#fff;
-  --w70:rgba(255,255,255,.7);
-  --w42:rgba(255,255,255,.42);
-  --w18:rgba(255,255,255,.18);
-  --w06:rgba(255,255,255,.06);
-  --line:rgba(255,255,255,.08);
+  --bg:#F6F1E8;         /* warm bone */
+  --bg2:#EFE6D7;        /* deeper cream */
+  --card:#FCFAF4;       /* warm near-white */
+  --ink:#191108;        /* warm near-black */
+  --ink2:#4A3E30;       /* warm brown body */
+  --muted:#8C7E6B;      /* taupe */
+  --line:rgba(25,17,8,.12);
+  --line2:rgba(25,17,8,.07);
+  --terra:#BE4A18;      /* ají terracotta */
+  --terra-d:#9A3A11;
+  --amar:#DE9B2B;       /* amarillo */
+  --shadow:0 30px 60px -28px rgba(60,35,15,.42);
+  --shadow-sm:0 14px 30px -18px rgba(60,35,15,.35);
+  --serif:'Fraunces',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
   --ease:cubic-bezier(.16,1,.3,1);
 }
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink2);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1200px,92%);margin-inline:auto}
+.eyebrow{font-size:.7rem;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--terra);display:inline-flex;align-items:center;gap:.7rem}
+.eyebrow::before{content:"";width:24px;height:1.5px;background:var(--terra);display:inline-block}
+h1,h2,h3{font-family:var(--serif);color:var(--ink);font-weight:500;line-height:1.05;letter-spacing:-.01em}
+.btn{display:inline-flex;align-items:center;gap:.55rem;font-family:var(--sans);font-size:.78rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;padding:.95rem 1.7rem;border-radius:100px;cursor:pointer;transition:.25s var(--ease);border:1.5px solid transparent}
+.btn-primary{background:var(--terra);color:#fff}
+.btn-primary:hover{background:var(--terra-d);transform:translateY(-2px);box-shadow:0 12px 24px -10px rgba(190,74,24,.6)}
+.btn-ghost{border-color:var(--line);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+
+/* ── TOP UTILITY BAR ── */
+.util{background:var(--ink);color:rgba(255,255,255,.72);font-size:.72rem;letter-spacing:.04em}
+.util .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.55rem 0;flex-wrap:wrap}
+.util a{color:rgba(255,255,255,.9)}
+.util a:hover{color:#fff}
+.util .dot{color:var(--amar)}
+.util-left{display:flex;align-items:center;gap:.5rem}
+.pulse{width:7px;height:7px;border-radius:50%;background:#5cc47a;box-shadow:0 0 0 3px rgba(92,196,122,.25)}
 
 /* ── NAV ── */
-nav{
-  position:fixed;inset:0 0 auto;z-index:90;
-  padding:1.4rem 0;
-  transition:background .5s,backdrop-filter .5s;
-}
-nav.scrolled{
-  background:rgba(0,0,0,.88);
-  backdrop-filter:blur(18px) saturate(160%);
-  border-bottom:1px solid var(--line);
-}
-.nav-c{
-  width:min(1100px,92%);margin-inline:auto;
-  display:flex;align-items:center;justify-content:space-between;
-}
-.brand{font-family:var(--serif);font-size:1.05rem;letter-spacing:.06em;color:#fff}
-.brand b{color:var(--orange);font-weight:400}
-.nav-links{display:flex;gap:2rem;list-style:none;font-size:.68rem;font-weight:300;letter-spacing:.14em;text-transform:uppercase}
-.nav-links a{color:var(--w42);transition:color .2s}
-.nav-links a:hover{color:#fff}
-.nav-cta{
-  font-size:.6rem;font-weight:300;letter-spacing:.18em;text-transform:uppercase;
-  padding:.6rem 1.6rem;border:1px solid var(--w18);
-  border-radius:1px;color:var(--w70);
-  transition:border-color .2s,color .2s,background .2s;
-}
-.nav-cta:hover{border-color:#fff;background:#fff;color:#000}
-.burger{
-  display:none;background:none;border:0;cursor:pointer;
-  width:36px;height:36px;flex-direction:column;justify-content:center;gap:5px;
-}
-.burger span{display:block;height:1px;background:#fff;transition:.3s}
-.burger.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+nav.bar{position:sticky;top:0;z-index:60;background:rgba(246,241,232,.82);backdrop-filter:blur(14px) saturate(150%);border-bottom:1px solid transparent;transition:border-color .4s,background .4s}
+nav.bar.stuck{border-color:var(--line);box-shadow:0 8px 30px -22px rgba(60,35,15,.5)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;padding:1.05rem 0}
+.brand{font-family:var(--serif);font-weight:600;font-size:1.5rem;letter-spacing:-.01em;color:var(--ink);display:flex;align-items:baseline;gap:.1rem}
+.brand i{color:var(--terra);font-style:italic;font-weight:500}
+.nav-links{display:flex;gap:2.2rem;list-style:none}
+.nav-links a{font-size:.82rem;font-weight:500;letter-spacing:.04em;color:var(--ink2);position:relative;padding:.2rem 0}
+.nav-links a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1.5px;background:var(--terra);transition:right .3s var(--ease)}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a:hover::after{right:0}
+.nav-right{display:flex;align-items:center;gap:1.2rem}
+.burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px}
+.burger span{width:24px;height:2px;background:var(--ink);transition:.3s}
+.burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
 .burger.open span:nth-child(2){opacity:0}
-.burger.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
-
-/* mobile nav overlay */
-.m-nav{
-  position:fixed;inset:0;background:#000;z-index:80;
-  display:flex;flex-direction:column;justify-content:center;align-items:center;
-  gap:0;pointer-events:none;opacity:0;transition:opacity .4s var(--ease);
-}
-.m-nav.open{pointer-events:all;opacity:1}
-.m-nav a{
-  font-family:var(--serif);font-size:clamp(2.2rem,8vw,4rem);font-style:italic;font-weight:300;
-  color:var(--w70);padding:.5rem 0;transition:color .2s;
-  transform:translateY(20px);opacity:0;transition:transform .5s var(--ease),opacity .5s var(--ease),color .2s;
-}
-.m-nav.open a{transform:translateY(0);opacity:1}
-.m-nav.open a:nth-child(1){transition-delay:.05s}
-.m-nav.open a:nth-child(2){transition-delay:.1s}
-.m-nav.open a:nth-child(3){transition-delay:.15s}
-.m-nav.open a:nth-child(4){transition-delay:.2s}
-.m-nav a:hover{color:#fff}
-.m-nav .m-phone{
-  margin-top:2.5rem;font-size:.75rem;letter-spacing:.18em;
-  text-transform:uppercase;color:var(--w42);
-  transform:translateY(20px);opacity:0;
-  transition:transform .5s var(--ease) .25s,opacity .5s var(--ease) .25s;
-}
-.m-nav.open .m-phone{transform:translateY(0);opacity:1}
+.burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mnav{position:fixed;inset:0;background:var(--bg);z-index:80;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:.4rem;opacity:0;pointer-events:none;transition:opacity .35s var(--ease)}
+.mnav.open{opacity:1;pointer-events:all}
+.mnav a{font-family:var(--serif);font-size:2.4rem;color:var(--ink);padding:.4rem}
+.mnav .btn{margin-top:1.5rem}
+.mclose{position:absolute;top:1.4rem;right:1.6rem;background:none;border:0;font-size:2.2rem;color:var(--ink);cursor:pointer;line-height:1}
 
 /* ── HERO ── */
-.hero{
-  position:relative;height:200vh;
-}
-.hero-stage{
-  position:sticky;top:0;width:100%;height:100vh;overflow:hidden;
-}
-.hero-bg{
-  position:absolute;inset:0;width:100%;height:100%;
-  background:url('./lomo.webp') center 28%/cover no-repeat;
-  transform:scale(var(--hs,1));filter:brightness(var(--hb,1));
-  transform-origin:50% 28%;will-change:transform,filter;
-}
-.hero-grad{
-  position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(0,0,0,.5) 0%,transparent 30%,transparent 50%,rgba(0,0,0,.9) 100%);
-}
-.hero-body{
-  position:absolute;inset:0;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  text-align:center;padding:0 1.5rem;
-  opacity:var(--ho,1);transform:translateY(var(--hy,0px));will-change:opacity,transform;
-}
-.hero-eyebrow{
-  font-size:.58rem;letter-spacing:.45em;text-transform:uppercase;
-  color:var(--w42);margin-bottom:1.8rem;
-}
-.hero-title{
-  font-family:var(--serif);font-style:italic;font-weight:300;
-  font-size:clamp(4.5rem,13vw,11rem);line-height:.95;letter-spacing:.01em;
-  color:#fff;text-shadow:0 8px 60px rgba(0,0,0,.5);
-}
-.hero-sub{
-  margin-top:1.8rem;font-size:.85rem;font-weight:300;
-  color:var(--w42);letter-spacing:.06em;
-}
-.hero-scroll{
-  position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);
-  display:flex;flex-direction:column;align-items:center;gap:.7rem;
-  font-size:.52rem;letter-spacing:.38em;text-transform:uppercase;color:var(--w18);
-  opacity:var(--ho,1);
-}
-.hero-scroll::after{
-  content:'';width:1px;height:44px;
-  background:linear-gradient(to bottom,var(--w42),transparent);
-  animation:hscroll 2.2s ease infinite;
-}
-@keyframes hscroll{
-  0%{transform:scaleY(0);transform-origin:top}
-  50%{transform:scaleY(1);transform-origin:top}
-  51%{transform:scaleY(1);transform-origin:bottom}
-  100%{transform:scaleY(0);transform-origin:bottom}
-}
+.hero{position:relative;padding:4rem 0 5rem}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:4.5rem;align-items:center}
+.hero-eyebrow{margin-bottom:1.6rem}
+.hero h1{font-size:clamp(3.6rem,8vw,6.6rem);line-height:.92;color:var(--ink)}
+.hero h1 .script{display:block;font-style:italic;font-weight:400;color:var(--terra)}
+.hero-lede{margin-top:1.7rem;font-size:1.08rem;color:var(--ink2);max-width:44ch;line-height:1.75}
+.hero-cta{margin-top:2.2rem;display:flex;gap:.9rem;flex-wrap:wrap}
+.hero-rating{margin-top:2.4rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.stars{color:var(--amar);letter-spacing:2px;font-size:1rem}
+.hero-rating .txt{font-size:.85rem;color:var(--muted)}
+.hero-rating b{color:var(--ink);font-weight:600}
+.hero-media{position:relative}
+.hero-img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:220px 220px 18px 18px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.5)}
+.hero-badge{position:absolute;left:-24px;bottom:38px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1rem 1.3rem;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:.85rem}
+.hero-badge .num{font-family:var(--serif);font-size:1.9rem;font-weight:600;color:var(--terra);line-height:1}
+.hero-badge .lab{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.4}
+.hero-badge .lab b{display:block;color:var(--ink);font-size:.82rem;letter-spacing:.02em;text-transform:none;font-weight:600}
+.hero-seal{position:absolute;top:-18px;right:-12px;width:104px;height:104px;animation:spin 26s linear infinite}
+.hero-seal text{font-family:var(--sans);font-size:9.2px;letter-spacing:2.6px;fill:var(--ink);text-transform:uppercase;font-weight:500}
+@keyframes spin{to{transform:rotate(360deg)}}
 
-/* ── ABOUT — centered minimal ── */
-.about{
-  background:#000;padding:9rem 0;
-  border-bottom:1px solid var(--line);
-}
-.about-inner{
-  width:min(740px,90%);margin-inline:auto;text-align:center;
-}
-.about-quote{
-  font-family:var(--serif);font-style:italic;font-weight:300;
-  font-size:clamp(1.6rem,3.5vw,2.6rem);line-height:1.45;
-  color:#fff;margin-bottom:3rem;
-}
-.about-quote em{color:var(--w70)}
-.about-bar{
-  display:flex;justify-content:center;gap:0;
-  border:1px solid var(--line);
-}
-.about-stat{
-  flex:1;padding:1.6rem 1rem;border-right:1px solid var(--line);
-}
-.about-stat:last-child{border-right:0}
-.stat-n{
-  font-family:var(--num);font-size:2.8rem;letter-spacing:.02em;color:#fff;line-height:1;
-}
-.stat-n sup{font-size:1rem;color:var(--orange)}
-.stat-l{
-  font-size:.5rem;letter-spacing:.25em;text-transform:uppercase;
-  color:var(--w42);margin-top:.3rem;
-}
+/* ── MARQUEE ── */
+.marquee{background:var(--ink);color:var(--bg);padding:1rem 0;overflow:hidden;white-space:nowrap}
+.mtrack{display:inline-flex;gap:2.6rem;animation:scroll 34s linear infinite;font-family:var(--serif);font-style:italic;font-size:1.35rem;font-weight:400}
+.mtrack span{display:inline-flex;align-items:center;gap:2.6rem;opacity:.9}
+.mtrack span::after{content:"✳";color:var(--amar);font-style:normal;font-size:.85rem}
+@keyframes scroll{to{transform:translateX(-50%)}}
 
-/* ── DISHES — poster gallery ── */
-.dishes{background:#000}
-.dishes-header{
-  width:min(1100px,92%);margin-inline:auto;
-  padding:7rem 0 4rem;
-  display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:2rem;
-}
-.dishes-h{
-  font-family:var(--serif);font-style:italic;font-weight:300;
-  font-size:clamp(1.8rem,3.5vw,3rem);color:#fff;line-height:1;
-}
-.dishes-note{
-  font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--w42);text-align:right;line-height:1.9;
-}
+/* ── STORY ── */
+.story{padding:7rem 0}
+.story-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:4.5rem;align-items:center}
+.story-media{position:relative}
+.story-media img{width:100%;aspect-ratio:5/6;object-fit:cover;border-radius:18px;box-shadow:var(--shadow)}
+.story-media .tag{position:absolute;bottom:1.2rem;left:1.2rem;background:rgba(25,17,8,.72);backdrop-filter:blur(6px);color:#fff;font-family:var(--serif);font-style:italic;font-size:.95rem;padding:.5rem 1rem;border-radius:10px}
+.story h2{font-size:clamp(2.3rem,4.5vw,3.6rem);margin:1.3rem 0 1.4rem}
+.story p{font-size:1rem;color:var(--ink2);margin-bottom:1.1rem;max-width:52ch}
+.story-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:2.4rem;border-top:1px solid var(--line)}
+.story-stats .st{padding:1.4rem 1rem 0;border-right:1px solid var(--line)}
+.story-stats .st:last-child{border-right:0;padding-right:0}
+.story-stats .st:first-child{padding-left:0}
+.st .n{font-family:var(--serif);font-size:2.3rem;font-weight:600;color:var(--ink);line-height:1}
+.st .n em{color:var(--terra);font-style:normal}
+.st .l{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:.35rem}
 
-/* gallery grid */
-.dg{display:grid;grid-template-rows:auto auto auto;gap:2px;background:rgba(255,255,255,.04)}
-.dg-top{grid-column:1/-1;height:62vh;min-height:360px}
-.dg-mid,.dg-bot{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.dg-mid,.dg-bot{height:52vh;min-height:300px}
+/* ── MENU ── */
+.menu{padding:6rem 0 7rem;background:var(--bg2)}
+.menu-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:3.2rem}
+.menu-head h2{font-size:clamp(2.3rem,4.5vw,3.6rem);margin-top:1rem}
+.menu-head .note{font-size:.9rem;color:var(--muted);text-align:right;line-height:1.9}
+.menu-head .note a{color:var(--terra);border-bottom:1px solid rgba(190,74,24,.35)}
+.mgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:1.4rem}
+.dish{background:var(--card);border-radius:18px;overflow:hidden;border:1px solid var(--line2);box-shadow:var(--shadow-sm);display:flex;flex-direction:column;transition:transform .5s var(--ease),box-shadow .5s var(--ease)}
+.dish:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.dish-feat{grid-column:span 4;flex-direction:row}
+.dish-tall{grid-column:span 2}
+.dish-third{grid-column:span 2}
+.dish-img{position:relative;overflow:hidden}
+.dish-img img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease)}
+.dish:hover .dish-img img{transform:scale(1.06)}
+.dish-feat .dish-img{flex:0 0 48%}
+.dish-feat .dish-img img{min-height:340px}
+.dish-tall .dish-img{aspect-ratio:4/3}
+.dish-third .dish-img{aspect-ratio:16/11}
+.dish-num{position:absolute;top:.9rem;left:.9rem;width:34px;height:34px;border-radius:50%;background:rgba(246,241,232,.92);backdrop-filter:blur(4px);display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:.9rem;color:var(--ink)}
+.dish-body{padding:1.6rem 1.6rem 1.5rem;display:flex;flex-direction:column;flex:1}
+.dish-feat .dish-body{justify-content:center;padding:2.4rem}
+.dish-cat{font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;color:var(--terra);margin-bottom:.55rem;font-weight:600}
+.dish h3{font-size:1.4rem;margin-bottom:.55rem}
+.dish-feat h3{font-size:clamp(1.8rem,2.6vw,2.5rem)}
+.dish p{font-size:.86rem;color:var(--ink2);line-height:1.7;margin-bottom:1.1rem;flex:1}
+.dish-feat p{font-size:.98rem;max-width:42ch}
+.dish-foot{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:auto}
+.dish-tags{display:flex;gap:.4rem;flex-wrap:wrap}
+.dish-tag{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:.28rem .6rem;border-radius:100px}
+.dish-price{font-family:var(--serif);font-size:1.3rem;font-weight:600;color:var(--terra)}
 
-.tile{
-  position:relative;overflow:hidden;cursor:default;
-  background:#0a0a0a;
-}
-.tile img{
-  width:100%;height:100%;object-fit:cover;
-  object-position:center center;
-  transition:transform 1.4s var(--ease),filter .6s ease;
-  filter:brightness(.72) saturate(1.1);
-  will-change:transform,filter;
-}
-.tile:hover img{
-  transform:scale(1.07);filter:brightness(.5) saturate(1.25);
-}
-.tile-grad{
-  position:absolute;inset:0;
-  background:linear-gradient(to top,rgba(0,0,0,.88) 0%,rgba(0,0,0,.3) 40%,rgba(0,0,0,0) 70%);
-  pointer-events:none;
-}
-.tile-body{
-  position:absolute;bottom:0;left:0;right:0;
-  padding:2rem 2.5rem 2.8rem;
-  transform:translateY(6px);opacity:0;
-  transition:transform .7s var(--ease),opacity .7s var(--ease);
-}
-.tile-body.in{transform:translateY(0);opacity:1}
-.tile-num{
-  font-family:var(--num);font-size:.8rem;letter-spacing:.2em;
-  color:var(--w42);margin-bottom:.5rem;
-}
-.tile-cat{
-  font-size:.52rem;letter-spacing:.25em;text-transform:uppercase;
-  color:var(--orange);margin-bottom:.5rem;display:block;
-}
-.tile-name{
-  font-family:var(--serif);font-style:italic;font-weight:300;
-  font-size:clamp(1.6rem,2.5vw,2.6rem);line-height:1.05;color:#fff;
-}
-.tile-desc{
-  font-size:.82rem;line-height:1.85;color:rgba(255,255,255,.75);
-  margin-top:.9rem;
-  max-height:0;overflow:hidden;
-  transition:max-height .55s var(--ease),opacity .55s var(--ease);
-  opacity:0;
-}
-.tile.open .tile-desc{max-height:120px;opacity:1}
-.tile-toggle{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:28px;height:28px;border-radius:50%;
-  border:1px solid rgba(255,255,255,.25);
-  background:rgba(0,0,0,.4);backdrop-filter:blur(8px);
-  color:rgba(255,255,255,.7);font-size:1.1rem;line-height:1;
-  cursor:pointer;transition:background .2s,border-color .2s,transform .3s var(--ease);
-  flex-shrink:0;margin-left:auto;
-}
-.tile.open .tile-toggle{transform:rotate(45deg);border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.1)}
-
-/* top tile gets larger text */
-.dg-top .tile-name{font-size:clamp(2rem,3.5vw,3.5rem)}
-.dg-top .tile-body{padding:2.5rem 3.5rem 3.5rem}
+/* ── HERITAGE ── */
+.heritage{background:var(--ink);color:var(--bg);padding:7rem 0}
+.heritage .eyebrow{color:var(--amar)}
+.heritage .eyebrow::before{background:var(--amar)}
+.heritage h2{color:var(--bg);font-size:clamp(2.2rem,4.2vw,3.4rem);margin:1.2rem 0 1rem;max-width:16ch}
+.heritage .sub{color:rgba(246,241,232,.62);max-width:52ch;font-size:1rem;margin-bottom:3.4rem}
+.pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem}
+.pillar{border-top:1px solid rgba(246,241,232,.16);padding-top:1.4rem}
+.pillar .ic{width:40px;height:40px;border-radius:11px;background:rgba(222,155,43,.14);color:var(--amar);display:grid;place-items:center;margin-bottom:1rem}
+.pillar .ic svg{width:20px;height:20px}
+.pillar h4{font-family:var(--serif);font-size:1.15rem;font-weight:600;color:var(--bg);margin-bottom:.4rem}
+.pillar p{font-size:.82rem;color:rgba(246,241,232,.55);line-height:1.7}
 
 /* ── REVIEWS ── */
-.reviews{
-  background:#000;padding:8rem 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-}
-.rev-c{width:min(1100px,92%);margin-inline:auto}
-.rev-top{
-  display:grid;grid-template-columns:auto 1fr;gap:5rem;align-items:center;
-  padding-bottom:4rem;border-bottom:1px solid var(--line);margin-bottom:4rem;
-}
-.rev-score{display:flex;align-items:baseline;gap:.5rem}
-.rev-big{font-family:var(--num);font-size:8rem;line-height:1;color:#fff}
-.rev-out{font-family:var(--num);font-size:2.5rem;color:var(--w42);align-self:flex-end;margin-bottom:.6rem}
-.rev-meta{margin-top:.6rem;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--w42)}
-.rev-stars{font-size:1rem;color:var(--orange);letter-spacing:3px}
-.rev-text{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.2rem,2vw,1.6rem);color:var(--w70);line-height:1.55}
-.rev-quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
-.rev-q{
-  background:#0f0f0f;border:1px solid rgba(255,255,255,.07);
-  border-radius:16px;padding:2rem 1.8rem 1.8rem;
-  opacity:0;transform:translateY(20px);
-  transition:opacity .8s var(--ease),transform .8s var(--ease);
-  transition-delay:var(--qd,0ms);
-  display:flex;flex-direction:column;
-}
-.rev-q.in{opacity:1;transform:translateY(0)}
-.rev-q-head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.4rem}
-.rev-avatar{
-  width:42px;height:42px;border-radius:50%;
-  background:linear-gradient(135deg,#1a1a1a,#2a2a2a);
-  border:1px solid rgba(255,255,255,.1);
-  display:grid;place-items:center;flex-shrink:0;
-  font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;
-  color:rgba(255,255,255,.5);
-}
-.rev-name{font-family:'Inter',sans-serif;font-size:.88rem;font-weight:600;color:#fff;line-height:1.2}
-.rev-date{font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.1rem;font-family:'Inter',sans-serif;font-weight:400}
-.rev-stars-row{display:flex;gap:2px;margin-left:auto}
-.rev-star{color:var(--orange);font-size:.75rem}
-.rev-q blockquote{
-  font-family:var(--serif);font-style:italic;font-weight:300;
-  font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.7);
-  margin-bottom:1.2rem;flex:1;
-  border-left:2px solid rgba(217,79,0,.4);padding-left:1rem;
-}
-.rev-q cite{
-  font-family:'Inter',sans-serif;font-size:.62rem;font-weight:500;
-  letter-spacing:.12em;text-transform:uppercase;
-  color:rgba(255,255,255,.25);font-style:normal;display:block;
-}
-.rev-q .dish-note{margin-top:.2rem;color:rgba(255,255,255,.15);font-size:.58rem;font-family:'Inter',sans-serif}
-.rev-footer{margin-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
-.rev-footer p{font-size:.72rem;color:var(--w42)}
-.rev-link{
-  font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
-  color:var(--w42);border-bottom:1px solid var(--w18);padding-bottom:2px;
-  transition:color .2s,border-color .2s;
-}
-.rev-link:hover{color:#fff;border-color:rgba(255,255,255,.4)}
+.reviews{padding:7rem 0}
+.rev-head{display:grid;grid-template-columns:auto 1fr;gap:3.5rem;align-items:center;margin-bottom:3.4rem;padding-bottom:3rem;border-bottom:1px solid var(--line)}
+.rev-score{text-align:center}
+.rev-score .big{font-family:var(--serif);font-size:4.6rem;font-weight:600;color:var(--ink);line-height:.9}
+.rev-score .of{font-size:.9rem;color:var(--muted)}
+.rev-score .stars{display:block;margin:.5rem 0 .3rem;font-size:1.05rem}
+.rev-score .src{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.rev-head h2{font-size:clamp(2rem,4vw,3.2rem);max-width:18ch}
+.rev-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.rev{background:var(--card);border:1px solid var(--line2);border-radius:18px;padding:2rem 1.8rem;box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
+.rev-top{display:flex;align-items:center;gap:.85rem;margin-bottom:1.3rem}
+.rev-av{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--terra),var(--amar));color:#fff;display:grid;place-items:center;font-family:var(--serif);font-weight:600;font-size:1.1rem}
+.rev-nm{font-weight:600;color:var(--ink);font-size:.92rem}
+.rev-dt{font-size:.72rem;color:var(--muted);margin-top:.1rem}
+.rev-st{margin-left:auto;color:var(--amar);font-size:.78rem;letter-spacing:1px}
+.rev q{font-family:var(--serif);font-size:1.06rem;font-style:italic;color:var(--ink2);line-height:1.6;display:block;margin-bottom:1.2rem;flex:1}
+.rev q::before{content:"“"}.rev q::after{content:"”"}
+.rev .dish-of{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.rev .dish-of b{color:var(--terra);font-weight:600}
 
 /* ── VISIT ── */
-.visit{background:#000;padding:8rem 0}
-.visit-c{width:min(1100px,92%);margin-inline:auto}
-.visit-head{margin-bottom:4rem}
-.visit-h{
-  font-family:var(--serif);font-style:italic;font-weight:300;
-  font-size:clamp(2rem,4vw,3.5rem);color:#fff;line-height:1;margin-bottom:.6rem;
-}
-.visit-sub{font-size:.85rem;color:var(--w42);font-weight:300}
-.visit-grid{
-  display:grid;grid-template-columns:1fr 1fr;
-  gap:2px;background:var(--line);
-}
-.vcard{background:#000;padding:3rem}
-.vcard h3{
-  font-family:var(--serif);font-style:italic;font-weight:300;
-  font-size:1.5rem;color:#fff;margin-bottom:2rem;
-}
-.hours-list{list-style:none;display:grid;gap:0}
-.hl-row{
-  display:flex;justify-content:space-between;
-  font-size:.82rem;padding:.8rem 0;border-bottom:1px solid var(--line);color:var(--w42);
-  transition:color .2s;
-}
-.hl-row:last-child{border-bottom:0}
-.hl-row.today{color:#fff}
-.hl-row.today .hl-day::before{content:"→ ";color:var(--orange)}
-.contact-list{display:grid;gap:0}
-.cl-row{
-  display:flex;gap:1.2rem;align-items:flex-start;
-  padding:1rem 0;border-bottom:1px solid var(--line);
-}
-.cl-row:last-child{border-bottom:0}
-.cl-ico{
-  width:34px;height:34px;border-radius:2px;
-  border:1px solid var(--line);color:var(--w42);
-  display:grid;place-items:center;flex-shrink:0;
-  transition:border-color .2s,color .2s;
-}
-.cl-row:hover .cl-ico{border-color:rgba(255,255,255,.25);color:#fff}
-.cl-ico svg{width:14px;height:14px}
-.cl-label{font-size:.5rem;letter-spacing:.25em;text-transform:uppercase;color:var(--w18);margin-bottom:.2rem}
-.cl-val{font-size:.85rem;color:var(--w70)}
-.cl-val a:hover{color:#fff}
+.visit{padding:0 0 7rem}
+.visit-card{background:var(--card);border:1px solid var(--line2);border-radius:24px;box-shadow:var(--shadow);overflow:hidden;display:grid;grid-template-columns:1fr 1fr}
+.visit-col{padding:3rem}
+.visit-col+.visit-col{border-left:1px solid var(--line)}
+.visit-col h3{font-size:1.7rem;margin-bottom:.4rem}
+.visit-col .lead{font-size:.9rem;color:var(--muted);margin-bottom:1.8rem}
+.hours{list-style:none}
+.hours li{display:flex;justify-content:space-between;padding:.7rem 0;border-bottom:1px solid var(--line2);font-size:.9rem}
+.hours li:last-child{border-bottom:0}
+.hours li.today{color:var(--terra);font-weight:600}
+.hours li.today .d::before{content:"●";font-size:.5rem;vertical-align:middle;margin-right:.5rem}
+.hours li .t{color:var(--muted)}
+.hours li.today .t{color:var(--terra)}
+.crow{display:flex;gap:1rem;align-items:flex-start;padding:1rem 0;border-bottom:1px solid var(--line2)}
+.crow:last-child{border-bottom:0}
+.crow .ic{width:40px;height:40px;border-radius:11px;background:var(--bg2);color:var(--terra);display:grid;place-items:center;flex-shrink:0}
+.crow .ic svg{width:18px;height:18px}
+.crow .lab{font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:.2rem}
+.crow .val{font-size:.95rem;color:var(--ink)}
+.crow .val a:hover{color:var(--terra)}
+.visit-cta{margin-top:1.6rem}
 
 /* ── FOOTER ── */
-footer{background:#000;padding:4.5rem 0 2.5rem;border-top:1px solid var(--line)}
-.foot-c{width:min(1100px,92%);margin-inline:auto}
-.foot-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:3rem;margin-bottom:3.5rem}
-.foot-brand{
-  font-family:var(--serif);font-style:italic;font-weight:300;
-  font-size:2rem;color:#fff;margin-bottom:.8rem;
-}
-.foot-col p,.foot-col a{font-size:.82rem;color:var(--w42);line-height:1.9;display:block;transition:color .2s}
-.foot-col a:hover{color:#fff}
-.foot-col h5{font-size:.5rem;letter-spacing:.3em;text-transform:uppercase;color:var(--w18);margin-bottom:1.2rem;font-weight:400}
-.foot-bottom{
-  display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;
-  padding-top:2rem;border-top:1px solid var(--line);
-  font-size:.68rem;color:var(--w18);
-}
+footer{background:var(--ink);color:rgba(246,241,232,.6);padding:5rem 0 2.5rem}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(246,241,232,.12)}
+.foot-brand{font-family:var(--serif);font-size:2rem;font-weight:600;color:var(--bg);margin-bottom:.7rem}
+.foot-brand i{color:var(--terra);font-style:italic}
+.foot-grid p{font-size:.88rem;line-height:1.8;max-width:34ch}
+.foot-grid h5{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,241,232,.4);margin-bottom:1.1rem}
+.foot-grid a{display:block;font-size:.9rem;padding:.28rem 0;color:rgba(246,241,232,.72)}
+.foot-grid a:hover{color:var(--bg)}
+.foot-bottom{padding-top:2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.78rem;color:rgba(246,241,232,.4)}
 
 /* ── REVEAL ── */
-.rv{
-  opacity:0;transform:translateY(36px) scale(0.985);
-  transition:opacity .9s var(--ease),transform .9s var(--ease);
-  transition-delay:var(--rd,0ms);
-}
+.rv{opacity:0;transform:translateY(34px);transition:opacity .9s var(--ease),transform .9s var(--ease);transition-delay:var(--d,0ms)}
 .rv.in{opacity:1;transform:none}
 
 /* ── RESPONSIVE ── */
-@media(max-width:900px){
-  .dg-mid,.dg-bot{height:44vw;min-height:220px}
-  .dg-top{height:56vw;min-height:260px}
-  .rev-top{grid-template-columns:1fr;gap:2rem}
-  .rev-quotes{grid-template-columns:1fr;gap:.8rem}
-  .visit-grid{grid-template-columns:1fr}
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr;gap:3rem}
+  .hero-media{max-width:460px;margin-inline:auto}
+  .story-grid{grid-template-columns:1fr;gap:2.5rem}
+  .mgrid{grid-template-columns:repeat(4,1fr)}
+  .dish-feat{grid-column:span 4;flex-direction:column}
+  .dish-feat .dish-img{flex:none;aspect-ratio:16/10}
+  .dish-tall,.dish-third{grid-column:span 2}
+  .pillars{grid-template-columns:repeat(2,1fr);gap:2rem 1.6rem}
+  .rev-grid{grid-template-columns:1fr}
+  .visit-card{grid-template-columns:1fr}
+  .visit-col+.visit-col{border-left:0;border-top:1px solid var(--line)}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
-@media(max-width:700px){
-  nav .nav-links,.nav-cta{display:none}
+@media(max-width:680px){
+  .nav-links,.nav-right .btn{display:none}
   .burger{display:flex}
-  .hero{height:160vh}
-  .about-bar{flex-direction:column}
-  .about-stat{border-right:0;border-bottom:1px solid var(--line)}
-  .about-stat:last-child{border-bottom:0}
-  .dishes-header{padding:5rem 0 2.5rem;flex-direction:column;align-items:flex-start}
-  .dg-mid,.dg-bot{grid-template-columns:1fr;height:auto}
-  .dg-mid .tile,.dg-bot .tile{height:65vw;min-height:240px}
-  .dg-top{height:72vw;min-height:240px}
-  .tile-body{opacity:1;transform:none} /* always visible on mobile */
-  .tile-toggle{display:inline-flex}
-  .tile-desc{display:block}
-  .tile-name{font-size:1.45rem}
-  .dg-top .tile-name{font-size:1.7rem}
-  .dg-top .tile-body{padding:1.5rem 1.8rem 2rem}
-  .tile-body{padding:1.2rem 1.6rem 1.8rem}
-  .rev-big{font-size:5.5rem}
-  .visit{padding:5rem 0}
-  .vcard{padding:2rem 1.6rem}
-  .foot-grid{grid-template-columns:1fr;gap:2rem}
-}
-@media(max-width:420px){
-  .hero-title{font-size:clamp(3.5rem,17vw,5.5rem)}
-  .about{padding:6rem 0}
-  .dg-top{height:80vw}
-  .dg-mid .tile,.dg-bot .tile{height:72vw}
+  .util .wrap{justify-content:center;text-align:center}
+  .story-stats{grid-template-columns:1fr 1fr;gap:0}
+  .story-stats .st{border-bottom:1px solid var(--line);padding:1.2rem}
+  .story-stats .st:nth-child(2){border-right:0;padding-right:1.2rem}
+  .story-stats .st:first-child{padding-left:1.2rem}
+  .mgrid{grid-template-columns:1fr}
+  .dish-feat,.dish-tall,.dish-third{grid-column:span 1;flex-direction:column}
+  .dish-feat .dish-img img,.dish-tall .dish-img{min-height:0;aspect-ratio:16/10}
+  .rev-head{grid-template-columns:1fr;gap:1.5rem;text-align:center}
+  .rev-score .stars{text-align:center}
+  .foot-grid{grid-template-columns:1fr}
+  .hero-img{border-radius:140px 140px 16px 16px}
 }
 </style>
 </head>
 <body>
 
+<!-- UTILITY BAR -->
+<div class="util">
+  <div class="wrap">
+    <span class="util-left"><span class="pulse"></span> Open today · Closes 8:30 PM</span>
+    <span>1224 SW Gatlin Blvd, Unit 110 · Port St. Lucie <span class="dot">·</span> <a href="tel:+17722071604">(772) 207-1604</a></span>
+  </div>
+</div>
+
 <!-- NAV -->
-<nav id="nav">
-  <div class="nav-c">
-    <a href="#" class="brand">Aji <b>Peru</b></a>
+<nav class="bar" id="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand">Aji<i>Peru</i></a>
     <ul class="nav-links">
-      <li><a href="#dishes">Menu</a></li>
+      <li><a href="#story">Our Story</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#heritage">Heritage</a></li>
       <li><a href="#reviews">Reviews</a></li>
       <li><a href="#visit">Visit</a></li>
     </ul>
-    <div style="display:flex;align-items:center;gap:1rem">
-      <a href="https://zingmyorder.com" target="_blank" class="nav-cta">Order Online</a>
-      <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <div class="nav-right">
+      <a href="https://zingmyorder.com" target="_blank" class="btn btn-primary">Order Online</a>
+      <button class="burger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </nav>
 
-<div class="m-nav" id="mnav">
-  <a href="#dishes" onclick="closeNav()">Menu</a>
-  <a href="#reviews" onclick="closeNav()">Reviews</a>
-  <a href="#visit" onclick="closeNav()">Visit</a>
-  <a href="https://zingmyorder.com" target="_blank" onclick="closeNav()">Order Online</a>
-  <span class="m-phone">(772) 207-1604</span>
+<div class="mnav" id="mnav">
+  <button class="mclose" id="mclose" aria-label="Close menu">×</button>
+  <a href="#story">Our Story</a>
+  <a href="#menu">Menu</a>
+  <a href="#heritage">Heritage</a>
+  <a href="#reviews">Reviews</a>
+  <a href="#visit">Visit</a>
+  <a href="https://zingmyorder.com" target="_blank" class="btn btn-primary">Order Online</a>
 </div>
 
 <!-- HERO -->
-<section class="hero" id="hero">
-  <div class="hero-stage">
-    <div class="hero-bg" id="hbg"></div>
-    <div class="hero-grad"></div>
-    <div class="hero-body" id="hbody">
-      <p class="hero-eyebrow">Port St. Lucie · Florida</p>
-      <h1 class="hero-title">Aji<br>Peru</h1>
-      <p class="hero-sub">Authentic Peruvian cuisine — open daily</p>
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div class="rv">
+      <div class="eyebrow hero-eyebrow">Authentic Peruvian · Port St. Lucie</div>
+      <h1>The bold taste<br>of Lima<span class="script">on the Treasure Coast.</span></h1>
+      <p class="hero-lede">Fresh ceviche, wok-fired lomo saltado, and slow-braised classics — cooked the way Lima intended, served daily just off Gatlin Boulevard.</p>
+      <div class="hero-cta">
+        <a href="https://zingmyorder.com" target="_blank" class="btn btn-primary">Order Online →</a>
+        <a href="#menu" class="btn btn-ghost">View the Menu</a>
+      </div>
+      <div class="hero-rating">
+        <span class="stars">★★★★☆</span>
+        <span class="txt"><b>4.2</b> on Postmates · 53 reviews · $20–30 per person</span>
+      </div>
     </div>
-    <div class="hero-scroll" id="hscroll">Scroll</div>
+    <div class="hero-media rv" style="--d:120ms">
+      <img class="hero-img" src="./lomo.webp" alt="Lomo Saltado — wok-fired Peruvian beef"/>
+      <div class="hero-badge">
+        <div class="num">40+</div>
+        <div class="lab">Peruvian<b>dishes daily</b></div>
+      </div>
+      <svg class="hero-seal" viewBox="0 0 100 100" aria-hidden="true">
+        <defs><path id="cir" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
+        <text><textPath href="#cir" startOffset="0">· Fresh Daily · Since Lima · Open Daily </textPath></text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="mtrack">
+    <span>Ceviche Clásico</span><span>Lomo Saltado</span><span>Aji de Gallina</span><span>Tiradito</span><span>Piqueo de Causas</span><span>Pisco Sour</span><span>Anticuchos</span>
+    <span>Ceviche Clásico</span><span>Lomo Saltado</span><span>Aji de Gallina</span><span>Tiradito</span><span>Piqueo de Causas</span><span>Pisco Sour</span><span>Anticuchos</span>
+  </div>
+</div>
+
+<!-- STORY -->
+<section class="story" id="story">
+  <div class="wrap story-grid">
+    <div class="story-media rv">
+      <img src="./gallina.png" alt="Aji de Gallina — golden Peruvian chicken stew"/>
+      <span class="tag">Cooked from memory, not a manual.</span>
+    </div>
+    <div class="rv" style="--d:100ms">
+      <div class="eyebrow">Our Story</div>
+      <h2>A taste of Lima,<br>rooted in Port St. Lucie.</h2>
+      <p>At Aji Peru, food is memory. Every dish traces back to the open-air markets of Lima, the street cevicherías of Miraflores, and the family kitchens of the Andes — brought to the Treasure Coast unchanged and uncompromised.</p>
+      <p>From hand-picked ají amarillo to the freshest seafood and slow-braised proteins, every ingredient honors the tradition behind it.</p>
+      <div class="story-stats">
+        <div class="st"><div class="n">40<em>+</em></div><div class="l">Dishes</div></div>
+        <div class="st"><div class="n">4.2<em>★</em></div><div class="l">Postmates</div></div>
+        <div class="st"><div class="n">$20<em>–</em></div><div class="l">Per person</div></div>
+        <div class="st"><div class="n">7<em>days</em></div><div class="l">Open weekly</div></div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-  <div class="about-inner">
-    <p class="about-quote rv">"Every plate is a bridge — between the heat of Lima and the warmth of a meal shared. <em>We cook from memory.</em>"</p>
-    <div class="about-bar rv" style="--rd:120ms">
-      <div class="about-stat">
-        <div class="stat-n">40<sup>+</sup></div>
-        <div class="stat-l">Peruvian dishes</div>
+<!-- MENU -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="menu-head rv">
+      <div>
+        <div class="eyebrow">Signature Dishes</div>
+        <h2>Five plates, five stories.</h2>
       </div>
-      <div class="about-stat">
-        <div class="stat-n">4<sup>.</sup>2</div>
-        <div class="stat-l">Postmates rating</div>
-      </div>
-      <div class="about-stat">
-        <div class="stat-n">$20<sup>–</sup></div>
-        <div class="stat-l">Per person</div>
-      </div>
+      <div class="note">Full menu at <a href="https://zingmyorder.com" target="_blank">zingmyorder.com</a><br>Dine-in · Takeout · Open daily</div>
+    </div>
+    <div class="mgrid">
+      <!-- Feature -->
+      <article class="dish dish-feat rv">
+        <div class="dish-img"><img src="./ceviche.jpg" alt="Ceviche Clásico"/><span class="dish-num">01</span></div>
+        <div class="dish-body">
+          <div class="dish-cat">Signature · Start Here</div>
+          <h3>Ceviche Clásico</h3>
+          <p>Fresh catch cured in bright leche de tigre — lime, ají amarillo, and cilantro — served with creamy sweet potato, choclo, and crisp red onion. Light, electric, alive.</p>
+          <div class="dish-foot">
+            <div class="dish-tags"><span class="dish-tag">Seafood</span><span class="dish-tag">Gluten Free</span></div>
+          </div>
+        </div>
+      </article>
+      <!-- Tall -->
+      <article class="dish dish-tall rv" style="--d:80ms">
+        <div class="dish-img"><img src="./tiradito.png" alt="Tiradito Aji Peru"/><span class="dish-num">02</span></div>
+        <div class="dish-body">
+          <div class="dish-cat">From the Sea</div>
+          <h3>Tiradito Aji Peru</h3>
+          <p>Silky fish fanned over slate in creamy ají amarillo, with crispy calamari and pickled onion.</p>
+          <div class="dish-foot"><div class="dish-tags"><span class="dish-tag">Gluten Free</span></div><span class="dish-price">$24</span></div>
+        </div>
+      </article>
+      <!-- Three across -->
+      <article class="dish dish-third rv">
+        <div class="dish-img"><img src="./lomo.webp" alt="Lomo Saltado"/><span class="dish-num">03</span></div>
+        <div class="dish-body">
+          <div class="dish-cat">Most Ordered</div>
+          <h3>Lomo Saltado</h3>
+          <p>Wok-fired beef tenderloin with tomato, ají, and soy — crispy papas and white rice.</p>
+          <div class="dish-foot"><div class="dish-tags"><span class="dish-tag">Beef</span><span class="dish-tag">Wok-Fired</span></div></div>
+        </div>
+      </article>
+      <article class="dish dish-third rv" style="--d:80ms">
+        <div class="dish-img"><img src="./gallina.png" alt="Aji de Gallina"/><span class="dish-num">04</span></div>
+        <div class="dish-body">
+          <div class="dish-cat">Chef's Favorite</div>
+          <h3>Aji de Gallina</h3>
+          <p>Pulled chicken in golden ají amarillo cream with walnuts, over rice with egg and olives.</p>
+          <div class="dish-foot"><div class="dish-tags"><span class="dish-tag">Chicken</span><span class="dish-tag">Mild</span></div></div>
+        </div>
+      </article>
+      <article class="dish dish-third rv" style="--d:160ms">
+        <div class="dish-img"><img src="./causas.png" alt="Piqueo de Causas"/><span class="dish-num">05</span></div>
+        <div class="dish-body">
+          <div class="dish-cat">Share & Explore</div>
+          <h3>Piqueo de Causas</h3>
+          <p>Three towers of yellow ají potato — chicken, tuna, shrimp — layered with avocado.</p>
+          <div class="dish-foot"><div class="dish-tags"><span class="dish-tag">Shareable</span></div><span class="dish-price">$24</span></div>
+        </div>
+      </article>
     </div>
   </div>
 </section>
 
-<!-- DISHES -->
-<section class="dishes" id="dishes">
-  <div class="dishes-header rv">
-    <h2 class="dishes-h">Five dishes.<br>Five stories.</h2>
-    <div class="dishes-note">
-      Full menu at zingmyorder.com<br>
-      Dine-in · Takeout · Daily
+<!-- HERITAGE -->
+<section class="heritage" id="heritage">
+  <div class="wrap">
+    <div class="rv">
+      <div class="eyebrow">Peruvian Heritage</div>
+      <h2>Five thousand years in every bite.</h2>
+      <p class="sub">Peruvian cuisine is five millennia of indigenous tradition, fused with Spanish, Japanese, Chinese, and African influence — one of the world's most celebrated culinary cultures. We don't just cook it. We translate it.</p>
     </div>
-  </div>
-  <div class="dg">
-    <!-- 01 hero tile -->
-    <div class="dg-top">
-      <div class="tile">
-        <img src="./ceviche.jpg" alt="Ceviche Clásico"/>
-        <div class="tile-grad"></div>
-        <div class="tile-body">
-          <span class="tile-num">01 / 05</span>
-          <span class="tile-cat">Signature · Seafood</span>
-          <h3 class="tile-name">Ceviche Clásico</h3>
-          <button class="tile-toggle" aria-label="Show description">+</button><p class="tile-desc">Fresh catch cured in leche de tigre — lime, ají amarillo, cilantro. Served with sweet potato, choclo, and crisp red onion.</p>
-        </div>
+    <div class="pillars">
+      <div class="pillar rv">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 0 1 5 5c0 4-5 11-5 11S7 11 7 7a5 5 0 0 1 5-5z"/><circle cx="12" cy="7" r="2"/></svg></div>
+        <h4>The Ají Pepper</h4>
+        <p>Over 3,000 pepper varieties across every region and tradition in Peru.</p>
       </div>
-    </div>
-    <!-- 02 + 03 -->
-    <div class="dg-mid">
-      <div class="tile">
-        <img src="./lomo.webp" alt="Lomo Saltado"/>
-        <div class="tile-grad"></div>
-        <div class="tile-body">
-          <span class="tile-num">02 / 05</span>
-          <span class="tile-cat">Most Ordered · Beef</span>
-          <h3 class="tile-name">Lomo Saltado</h3>
-          <button class="tile-toggle" aria-label="Show description">+</button><p class="tile-desc">Wok-fired beef tenderloin with tomato, ají amarillo, soy. Crispy papas fritas and white rice.</p>
-        </div>
+      <div class="pillar rv" style="--d:80ms">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg></div>
+        <h4>Lima's Coastline</h4>
+        <p>Some of the world's richest waters — perfect for ceviche and tiradito.</p>
       </div>
-      <div class="tile">
-        <img src="./gallina.png" alt="Aji de Gallina"/>
-        <div class="tile-grad"></div>
-        <div class="tile-body">
-          <span class="tile-num">03 / 05</span>
-          <span class="tile-cat">Chef's Favorite · Chicken</span>
-          <h3 class="tile-name">Aji de Gallina</h3>
-          <button class="tile-toggle" aria-label="Show description">+</button><p class="tile-desc">Pulled chicken in golden aji amarillo cream sauce with walnuts. Served over rice with egg and olives.</p>
-        </div>
+      <div class="pillar rv" style="--d:160ms">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1l2.1-2.1M17 7l2.1-2.1"/></svg></div>
+        <h4>Chifa Fusion</h4>
+        <p>Chinese immigrants in 19th-century Lima gave birth to the wok behind Lomo Saltado.</p>
       </div>
-    </div>
-    <!-- 04 + 05 -->
-    <div class="dg-bot">
-      <div class="tile">
-        <img src="./tiradito.png" alt="Tiradito Aji Peru"/>
-        <div class="tile-grad"></div>
-        <div class="tile-body">
-          <span class="tile-num">04 / 05</span>
-          <span class="tile-cat">From the Sea · $24</span>
-          <h3 class="tile-name">Tiradito</h3>
-          <button class="tile-toggle" aria-label="Show description">+</button><p class="tile-desc">Sliced fish on dark slate with creamy aji sauce, crispy calamari, and pickled onion.</p>
-        </div>
-      </div>
-      <div class="tile">
-        <img src="./causas.png" alt="Piqueo De Causas"/>
-        <div class="tile-grad"></div>
-        <div class="tile-body">
-          <span class="tile-num">05 / 05</span>
-          <span class="tile-cat">Shareable · $24</span>
-          <h3 class="tile-name">Piqueo de Causas</h3>
-          <button class="tile-toggle" aria-label="Show description">+</button><p class="tile-desc">Three causa towers — chicken, tuna, shrimp — layered with avocado and aji sauce.</p>
-        </div>
+      <div class="pillar rv" style="--d:240ms">
+        <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1.1-1.1a5.5 5.5 0 0 0-7.8 7.8l1.1 1L12 21.2l7.8-7.8 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></div>
+        <h4>Family Tradition</h4>
+        <p>Every recipe handed down — from grandmothers who never wrote them down.</p>
       </div>
     </div>
   </div>
@@ -568,101 +454,68 @@ footer{background:#000;padding:4.5rem 0 2.5rem;border-top:1px solid var(--line)}
 
 <!-- REVIEWS -->
 <section class="reviews" id="reviews">
-  <div class="rev-c">
-    <div class="rev-top rv">
-      <div>
-        <div class="rev-score">
-          <span class="rev-big">4.2</span>
-          <span class="rev-out">/5</span>
-        </div>
-        <div class="rev-stars">★★★★½</div>
-        <div class="rev-meta">53+ reviews · Postmates</div>
+  <div class="wrap">
+    <div class="rev-head rv">
+      <div class="rev-score">
+        <div class="big">4.2</div>
+        <span class="stars">★★★★☆</span>
+        <div class="src">Postmates · 53 reviews</div>
       </div>
-      <p class="rev-text">"The Treasure Coast's most authentic Peruvian table — from ceviche to lomo, every dish tastes like Lima made it."</p>
+      <h2>The Treasure Coast's favorite Peruvian table.</h2>
     </div>
-    <div class="rev-quotes">
-      <div class="rev-q">
-        <div class="rev-q-head">
-          <div class="rev-avatar">M</div>
-          <div><div class="rev-name">Maria G.</div><div class="rev-date">2 weeks ago</div></div>
-          <div class="rev-stars-row"><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span></div>
-        </div>
-        <blockquote>"The ceviche here is the real deal. I've had ceviche all over South Florida and nothing comes close — the leche de tigre is electric."</blockquote>
-        <cite>Postmates · Verified Order</cite>
-        <div class="dish-note">Ceviche Clásico</div>
+    <div class="rev-grid">
+      <div class="rev rv">
+        <div class="rev-top"><div class="rev-av">M</div><div><div class="rev-nm">Maria G.</div><div class="rev-dt">2 weeks ago</div></div><div class="rev-st">★★★★★</div></div>
+        <q>The ceviche here is the real deal. I've had ceviche all over South Florida and nothing comes close — the leche de tigre is electric.</q>
+        <div class="dish-of">Ordered · <b>Ceviche Clásico</b></div>
       </div>
-      <div class="rev-q">
-        <div class="rev-q-head">
-          <div class="rev-avatar">J</div>
-          <div><div class="rev-name">James R.</div><div class="rev-date">1 month ago</div></div>
-          <div class="rev-stars-row"><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span></div>
-        </div>
-        <blockquote>"Lomo Saltado was perfectly wok-charred, complex flavors. My wife had the Aji de Gallina and nearly cried it was so good."</blockquote>
-        <cite>Postmates · Verified Order</cite>
-        <div class="dish-note">Lomo Saltado · Aji de Gallina</div>
+      <div class="rev rv" style="--d:100ms">
+        <div class="rev-top"><div class="rev-av">J</div><div><div class="rev-nm">James R.</div><div class="rev-dt">1 month ago</div></div><div class="rev-st">★★★★★</div></div>
+        <q>Lomo Saltado was perfectly wok-charred, flavors complex. My wife had the Aji de Gallina and nearly cried it was so good.</q>
+        <div class="dish-of">Ordered · <b>Lomo Saltado</b></div>
       </div>
-      <div class="rev-q">
-        <div class="rev-q-head">
-          <div class="rev-avatar">S</div>
-          <div><div class="rev-name">Sofia L.</div><div class="rev-date">3 weeks ago</div></div>
-          <div class="rev-stars-row"><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star" style="opacity:.3">★</span></div>
-        </div>
-        <blockquote>"Hidden gem in PSL. Tastes like it was made by an abuela in Lima. The Piqueo de Causas — stunning presentation, stunning flavor."</blockquote>
-        <cite>Postmates · Verified Order</cite>
-        <div class="dish-note">Piqueo de Causas</div>
+      <div class="rev rv" style="--d:200ms">
+        <div class="rev-top"><div class="rev-av">S</div><div><div class="rev-nm">Sofia L.</div><div class="rev-dt">3 weeks ago</div></div><div class="rev-st">★★★★☆</div></div>
+        <q>Hidden gem in PSL. Tastes like it was made by an abuela in Lima. The Piqueo de Causas — stunning presentation and flavor.</q>
+        <div class="dish-of">Ordered · <b>Piqueo de Causas</b></div>
       </div>
-    </div>
-    <div class="rev-footer rv">
-      <p>53 reviews on Postmates · Average 4.2 / 5</p>
-      <a href="https://zingmyorder.com" target="_blank" class="rev-link">Order &amp; leave a review ↗</a>
     </div>
   </div>
 </section>
 
 <!-- VISIT -->
 <section class="visit" id="visit">
-  <div class="visit-c">
-    <div class="visit-head rv">
-      <h2 class="visit-h">Come find us.</h2>
-      <p class="visit-sub">1224 SW Gatlin Blvd, Unit 110 · Port St. Lucie, FL 34953</p>
-    </div>
-    <div class="visit-grid rv" style="--rd:80ms">
-      <div class="vcard">
+  <div class="wrap">
+    <div class="visit-card rv">
+      <div class="visit-col">
         <h3>Hours</h3>
-        <ul class="hours-list" id="hoursList">
-          <li class="hl-row" data-day="1"><span class="hl-day">Monday</span><span>Closes 8:30 PM</span></li>
-          <li class="hl-row" data-day="2"><span class="hl-day">Tuesday</span><span>Closes 8:30 PM</span></li>
-          <li class="hl-row" data-day="3"><span class="hl-day">Wednesday</span><span>Closes 8:30 PM</span></li>
-          <li class="hl-row" data-day="4"><span class="hl-day">Thursday</span><span>Closes 8:30 PM</span></li>
-          <li class="hl-row" data-day="5"><span class="hl-day">Friday</span><span>Closes 8:30 PM</span></li>
-          <li class="hl-row" data-day="6"><span class="hl-day">Saturday</span><span>Closes 8:30 PM</span></li>
-          <li class="hl-row" data-day="0"><span class="hl-day">Sunday</span><span>Closes 8:30 PM</span></li>
+        <p class="lead">Open daily · Kitchen closes 8:30 PM</p>
+        <ul class="hours" id="hours">
+          <li data-d="1"><span class="d">Monday</span><span class="t">11:00 AM – 8:30 PM</span></li>
+          <li data-d="2"><span class="d">Tuesday</span><span class="t">11:00 AM – 8:30 PM</span></li>
+          <li data-d="3"><span class="d">Wednesday</span><span class="t">11:00 AM – 8:30 PM</span></li>
+          <li data-d="4"><span class="d">Thursday</span><span class="t">11:00 AM – 8:30 PM</span></li>
+          <li data-d="5"><span class="d">Friday</span><span class="t">11:00 AM – 8:30 PM</span></li>
+          <li data-d="6"><span class="d">Saturday</span><span class="t">11:00 AM – 8:30 PM</span></li>
+          <li data-d="0"><span class="d">Sunday</span><span class="t">11:00 AM – 8:30 PM</span></li>
         </ul>
       </div>
-      <div class="vcard">
-        <h3>Contact</h3>
-        <div class="contact-list">
-          <div class="cl-row">
-            <div class="cl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <div><div class="cl-label">Address</div><div class="cl-val">1224 SW Gatlin Blvd, Unit 110<br>Port St. Lucie, FL 34953</div></div>
-          </div>
-          <div class="cl-row">
-            <div class="cl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L7.9 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg></div>
-            <div><div class="cl-label">Phone</div><div class="cl-val"><a href="tel:+17722071604">(772) 207-1604</a></div></div>
-          </div>
-          <div class="cl-row">
-            <div class="cl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-            <div><div class="cl-label">Hours</div><div class="cl-val">Open Daily · Closes 8:30 PM</div></div>
-          </div>
-          <div class="cl-row">
-            <div class="cl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></div>
-            <div><div class="cl-label">Order Online</div><div class="cl-val"><a href="https://zingmyorder.com" target="_blank">zingmyorder.com ↗</a></div></div>
-          </div>
-          <div class="cl-row">
-            <div class="cl-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-            <div><div class="cl-label">Price Range</div><div class="cl-val">$20 – $30 per person</div></div>
-          </div>
+      <div class="visit-col">
+        <h3>Find Us</h3>
+        <p class="lead">Tucked in a plaza on Gatlin Boulevard — easy parking.</p>
+        <div class="crow">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+          <div><div class="lab">Address</div><div class="val">1224 SW Gatlin Blvd, Unit 110<br>Port St. Lucie, FL 34953</div></div>
         </div>
+        <div class="crow">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L7.9 9.7a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2z"/></svg></div>
+          <div><div class="lab">Phone</div><div class="val"><a href="tel:+17722071604">(772) 207-1604</a></div></div>
+        </div>
+        <div class="crow">
+          <div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 9h20M6 4V2M18 4V2"/></svg></div>
+          <div><div class="lab">Order Online</div><div class="val"><a href="https://zingmyorder.com" target="_blank">zingmyorder.com →</a></div></div>
+        </div>
+        <a href="https://maps.google.com/?q=1224+SW+Gatlin+Blvd+Unit+110+Port+St+Lucie+FL+34953" target="_blank" class="btn btn-ghost visit-cta">Get Directions</a>
       </div>
     </div>
   </div>
@@ -670,114 +523,49 @@ footer{background:#000;padding:4.5rem 0 2.5rem;border-top:1px solid var(--line)}
 
 <!-- FOOTER -->
 <footer>
-  <div class="foot-c">
+  <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="foot-brand">Aji Peru</div>
-        <p>Authentic Peruvian cuisine in Port St. Lucie. Open daily.</p>
-        <p style="margin-top:.8rem;font-size:.7rem;color:var(--w18)">4.2 · 53 Reviews · Postmates</p>
+        <div class="foot-brand">Aji<i>Peru</i></div>
+        <p>Authentic Peruvian cuisine in Port St. Lucie — dine in, take out, or order online. Open daily until 8:30 PM.</p>
       </div>
       <div>
-        <h5>Navigate</h5>
-        <a href="#about">Our Story</a>
-        <a href="#dishes">Menu</a>
+        <h5>Explore</h5>
+        <a href="#story">Our Story</a>
+        <a href="#menu">Menu</a>
+        <a href="#heritage">Heritage</a>
         <a href="#reviews">Reviews</a>
         <a href="#visit">Visit</a>
-        <a href="https://zingmyorder.com" target="_blank">Order Online ↗</a>
       </div>
       <div>
-        <h5>Find Us</h5>
-        <p>1224 SW Gatlin Blvd<br>Unit 110<br>Port St. Lucie, FL 34953</p>
-        <a href="tel:+17722071604" style="margin-top:.8rem">(772) 207-1604</a>
+        <h5>Contact</h5>
+        <a href="tel:+17722071604">(772) 207-1604</a>
+        <a href="https://zingmyorder.com" target="_blank">zingmyorder.com →</a>
+        <a href="https://maps.google.com/?q=1224+SW+Gatlin+Blvd+Unit+110+Port+St+Lucie+FL+34953" target="_blank">1224 SW Gatlin Blvd, Unit 110<br>Port St. Lucie, FL 34953</a>
       </div>
     </div>
     <div class="foot-bottom">
       <span>© 2026 Aji Peru · Port St. Lucie, FL</span>
-      <span>Authentic Peruvian Restaurant</span>
+      <span>Authentic Peruvian Restaurant · $20–30 per person</span>
     </div>
   </div>
 </footer>
 
 <script>
-// CINEMATIC HERO
-(function(){
-  const h=document.getElementById('hero');
-  const bg=document.getElementById('hbg');
-  const body=document.getElementById('hbody');
-  const sc=document.getElementById('hscroll');
-  function tick(){
-    const t=h.getBoundingClientRect().top;
-    const p=Math.min(1,Math.max(0,-t/(h.offsetHeight-window.innerHeight)));
-    bg.style.setProperty('--hs',1+p*.1);
-    bg.style.setProperty('--hb',1-p*.6);
-    const f=Math.max(0,1-p*2.2);
-    body.style.opacity=f;
-    body.style.transform='translateY('+(-p*50)+'px)';
-    sc.style.opacity=Math.max(0,1-p*6);
-  }
-  window.addEventListener('scroll',tick,{passive:true});tick();
-})();
-
-// NAV SCROLL
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>60),{passive:true});
-
-// MOBILE NAV
-function closeNav(){
-  document.getElementById('mnav').classList.remove('open');
-  document.getElementById('burger').classList.remove('open');
-  document.body.style.overflow='';
-}
-document.getElementById('burger').onclick=function(){
-  const open=!this.classList.contains('open');
-  this.classList.toggle('open',open);
-  document.getElementById('mnav').classList.toggle('open',open);
-  document.body.style.overflow=open?'hidden':'';
-};
-
-// TODAY
+// nav stuck state
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('stuck',scrollY>10),{passive:true});
+// mobile menu
+const burger=document.getElementById('burger'),mnav=document.getElementById('mnav'),mclose=document.getElementById('mclose');
+const setMenu=o=>{burger.classList.toggle('open',o);mnav.classList.toggle('open',o);document.body.style.overflow=o?'hidden':''};
+burger.onclick=()=>setMenu(true);mclose.onclick=()=>setMenu(false);
+mnav.querySelectorAll('a').forEach(a=>a.onclick=()=>setMenu(false));
+// highlight today
 const day=new Date().getDay();
-document.querySelectorAll('.hl-row[data-day]').forEach(r=>{
-  if(+r.dataset.day===day) r.classList.add('today');
-});
-
-// SCROLL REVEAL
-const rv=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;
-  e.target.classList.add('in');
-  rv.unobserve(e.target);
-}),{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.rv').forEach(el=>rv.observe(el));
-
-// DISH TILE REVEAL + CLICK TOGGLE
-const tv=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;
-  const b=e.target.querySelector('.tile-body');
-  if(b)b.classList.add('in');
-  tv.unobserve(e.target);
-}),{threshold:0.12});
-document.querySelectorAll('.tile').forEach(t=>tv.observe(t));
-
-// Click toggle — open/close description
-document.querySelectorAll('.tile-toggle').forEach(btn=>{
-  btn.addEventListener('click',e=>{
-    e.stopPropagation();
-    const tile=btn.closest('.tile');
-    const isOpen=tile.classList.toggle('open');
-    btn.textContent=isOpen?'×':'+';
-    btn.setAttribute('aria-label',isOpen?'Close':'Show description');
-  });
-});
-
-// REVIEW CARD REVEAL
-const qv=new IntersectionObserver(es=>es.forEach(e=>{
-  if(!e.isIntersecting)return;
-  e.target.classList.add('in');
-  qv.unobserve(e.target);
-}),{threshold:0.1});
-document.querySelectorAll('.rev-q').forEach((q,i)=>{
-  q.style.setProperty('--qd',i*100+'ms');
-  qv.observe(q);
-});
+document.querySelectorAll('#hours li').forEach(li=>{if(+li.dataset.d===day)li.classList.add('today')});
+// scroll reveal
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>
