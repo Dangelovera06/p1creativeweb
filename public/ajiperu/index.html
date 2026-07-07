@@ -7,7 +7,7 @@
 <meta name="description" content="Aji Peru — authentic Peruvian cuisine in Port St. Lucie. Fresh ceviche, wok-fired lomo saltado, and slow-braised classics. Open daily."/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=Jost:wght@200;300;400&family=Bebas+Neue&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,500&family=Jost:wght@200;300;400&family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -209,7 +209,7 @@ nav.scrolled{
 }
 .tile img{
   width:100%;height:100%;object-fit:cover;
-  object-position:center 20%;
+  object-position:center center;
   transition:transform 1.4s var(--ease),filter .6s ease;
   filter:brightness(.72) saturate(1.1);
   will-change:transform,filter;
@@ -242,13 +242,23 @@ nav.scrolled{
   font-size:clamp(1.6rem,2.5vw,2.6rem);line-height:1.05;color:#fff;
 }
 .tile-desc{
-  font-size:.78rem;line-height:1.9;color:var(--w70);
+  font-size:.82rem;line-height:1.85;color:rgba(255,255,255,.75);
   margin-top:.9rem;
   max-height:0;overflow:hidden;
-  transition:max-height .5s var(--ease),opacity .5s var(--ease);
+  transition:max-height .55s var(--ease),opacity .55s var(--ease);
   opacity:0;
 }
-.tile:hover .tile-desc{max-height:80px;opacity:1}
+.tile.open .tile-desc{max-height:120px;opacity:1}
+.tile-toggle{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:28px;height:28px;border-radius:50%;
+  border:1px solid rgba(255,255,255,.25);
+  background:rgba(0,0,0,.4);backdrop-filter:blur(8px);
+  color:rgba(255,255,255,.7);font-size:1.1rem;line-height:1;
+  cursor:pointer;transition:background .2s,border-color .2s,transform .3s var(--ease);
+  flex-shrink:0;margin-left:auto;
+}
+.tile.open .tile-toggle{transform:rotate(45deg);border-color:rgba(255,255,255,.5);background:rgba(255,255,255,.1)}
 
 /* top tile gets larger text */
 .dg-top .tile-name{font-size:clamp(2rem,3.5vw,3.5rem)}
@@ -269,23 +279,41 @@ nav.scrolled{
 .rev-meta{margin-top:.6rem;font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;color:var(--w42)}
 .rev-stars{font-size:1rem;color:var(--orange);letter-spacing:3px}
 .rev-text{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.2rem,2vw,1.6rem);color:var(--w70);line-height:1.55}
-.rev-quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line)}
+.rev-quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
 .rev-q{
-  background:#000;padding:2.5rem;
+  background:#0f0f0f;border:1px solid rgba(255,255,255,.07);
+  border-radius:16px;padding:2rem 1.8rem 1.8rem;
   opacity:0;transform:translateY(20px);
   transition:opacity .8s var(--ease),transform .8s var(--ease);
   transition-delay:var(--qd,0ms);
+  display:flex;flex-direction:column;
 }
 .rev-q.in{opacity:1;transform:translateY(0)}
+.rev-q-head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.4rem}
+.rev-avatar{
+  width:42px;height:42px;border-radius:50%;
+  background:linear-gradient(135deg,#1a1a1a,#2a2a2a);
+  border:1px solid rgba(255,255,255,.1);
+  display:grid;place-items:center;flex-shrink:0;
+  font-family:'Inter',sans-serif;font-size:.95rem;font-weight:700;
+  color:rgba(255,255,255,.5);
+}
+.rev-name{font-family:'Inter',sans-serif;font-size:.88rem;font-weight:600;color:#fff;line-height:1.2}
+.rev-date{font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.1rem;font-family:'Inter',sans-serif;font-weight:400}
+.rev-stars-row{display:flex;gap:2px;margin-left:auto}
+.rev-star{color:var(--orange);font-size:.75rem}
 .rev-q blockquote{
   font-family:var(--serif);font-style:italic;font-weight:300;
-  font-size:1rem;line-height:1.75;color:var(--w70);margin-bottom:1.5rem;
+  font-size:1.05rem;line-height:1.75;color:rgba(255,255,255,.7);
+  margin-bottom:1.2rem;flex:1;
+  border-left:2px solid rgba(217,79,0,.4);padding-left:1rem;
 }
 .rev-q cite{
-  font-size:.58rem;letter-spacing:.22em;text-transform:uppercase;
-  color:var(--w42);font-style:normal;display:block;
+  font-family:'Inter',sans-serif;font-size:.62rem;font-weight:500;
+  letter-spacing:.12em;text-transform:uppercase;
+  color:rgba(255,255,255,.25);font-style:normal;display:block;
 }
-.rev-q .dish-note{margin-top:.3rem;color:var(--w18);font-size:.55rem;letter-spacing:.15em;text-transform:uppercase}
+.rev-q .dish-note{margin-top:.2rem;color:rgba(255,255,255,.15);font-size:.58rem;font-family:'Inter',sans-serif}
 .rev-footer{margin-top:2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .rev-footer p{font-size:.72rem;color:var(--w42)}
 .rev-link{
@@ -370,7 +398,7 @@ footer{background:#000;padding:4.5rem 0 2.5rem;border-top:1px solid var(--line)}
   .dg-mid,.dg-bot{height:44vw;min-height:220px}
   .dg-top{height:56vw;min-height:260px}
   .rev-top{grid-template-columns:1fr;gap:2rem}
-  .rev-quotes{grid-template-columns:1fr}
+  .rev-quotes{grid-template-columns:1fr;gap:.8rem}
   .visit-grid{grid-template-columns:1fr}
   .foot-grid{grid-template-columns:1fr 1fr}
 }
@@ -386,8 +414,8 @@ footer{background:#000;padding:4.5rem 0 2.5rem;border-top:1px solid var(--line)}
   .dg-mid .tile,.dg-bot .tile{height:65vw;min-height:240px}
   .dg-top{height:72vw;min-height:240px}
   .tile-body{opacity:1;transform:none} /* always visible on mobile */
-  .tile:hover .tile-desc{max-height:0;opacity:0} /* no hover on mobile */
-  .tile-desc{display:none}
+  .tile-toggle{display:inline-flex}
+  .tile-desc{display:block}
   .tile-name{font-size:1.45rem}
   .dg-top .tile-name{font-size:1.7rem}
   .dg-top .tile-body{padding:1.5rem 1.8rem 2rem}
@@ -485,7 +513,7 @@ footer{background:#000;padding:4.5rem 0 2.5rem;border-top:1px solid var(--line)}
           <span class="tile-num">01 / 05</span>
           <span class="tile-cat">Signature · Seafood</span>
           <h3 class="tile-name">Ceviche Clásico</h3>
-          <p class="tile-desc">Fresh catch cured in leche de tigre — lime, ají amarillo, cilantro. Served with sweet potato, choclo, and crisp red onion.</p>
+          <button class="tile-toggle" aria-label="Show description">+</button><p class="tile-desc">Fresh catch cured in leche de tigre — lime, ají amarillo, cilantro. Served with sweet potato, choclo, and crisp red onion.</p>
         </div>
       </div>
     </div>
@@ -498,7 +526,7 @@ footer{background:#000;padding:4.5rem 0 2.5rem;border-top:1px solid var(--line)}
           <span class="tile-num">02 / 05</span>
           <span class="tile-cat">Most Ordered · Beef</span>
           <h3 class="tile-name">Lomo Saltado</h3>
-          <p class="tile-desc">Wok-fired beef tenderloin with tomato, ají amarillo, soy. Crispy papas fritas and white rice.</p>
+          <button class="tile-toggle" aria-label="Show description">+</button><p class="tile-desc">Wok-fired beef tenderloin with tomato, ají amarillo, soy. Crispy papas fritas and white rice.</p>
         </div>
       </div>
       <div class="tile">
@@ -508,7 +536,7 @@ footer{background:#000;padding:4.5rem 0 2.5rem;border-top:1px solid var(--line)}
           <span class="tile-num">03 / 05</span>
           <span class="tile-cat">Chef's Favorite · Chicken</span>
           <h3 class="tile-name">Aji de Gallina</h3>
-          <p class="tile-desc">Pulled chicken in golden aji amarillo cream sauce with walnuts. Served over rice with egg and olives.</p>
+          <button class="tile-toggle" aria-label="Show description">+</button><p class="tile-desc">Pulled chicken in golden aji amarillo cream sauce with walnuts. Served over rice with egg and olives.</p>
         </div>
       </div>
     </div>
@@ -521,7 +549,7 @@ footer{background:#000;padding:4.5rem 0 2.5rem;border-top:1px solid var(--line)}
           <span class="tile-num">04 / 05</span>
           <span class="tile-cat">From the Sea · $24</span>
           <h3 class="tile-name">Tiradito</h3>
-          <p class="tile-desc">Sliced fish on dark slate with creamy aji sauce, crispy calamari, and pickled onion.</p>
+          <button class="tile-toggle" aria-label="Show description">+</button><p class="tile-desc">Sliced fish on dark slate with creamy aji sauce, crispy calamari, and pickled onion.</p>
         </div>
       </div>
       <div class="tile">
@@ -531,7 +559,7 @@ footer{background:#000;padding:4.5rem 0 2.5rem;border-top:1px solid var(--line)}
           <span class="tile-num">05 / 05</span>
           <span class="tile-cat">Shareable · $24</span>
           <h3 class="tile-name">Piqueo de Causas</h3>
-          <p class="tile-desc">Three causa towers — chicken, tuna, shrimp — layered with avocado and aji sauce.</p>
+          <button class="tile-toggle" aria-label="Show description">+</button><p class="tile-desc">Three causa towers — chicken, tuna, shrimp — layered with avocado and aji sauce.</p>
         </div>
       </div>
     </div>
@@ -554,18 +582,33 @@ footer{background:#000;padding:4.5rem 0 2.5rem;border-top:1px solid var(--line)}
     </div>
     <div class="rev-quotes">
       <div class="rev-q">
+        <div class="rev-q-head">
+          <div class="rev-avatar">M</div>
+          <div><div class="rev-name">Maria G.</div><div class="rev-date">2 weeks ago</div></div>
+          <div class="rev-stars-row"><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span></div>
+        </div>
         <blockquote>"The ceviche here is the real deal. I've had ceviche all over South Florida and nothing comes close — the leche de tigre is electric."</blockquote>
-        <cite>Maria G. · 2 weeks ago</cite>
+        <cite>Postmates · Verified Order</cite>
         <div class="dish-note">Ceviche Clásico</div>
       </div>
       <div class="rev-q">
+        <div class="rev-q-head">
+          <div class="rev-avatar">J</div>
+          <div><div class="rev-name">James R.</div><div class="rev-date">1 month ago</div></div>
+          <div class="rev-stars-row"><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span></div>
+        </div>
         <blockquote>"Lomo Saltado was perfectly wok-charred, complex flavors. My wife had the Aji de Gallina and nearly cried it was so good."</blockquote>
-        <cite>James R. · 1 month ago</cite>
+        <cite>Postmates · Verified Order</cite>
         <div class="dish-note">Lomo Saltado · Aji de Gallina</div>
       </div>
       <div class="rev-q">
+        <div class="rev-q-head">
+          <div class="rev-avatar">S</div>
+          <div><div class="rev-name">Sofia L.</div><div class="rev-date">3 weeks ago</div></div>
+          <div class="rev-stars-row"><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star">★</span><span class="rev-star" style="opacity:.3">★</span></div>
+        </div>
         <blockquote>"Hidden gem in PSL. Tastes like it was made by an abuela in Lima. The Piqueo de Causas — stunning presentation, stunning flavor."</blockquote>
-        <cite>Sofia L. · 3 weeks ago</cite>
+        <cite>Postmates · Verified Order</cite>
         <div class="dish-note">Piqueo de Causas</div>
       </div>
     </div>
@@ -705,14 +748,25 @@ const rv=new IntersectionObserver(es=>es.forEach(e=>{
 }),{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.rv').forEach(el=>rv.observe(el));
 
-// DISH TILE REVEAL
+// DISH TILE REVEAL + CLICK TOGGLE
 const tv=new IntersectionObserver(es=>es.forEach(e=>{
   if(!e.isIntersecting)return;
   const b=e.target.querySelector('.tile-body');
   if(b)b.classList.add('in');
   tv.unobserve(e.target);
-}),{threshold:0.15});
+}),{threshold:0.12});
 document.querySelectorAll('.tile').forEach(t=>tv.observe(t));
+
+// Click toggle — open/close description
+document.querySelectorAll('.tile-toggle').forEach(btn=>{
+  btn.addEventListener('click',e=>{
+    e.stopPropagation();
+    const tile=btn.closest('.tile');
+    const isOpen=tile.classList.toggle('open');
+    btn.textContent=isOpen?'×':'+';
+    btn.setAttribute('aria-label',isOpen?'Close':'Show description');
+  });
+});
 
 // REVIEW CARD REVEAL
 const qv=new IntersectionObserver(es=>es.forEach(e=>{
