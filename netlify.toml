@@ -28,6 +28,19 @@
   status = 200
   force = true
 
+# Aji Peru static page
+[[redirects]]
+  from = "/ajiperu"
+  to = "/ajiperu/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/ajiperu/*"
+  to = "/ajiperu/:splat"
+  status = 200
+  force = true
+
 # React SPA fallback — must come last
 [[redirects]]
   from = "/*"
