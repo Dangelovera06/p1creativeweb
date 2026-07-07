@@ -52,8 +52,8 @@ h1,h2,h3{font-family:var(--serif);color:var(--ink);font-weight:500;line-height:1
 .pulse{width:7px;height:7px;border-radius:50%;background:#5cc47a;box-shadow:0 0 0 3px rgba(92,196,122,.25)}
 
 /* ── NAV ── */
-nav.bar{position:sticky;top:0;z-index:60;background:rgba(245,240,228,.82);backdrop-filter:blur(14px) saturate(150%);border-bottom:1px solid transparent;transition:border-color .4s,background .4s}
-nav.bar.stuck{border-color:var(--line);box-shadow:0 8px 30px -22px rgba(60,35,15,.5)}
+nav.bar{position:sticky;top:0;z-index:60;background:rgba(245,240,228,.9);backdrop-filter:blur(14px) saturate(150%);border-bottom:1px solid var(--line2);transition:box-shadow .4s}
+nav.bar.stuck{box-shadow:0 8px 30px -22px rgba(45,40,20,.5)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;padding:1.05rem 0}
 .brand{font-family:var(--serif);font-weight:600;font-size:1.5rem;letter-spacing:-.01em;color:var(--ink);display:flex;align-items:baseline;gap:.1rem}
 .brand i{color:var(--terra);font-style:italic;font-weight:500}
@@ -74,27 +74,27 @@ nav.bar.stuck{border-color:var(--line);box-shadow:0 8px 30px -22px rgba(60,35,15
 .mnav .btn{margin-top:1.5rem}
 .mclose{position:absolute;top:1.4rem;right:1.6rem;background:none;border:0;font-size:2.2rem;color:var(--ink);cursor:pointer;line-height:1}
 
-/* ── HERO ── */
-.hero{position:relative;padding:4rem 0 5rem}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:4.5rem;align-items:center}
-.hero-eyebrow{margin-bottom:1.6rem}
-.hero h1{font-size:clamp(3.6rem,8vw,6.6rem);line-height:.92;color:var(--ink)}
-.hero h1 .script{display:block;font-style:italic;font-weight:400;color:var(--terra)}
-.hero-lede{margin-top:1.7rem;font-size:1.08rem;color:var(--ink2);max-width:44ch;line-height:1.75}
-.hero-cta{margin-top:2.2rem;display:flex;gap:.9rem;flex-wrap:wrap}
-.hero-rating{margin-top:2.4rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+/* ── HERO (cinematic full-bleed) ── */
+.hero{position:relative;height:190vh;background:var(--ink)}
+.hero-stage{position:sticky;top:0;height:100vh;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('./lomo.webp') center 32%/cover no-repeat;transform:scale(var(--hs,1.05));transform-origin:50% 42%;filter:brightness(var(--hb,.72)) saturate(1.05);will-change:transform,filter}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(18,16,9,.58) 0%,rgba(18,16,9,.12) 30%,rgba(18,16,9,.28) 60%,rgba(18,16,9,.92) 100%)}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 1.5rem;color:#F5F0E4;opacity:var(--hf,1);transform:translateY(var(--hy,0px));will-change:opacity,transform}
+.hero-eyebrow{margin-bottom:1.4rem;color:#F5F0E4}
+.hero-eyebrow::before{background:var(--amar)}
+.hero h1{font-size:clamp(3.4rem,9vw,7rem);line-height:.95;color:#F8F4E9;text-shadow:0 8px 44px rgba(0,0,0,.45)}
+.hero h1 .script{display:block;font-style:italic;font-weight:400;color:var(--amar)}
+.hero-lede{margin:1.6rem auto 0;font-size:1.08rem;color:rgba(245,240,228,.82);max-width:46ch;line-height:1.7}
+.hero-cta{margin-top:2.2rem;display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center}
+.hero .btn-ghost{border-color:rgba(245,240,228,.5);color:#F5F0E4}
+.hero .btn-ghost:hover{background:#F5F0E4;color:var(--ink);border-color:#F5F0E4}
+.hero-rating{margin-top:2.2rem;display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;justify-content:center}
 .stars{color:var(--amar);letter-spacing:2px;font-size:1rem}
-.hero-rating .txt{font-size:.85rem;color:var(--muted)}
-.hero-rating b{color:var(--ink);font-weight:600}
-.hero-media{position:relative}
-.hero-img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:20px;box-shadow:var(--shadow);border:1px solid rgba(255,255,255,.6)}
-.hero-badge{position:absolute;left:-24px;bottom:38px;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1rem 1.3rem;box-shadow:var(--shadow-sm);display:flex;align-items:center;gap:.85rem}
-.hero-badge .num{font-family:var(--serif);font-size:1.9rem;font-weight:600;color:var(--terra);line-height:1}
-.hero-badge .lab{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.4}
-.hero-badge .lab b{display:block;color:var(--ink);font-size:.82rem;letter-spacing:.02em;text-transform:none;font-weight:600}
-.hero-seal{position:absolute;top:-18px;right:-12px;width:104px;height:104px;animation:spin 26s linear infinite}
-.hero-seal text{font-family:var(--sans);font-size:9.2px;letter-spacing:2.6px;fill:var(--ink);text-transform:uppercase;font-weight:500}
-@keyframes spin{to{transform:rotate(360deg)}}
+.hero-rating .txt{font-size:.85rem;color:rgba(245,240,228,.7)}
+.hero-rating b{color:#F5F0E4;font-weight:600}
+.hero-cue{position:absolute;left:50%;bottom:2.2rem;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.6rem;font-size:.58rem;letter-spacing:.35em;text-transform:uppercase;color:rgba(245,240,228,.6);opacity:var(--hcue,1)}
+.hero-cue::after{content:"";width:1px;height:40px;background:linear-gradient(rgba(245,240,228,.6),transparent);animation:cue 2s ease infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
 
 /* ── MARQUEE ── */
 .marquee{background:var(--ink);color:var(--bg);padding:1rem 0;overflow:hidden;white-space:nowrap}
@@ -252,7 +252,8 @@ footer{background:var(--ink);color:rgba(245,240,228,.6);padding:5rem 0 2.5rem}
   .rev-head{grid-template-columns:1fr;gap:1.5rem;text-align:center}
   .rev-score .stars{text-align:center}
   .foot-grid{grid-template-columns:1fr}
-  .hero-img{border-radius:18px}
+  .hero{height:165vh}
+  .hero-lede{font-size:1rem}
 }
 </style>
 </head>
@@ -296,10 +297,12 @@ footer{background:var(--ink);color:rgba(245,240,228,.6);padding:5rem 0 2.5rem}
 
 <!-- HERO -->
 <header class="hero" id="top">
-  <div class="wrap hero-grid">
-    <div class="rv">
+  <div class="hero-stage">
+    <div class="hero-bg" id="hbg" role="img" aria-label="Lomo Saltado — wok-fired Peruvian beef"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content" id="hcontent">
       <div class="eyebrow hero-eyebrow">Authentic Peruvian · Port St. Lucie</div>
-      <h1>The bold taste<br>of Lima<span class="script">on the Treasure Coast.</span></h1>
+      <h1>The bold taste of Lima<span class="script">on the Treasure Coast.</span></h1>
       <p class="hero-lede">Fresh ceviche, wok-fired lomo saltado, and slow-braised classics — cooked the way Lima intended, served daily just off Gatlin Boulevard.</p>
       <div class="hero-cta">
         <a href="https://zingmyorder.com" target="_blank" class="btn btn-primary">Order Online →</a>
@@ -310,17 +313,7 @@ footer{background:var(--ink);color:rgba(245,240,228,.6);padding:5rem 0 2.5rem}
         <span class="txt"><b>4.2</b> on Postmates · 53 reviews · $20–30 per person</span>
       </div>
     </div>
-    <div class="hero-media rv" style="--d:120ms">
-      <img class="hero-img" src="./lomo.webp" alt="Lomo Saltado — wok-fired Peruvian beef"/>
-      <div class="hero-badge">
-        <div class="num">40+</div>
-        <div class="lab">Peruvian<b>dishes daily</b></div>
-      </div>
-      <svg class="hero-seal" viewBox="0 0 100 100" aria-hidden="true">
-        <defs><path id="cir" d="M50,50 m-38,0 a38,38 0 1,1 76,0 a38,38 0 1,1 -76,0"/></defs>
-        <text><textPath href="#cir" startOffset="0">· Fresh Daily · Since Lima · Open Daily </textPath></text>
-      </svg>
-    </div>
+    <div class="hero-cue" aria-hidden="true">Scroll</div>
   </div>
 </header>
 
@@ -552,9 +545,20 @@ footer{background:var(--ink);color:rgba(245,240,228,.6);padding:5rem 0 2.5rem}
 </footer>
 
 <script>
-// nav stuck state
+// cinematic hero: scroll zoom + fade
+const hero=document.getElementById('top'),hbg=document.getElementById('hbg'),hcontent=document.getElementById('hcontent'),hcue=document.querySelector('.hero-cue');
 const nav=document.getElementById('nav');
-addEventListener('scroll',()=>nav.classList.toggle('stuck',scrollY>10),{passive:true});
+function onScroll(){
+  const range=hero.offsetHeight-innerHeight;
+  const p=Math.min(1,Math.max(0,scrollY/range));
+  hbg.style.setProperty('--hs',(1.05+p*0.14).toFixed(3));
+  hbg.style.setProperty('--hb',(0.72-p*0.5).toFixed(3));
+  hcontent.style.setProperty('--hf',Math.max(0,1-p*2.3).toFixed(3));
+  hcontent.style.setProperty('--hy',(-p*70).toFixed(1)+'px');
+  if(hcue) hcue.style.setProperty('--hcue',Math.max(0,1-p*6).toFixed(3));
+  nav.classList.toggle('stuck',scrollY>10);
+}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
 // mobile menu
 const burger=document.getElementById('burger'),mnav=document.getElementById('mnav'),mclose=document.getElementById('mclose');
 const setMenu=o=>{burger.classList.toggle('open',o);mnav.classList.toggle('open',o);document.body.style.overflow=o?'hidden':''};
