@@ -41,6 +41,19 @@
   status = 200
   force = true
 
+# Universal Fades Barbershop static page
+[[redirects]]
+  from = "/universalfades"
+  to = "/universalfades/index.html"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/universalfades/*"
+  to = "/universalfades/:splat"
+  status = 200
+  force = true
+
 # React SPA fallback — must come last
 [[redirects]]
   from = "/*"
