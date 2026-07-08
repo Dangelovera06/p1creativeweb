@@ -10,7 +10,7 @@
 <meta property="og:type" content="restaurant" />
 <meta property="og:title" content="Costa Café & More — Brazilian Café, Açaí & Bakery" />
 <meta property="og:description" content="Brazilian breakfast, açaí bowls, homemade cakes and real coffee in Port St. Lucie, FL." />
-<meta property="og:image" content="assets/img/acai.png" />
+<meta property="og:image" content="assets/img/acai.jpg" />
 
 <link rel="icon" href="assets/logo.svg" type="image/svg+xml" />
 <link rel="apple-touch-icon" href="assets/logo.svg" />
@@ -26,7 +26,7 @@
   "name": "Costa Café & More",
   "description": "Casual Brazilian café and bakery serving breakfast, açaí, baked goods and coffee in Port St. Lucie, FL.",
   "servesCuisine": ["Brazilian", "Café", "Bakery", "Breakfast", "Açaí"],
-  "image": "assets/img/acai.png",
+  "image": "assets/img/acai.jpg",
   "address": { "@type": "PostalAddress", "streetAddress": "2756 Brigantine Pl", "addressLocality": "Port St. Lucie", "addressRegion": "FL", "postalCode": "34953", "addressCountry": "US" },
   "telephone": "+1-772-777-4124",
   "priceRange": "$10–20",
@@ -90,43 +90,49 @@
   .burger.open span:nth-child(2){opacity:0}
   .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-  /* HERO — CINEMATIC SCROLL-ZOOM */
-  .hero-cine{position:relative;height:200vh;background:var(--ink)}
-  .hero-stage{position:sticky;top:0;width:100%;height:100vh;overflow:hidden;background:#1a1109}
-  .hero-img{
-    position:absolute;inset:0;width:100%;height:100%;
-    background-image:url('assets/img/acai.png');background-size:cover;background-position:center 55%;
-    transform-origin:50% 55%;will-change:transform,filter;
-    transform:scale(var(--cine-scale,1));filter:brightness(var(--cine-bright,1));
-  }
-  .hero-vignette{
-    position:absolute;inset:0;pointer-events:none;
-    background:linear-gradient(180deg, rgba(38,25,15,.5) 0%, rgba(38,25,15,0) 32%, rgba(38,25,15,0) 55%, rgba(38,25,15,.82) 100%),
-      radial-gradient(70% 60% at 50% 52%, rgba(0,0,0,0) 0%, rgba(0,0,0,.28) 100%);
-    opacity:var(--cine-overlay,1);
-  }
-  .hero-content{
-    position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;
-    text-align:center;padding:0 1.5rem;color:#FFFDF7;
-    opacity:var(--cine-fade,1);transform:translateY(var(--cine-shift,0px));will-change:opacity,transform;
-  }
-  .hero-content .eyebrow{color:rgba(255,253,247,.9);letter-spacing:.38em;font-size:.76rem;text-shadow:0 1px 12px rgba(38,25,15,.6);margin-bottom:1.2rem}
-  .hero-content h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(3rem,9vw,7rem);line-height:1.02;margin:0;letter-spacing:-.02em;text-shadow:0 8px 40px rgba(38,25,15,.6),0 2px 6px rgba(38,25,15,.4)}
-  .hero-content h1 em{font-style:italic;color:var(--gold-soft)}
-  .hero-content .lede{max-width:44ch;font-size:1.1rem;color:rgba(255,253,247,.92);margin:1.5rem auto 2.2rem;text-shadow:0 1px 12px rgba(38,25,15,.5)}
-  .hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center}
-  .hero-content .btn.ghost{background:transparent;color:#FFFDF7;border:1px solid rgba(255,253,247,.55)}
-  .hero-content .btn.ghost:hover{background:#FFFDF7;color:var(--ink);border-color:#FFFDF7}
-  .hero-status{
-    position:absolute;top:6.5rem;left:50%;transform:translateX(-50%);display:flex;align-items:center;gap:.6rem;
-    background:rgba(38,25,15,.45);backdrop-filter:blur(10px);padding:.5rem .95rem;border-radius:999px;
-    color:#FFFDF7;font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(255,253,247,.2);opacity:var(--cine-fade,1)
-  }
-  .hero-status .dot{width:8px;height:8px;border-radius:50%;background:#5FD18A;box-shadow:0 0 0 4px rgba(95,209,138,.25)}
-  .hero-status.closed .dot{background:var(--gold-soft);box-shadow:0 0 0 4px rgba(242,169,87,.25)}
-  .scroll-cue{position:absolute;left:50%;bottom:2rem;transform:translateX(-50%);font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;color:rgba(255,253,247,.7);display:flex;align-items:center;flex-direction:column;gap:.6rem;opacity:var(--cine-fade,1)}
-  .scroll-cue:after{content:"";width:1px;height:38px;background:rgba(255,253,247,.7);animation:scrollDown 2s ease infinite}
-  @keyframes scrollDown{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+  /* HERO — EDITORIAL SPLIT */
+  .hero{position:relative;padding:8.5rem 0 4.5rem;overflow:hidden;
+    background:radial-gradient(120% 95% at 88% 6%, rgba(242,169,87,.20), transparent 58%),
+      linear-gradient(180deg, var(--cream) 0%, var(--cream-2) 100%)}
+  .hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:4.5rem;align-items:center}
+  .hero-copy{max-width:37rem;position:relative;z-index:2}
+  .hero-copy>*{animation:heroUp .9s cubic-bezier(.2,.75,.25,1) both}
+  .hero-copy>*:nth-child(1){animation-delay:.05s}
+  .hero-copy>*:nth-child(2){animation-delay:.13s}
+  .hero-copy>*:nth-child(3){animation-delay:.21s}
+  .hero-copy>*:nth-child(4){animation-delay:.29s}
+  .hero-copy>*:nth-child(5){animation-delay:.37s}
+  .hero-copy>*:nth-child(6){animation-delay:.45s}
+  @keyframes heroUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+  .hero-status{display:inline-flex;align-items:center;gap:.55rem;background:#fff;border:1px solid var(--line);
+    padding:.5rem .95rem;border-radius:999px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;
+    font-weight:700;color:var(--ink);margin-bottom:1.5rem;box-shadow:0 12px 26px -18px rgba(38,25,15,.5)}
+  .hero-status .dot{width:8px;height:8px;border-radius:50%;background:#33b366;box-shadow:0 0 0 4px rgba(51,179,102,.2);animation:pulse 2.4s ease infinite}
+  .hero-status.closed .dot{background:var(--gold);box-shadow:0 0 0 4px rgba(229,137,46,.2)}
+  @keyframes pulse{0%,100%{box-shadow:0 0 0 3px rgba(51,179,102,.22)}50%{box-shadow:0 0 0 6px rgba(51,179,102,0)}}
+  .hero-copy .eyebrow{display:block;margin-bottom:1rem}
+  .hero-copy h1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(3rem,6.6vw,5.6rem);line-height:1.0;margin:0 0 1.3rem;letter-spacing:-.025em}
+  .hero-copy h1 em{font-style:italic;color:var(--gold)}
+  .hero-copy .lede{max-width:44ch;font-size:1.14rem;color:var(--ink-soft);margin:0 0 2rem}
+  .hero-actions{display:flex;gap:.8rem;flex-wrap:wrap}
+  .hero-tags{display:flex;gap:.55rem;flex-wrap:wrap;margin-top:2.1rem;padding-top:1.7rem;border-top:1px solid var(--line)}
+  .hero-tags span{font-size:.76rem;font-weight:600;color:var(--ink);background:#fff;border:1px solid var(--line);padding:.42rem .85rem;border-radius:999px}
+  .hero-visual{position:relative;z-index:1;animation:heroUp 1.05s cubic-bezier(.2,.75,.25,1) both;animation-delay:.2s}
+  .hero-visual::before{content:"";position:absolute;inset:-9% -7% -5% -7%;z-index:-1;
+    background:radial-gradient(circle at 62% 42%, rgba(242,169,87,.42), transparent 62%);filter:blur(8px)}
+  .hero-photo{position:relative;border-radius:24px;overflow:hidden;aspect-ratio:4/5;
+    box-shadow:0 55px 100px -45px rgba(38,25,15,.65);border:6px solid #fff;transform:rotate(1.4deg);
+    animation:heroFloat 7.5s ease-in-out infinite}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:center 42%;transform:scale(1.02);animation:heroZoom 16s ease-in-out infinite alternate}
+  .hero-photo::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 58%,rgba(38,25,15,.22))}
+  @keyframes heroZoom{to{transform:scale(1.11)}}
+  @keyframes heroFloat{0%,100%{transform:rotate(1.4deg) translateY(0)}50%{transform:rotate(1.4deg) translateY(-12px)}}
+  .hero-badge{position:absolute;left:-1.3rem;bottom:2.2rem;background:#fff;border-radius:16px;padding:.85rem 1.15rem;
+    display:flex;align-items:center;gap:.8rem;box-shadow:var(--shadow);border:1px solid var(--line);animation:heroFloat 7.5s ease-in-out infinite reverse}
+  .hero-badge .hb-star{width:40px;height:40px;border-radius:50%;background:var(--gold);color:#fff;display:grid;place-items:center;flex:0 0 auto}
+  .hero-badge .hb-star svg{width:20px;height:20px}
+  .hero-badge strong{display:block;font-family:'Fraunces',serif;font-size:1.02rem;font-weight:600;line-height:1.1}
+  .hero-badge span{font-size:.74rem;color:var(--salt-deep)}
 
   /* HERO META STRIP */
   .hero-meta-strip{background:var(--cream);border-bottom:1px solid var(--line);padding:1.6rem 0}
@@ -261,12 +267,13 @@
     nav ul,.nav-phone{display:none}
     .burger{display:block}
     .nav-cta .btn{display:none}
-    .hero-cine{height:170vh}
-    .hero-content h1{font-size:clamp(2.6rem,11vw,4.5rem)}
-    .hero-content .lede{font-size:1rem;margin:1.2rem auto 1.6rem}
-    .hero-status{top:5.2rem;font-size:.68rem;padding:.45rem .8rem}
+    .hero{padding:6.5rem 0 3rem}
+    .hero-grid{grid-template-columns:1fr;gap:2.6rem}
+    .hero-visual{max-width:420px;width:100%;margin:.5rem auto 0}
+    .hero-copy h1{font-size:clamp(2.7rem,11vw,4rem)}
+    .hero-copy .lede{font-size:1.02rem}
+    .hero-badge{left:.5rem;bottom:1rem;padding:.7rem 1rem}
     .hero-meta-strip .container{grid-template-columns:1fr;gap:.8rem;text-align:left}
-    .scroll-cue{bottom:1.2rem}
     section{padding:5rem 0}
     .about-grid{grid-template-columns:1fr;gap:3rem}
     .menu-grid{grid-template-columns:1fr 1fr}
@@ -288,7 +295,8 @@
   }
   @media (prefers-reduced-motion: reduce){
     .marquee-track{animation:none}
-    .scroll-cue:after{animation:none}
+    .hero-copy>*,.hero-visual,.hero-photo,.hero-photo img,.hero-badge,.hero-status .dot{animation:none}
+    .hero-photo{transform:rotate(0deg)}
   }
 
   /* MOBILE MENU */
@@ -336,25 +344,34 @@
   <a href="https://www.zingmyorder.com" target="_blank" rel="noopener" class="btn">Order Online</a>
 </aside>
 
-<!-- HERO — CINEMATIC SCROLL-ZOOM -->
-<section class="hero-cine" id="heroCine" aria-label="Welcome to Costa Café & More">
-  <div class="hero-stage">
-    <div class="hero-img" id="heroImg" role="img" aria-label="A fresh açaí bowl topped with fruit and granola at Costa Café & More"></div>
-    <div class="hero-vignette"></div>
-    <div class="hero-status" id="heroStatus">
-      <span class="dot"></span>
-      <span id="heroStatusText">Open Daily · 7 AM</span>
-    </div>
-    <div class="hero-content" id="heroContent">
+<!-- HERO — EDITORIAL SPLIT -->
+<section class="hero" id="home" aria-label="Welcome to Costa Café & More">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <div class="hero-status" id="heroStatus">
+        <span class="dot"></span>
+        <span id="heroStatusText">Open Daily · 7 AM</span>
+      </div>
       <div class="eyebrow">Port St. Lucie · Brazilian Café</div>
-      <h1>Wake up to<br/><em>Brazil.</em></h1>
+      <h1>Wake up to <em>Brazil.</em></h1>
       <p class="lede">Fresh Brazilian breakfast, thick açaí bowls, homemade cakes and real coffee — made fresh every single morning.</p>
       <div class="hero-actions">
-        <a href="#menu" class="btn">See the Menu</a>
-        <a href="https://www.zingmyorder.com" target="_blank" rel="noopener" class="btn ghost">Order Online</a>
+        <a href="https://www.zingmyorder.com" target="_blank" rel="noopener" class="btn">Order Online</a>
+        <a href="#menu" class="btn ghost">See the Menu</a>
+      </div>
+      <div class="hero-tags">
+        <span>Açaí Bowls</span><span>Brazilian Breakfast</span><span>Fresh Coffee</span><span>Homemade Cakes</span>
       </div>
     </div>
-    <div class="scroll-cue">Step Inside</div>
+    <div class="hero-visual">
+      <div class="hero-photo">
+        <img src="assets/img/acai.jpg" fetchpriority="high" alt="A hand holding a fresh açaí bowl outside Costa Café & More on Port St. Lucie Blvd" />
+      </div>
+      <div class="hero-badge">
+        <span class="hb-star"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.6 6.6L21 9l-5 4.3L17.5 20 12 16.4 6.5 20 8 13.3 3 9l6.4-.4z"/></svg></span>
+        <span><strong>Feito com carinho</strong><span>Made fresh, every day</span></span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -391,9 +408,9 @@
       </div>
     </div>
     <div class="about-photos reveal">
-      <div class="ap ap1"><img src="assets/img/steak-plate.png" alt="Grilled steak plate with rice, beans and salad"/></div>
-      <div class="ap ap2"><img src="assets/img/omelete.png" alt="Brazilian breakfast omelette"/></div>
-      <div class="ap ap3"><img src="assets/img/bolo-chocolate.png" alt="Homemade chocolate cake"/></div>
+      <div class="ap ap1"><img src="assets/img/steak-plate.jpg" alt="Grilled steak plate with rice, beans and salad"/></div>
+      <div class="ap ap2"><img src="assets/img/omelete.jpg" alt="Brazilian breakfast omelette"/></div>
+      <div class="ap ap3"><img src="assets/img/bolo-chocolate.jpg" alt="Homemade chocolate cake"/></div>
     </div>
   </div>
 </section>
@@ -443,7 +460,7 @@
 <section class="feature" id="feature">
   <div class="container feature-grid">
     <div class="feature-photo reveal">
-      <img src="assets/img/acai.png" alt="A thick açaí bowl topped with strawberry, banana and granola"/>
+      <img src="assets/img/acai.jpg" alt="A thick açaí bowl topped with strawberry, banana and granola"/>
     </div>
     <div class="reveal">
       <div class="eyebrow">The Açaí Bar</div>
@@ -493,12 +510,12 @@
       </button>
     </div>
     <div class="polaroid-stage" id="polaroidStage" aria-label="Photo gallery of Costa Café & More">
-      <figure class="polaroid" data-id="acai"><div class="frame"><img src="assets/img/acai.png" alt="A thick açaí bowl topped with fruit and granola"/></div><figcaption class="caption">Açaí, piled high</figcaption></figure>
-      <figure class="polaroid" data-id="torta"><div class="frame"><img src="assets/img/torta.png" alt="Layered chocolate torta"/></div><figcaption class="caption">Fresh from the oven</figcaption></figure>
-      <figure class="polaroid" data-id="pao"><div class="frame"><img src="assets/img/pao-carne.png" alt="Golden bread stuffed with shredded beef"/></div><figcaption class="caption">Warm &amp; hearty</figcaption></figure>
-      <figure class="polaroid" data-id="steak"><div class="frame"><img src="assets/img/steak-plate.png" alt="Grilled steak plate with rice, beans and salad"/></div><figcaption class="caption">A proper plate</figcaption></figure>
-      <figure class="polaroid" data-id="cookie"><div class="frame"><img src="assets/img/cookie.png" alt="Thick stuffed chocolate-chip cookie"/></div><figcaption class="caption">Something sweet</figcaption></figure>
-      <figure class="polaroid" data-id="omelete"><div class="frame"><img src="assets/img/omelete-molho.png" alt="Baked omelette with rice and salad"/></div><figcaption class="caption">Breakfast, sorted</figcaption></figure>
+      <figure class="polaroid" data-id="acai"><div class="frame"><img src="assets/img/acai.jpg" alt="A thick açaí bowl topped with fruit and granola"/></div><figcaption class="caption">Açaí, piled high</figcaption></figure>
+      <figure class="polaroid" data-id="torta"><div class="frame"><img src="assets/img/torta.jpg" alt="Layered chocolate torta"/></div><figcaption class="caption">Fresh from the oven</figcaption></figure>
+      <figure class="polaroid" data-id="pao"><div class="frame"><img src="assets/img/pao-carne.jpg" alt="Golden bread stuffed with shredded beef"/></div><figcaption class="caption">Warm &amp; hearty</figcaption></figure>
+      <figure class="polaroid" data-id="steak"><div class="frame"><img src="assets/img/steak-plate.jpg" alt="Grilled steak plate with rice, beans and salad"/></div><figcaption class="caption">A proper plate</figcaption></figure>
+      <figure class="polaroid" data-id="cookie"><div class="frame"><img src="assets/img/cookie.jpg" alt="Thick stuffed chocolate-chip cookie"/></div><figcaption class="caption">Something sweet</figcaption></figure>
+      <figure class="polaroid" data-id="omelete"><div class="frame"><img src="assets/img/omelete-molho.jpg" alt="Baked omelette with rice and salad"/></div><figcaption class="caption">Breakfast, sorted</figcaption></figure>
     </div>
   </div>
 </section>
@@ -631,39 +648,6 @@
     entries.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
   }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
   document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
-
-  /* ---------- CINEMATIC HERO SCROLL-ZOOM ---------- */
-  var heroCine = document.getElementById('heroCine');
-  if (heroCine){
-    var setProgress = function(p){
-      var eased = Math.min(1, Math.max(0, p));
-      var scale = 1 + eased * 0.6;
-      var bright = 1 - eased * 0.16;
-      var fade = Math.max(0, 1 - Math.max(0, (eased - 0.18) / 0.55));
-      var shift = -eased * 60;
-      var overlay = 1 + eased * 0.25;
-      heroCine.style.setProperty('--cine-scale', scale.toFixed(4));
-      heroCine.style.setProperty('--cine-bright', bright.toFixed(4));
-      heroCine.style.setProperty('--cine-fade', fade.toFixed(4));
-      heroCine.style.setProperty('--cine-shift', shift.toFixed(2) + 'px');
-      heroCine.style.setProperty('--cine-overlay', overlay.toFixed(4));
-    };
-    var ticking = false;
-    var onScroll = function(){
-      if (ticking) return;
-      ticking = true;
-      requestAnimationFrame(function(){
-        var rect = heroCine.getBoundingClientRect();
-        var total = heroCine.offsetHeight - window.innerHeight;
-        var p = total > 0 ? (-rect.top) / total : 0;
-        setProgress(p);
-        ticking = false;
-      });
-    };
-    setProgress(0);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-  }
 
   /* ---------- POLAROID SCATTER GALLERY ---------- */
   function SeededRandom(seed){ this.seed = seed; }
