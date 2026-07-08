@@ -97,16 +97,15 @@
   }
   spy(".nav__links a:not(.btn)", "section[id]", 140);
 
-  /* ---- Gallery lightbox ---- */
-  var grid = document.getElementById("galleryGrid");
+  /* ---- Photo lightbox (menu photos) ---- */
   var lightbox = document.getElementById("lightbox");
   var lightboxImg = document.getElementById("lightboxImg");
   var btnClose = document.getElementById("lightboxClose");
   var btnPrev = document.getElementById("lightboxPrev");
   var btnNext = document.getElementById("lightboxNext");
 
-  if (grid && lightbox) {
-    var items = Array.prototype.slice.call(grid.querySelectorAll(".gallery__item"));
+  if (lightbox) {
+    var items = Array.prototype.slice.call(document.querySelectorAll(".taste, .gallery__item"));
     var sources = items.map(function (it) {
       return { src: it.getAttribute("data-full"), alt: it.querySelector("img").getAttribute("alt") };
     });
@@ -148,5 +147,39 @@
       else if (e.key === "ArrowLeft") show(current - 1);
       else if (e.key === "ArrowRight") show(current + 1);
     });
+  }
+
+  /* ---- Live "Open now" status (Mon–Sat 7a–7p, Sun 7a–2p) ---- */
+  var statusEls = document.querySelectorAll("[data-open-status]");
+  if (statusEls.length) {
+    var now = new Date();
+    var day = now.getDay();                 // 0 = Sun … 6 = Sat
+    var mins = now.getHours() * 60 + now.getMinutes();
+    var openMin = 7 * 60;
+    var closeMin = (day === 0 ? 14 : 19) * 60;
+    var isOpen = mins >= openMin && mins < closeMin;
+    var label, closed;
+    if (isOpen) {
+      var ch = day === 0 ? 2 : 7;           // closing hour (12h)
+      label = "Open now · until " + ch + " PM";
+      closed = false;
+    } else {
+      label = mins < openMin ? "Opens today at 7 AM" : "Closed · opens 7 AM";
+      closed = true;
+    }
+    statusEls.forEach(function (el) {
+      el.textContent = label;
+      el.classList.toggle("is-closed", closed);
+    });
+  }
+
+  /* ---- Floating order button: reveal after scrolling past the hero ---- */
+  var fab = document.querySelector(".fab");
+  if (fab) {
+    function fabToggle() {
+      fab.classList.toggle("is-visible", window.scrollY > 620);
+    }
+    fabToggle();
+    window.addEventListener("scroll", fabToggle, { passive: true });
   }
 })();
