@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Costa Café & More">
+  <circle cx="50" cy="50" r="50" fill="#E5892E"/>
+  <!-- steam -->
+  <path d="M44 20c-3 4 3 6 0 10M56 20c-3 4 3 6 0 10" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+  <!-- saucer -->
+  <ellipse cx="50" cy="73" rx="25" ry="4.5" fill="#fff"/>
+  <!-- cup -->
+  <path d="M33 39h34v13a17 17 0 0 1-17 17 17 17 0 0 1-17-17z" fill="#fff"/>
+  <!-- handle -->
+  <path d="M67 44h4.5a8.5 8.5 0 0 1 0 17H68" fill="none" stroke="#fff" stroke-width="5"/>
+  <!-- rim shadow -->
+  <ellipse cx="50" cy="40" rx="16.5" ry="3.4" fill="#E5892E" opacity=".22"/>
+</svg>
